@@ -2,12 +2,12 @@
   <div class="container">
     <nav class="header-nav">
       <!-- Brand Logo -->
-      <a href="{{ routes.root_url }}" class="brand-logo">
+      <a href="{{ routes.root_url }}" class="brand-logo flex items-center gap-3">
         {% if section.settings.logo != blank %}
           <img src="{{ section.settings.logo | image_url: width: 180 }}" alt="{{ shop.name }}" width="150" height="40">
         {% else %}
+          <img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" class="h-10 w-auto rounded-lg" width="160" height="40">
           <span>{{ settings.store_brand_name | default: shop.name }}</span>
-          <span class="badge">OFFICIAL</span>
         {% endif %}
       </a>
 
