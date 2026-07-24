@@ -1,0 +1,51 @@
+{
+  "general": {
+    "store_name": "Khatwa Store",
+    "language": "Language",
+    "arabic": "العربية",
+    "english": "English",
+    "search": "Search product...",
+    "close": "Close",
+    "menu": "Menu"
+  },
+  "product": {
+    "add_to_cart": "Add to Cart",
+    "buy_now": "Buy Now - Fast Shipping",
+    "sold_out": "Sold Out",
+    "in_stock": "In Stock - Ready to Ship",
+    "only_few_left": "Hurry! Only {{ count }} items left in stock",
+    "discount_off": "OFF",
+    "rating": "out of 5 stars",
+    "reviews_count": "verified reviews",
+    "select_variant": "Select Option:",
+    "quantity": "Quantity"
+  },
+  "cart": {
+    "title": "Your Shopping Cart",
+    "empty": "Your cart is empty",
+    "continue_shopping": "Continue Shopping",
+    "subtotal": "Subtotal",
+    "checkout": "Proceed to Checkout",
+    "free_shipping_unlocked": "🎉 Congratulations! You unlocked FREE SHIPPING!",
+    "free_shipping_away": "Add {{ amount }} more for FREE SHIPPING"
+  },
+  "trust": {
+    "free_shipping": "Fast Express Shipping",
+    "free_shipping_sub": "Delivered to your doorstep",
+    "guarantee": "30-Day Money Back",
+    "guarantee_sub": "100% Risk-Free Guarantee",
+    "secure_checkout": "Encrypted Payment",
+    "secure_checkout_sub": "Safe & Secure Transactions",
+    "support": "24/7 Priority Customer Care",
+    "support_sub": "We are here to help anytime"
+  },
+  "reviews": {
+    "title": "What Our Customers Say",
+    "subtitle": "Join thousands of satisfied users using Khatwa every day",
+    "verified_buyer": "Verified Buyer"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Everything you need to know about our product and order fulfillment"
+  }
+}

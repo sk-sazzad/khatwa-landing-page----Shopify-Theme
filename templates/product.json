@@ -1,0 +1,31 @@
+{
+  "sections": {
+    "main": {
+      "type": "hero-landing",
+      "settings": {}
+    },
+    "trust": {
+      "type": "trust-badges",
+      "settings": {}
+    },
+    "features": {
+      "type": "product-features",
+      "settings": {}
+    },
+    "reviews": {
+      "type": "testimonials-reviews",
+      "settings": {}
+    },
+    "faq": {
+      "type": "faq-accordion",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "trust",
+    "features",
+    "reviews",
+    "faq"
+  ]
+}

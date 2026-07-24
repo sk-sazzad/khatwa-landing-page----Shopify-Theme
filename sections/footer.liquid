@@ -1,0 +1,67 @@
+<footer class="site-footer">
+  <div class="container">
+    
+    <div class="footer-grid">
+      
+      <!-- Brand & Mission -->
+      <div>
+        <a href="{{ routes.root_url }}" class="brand-logo mb-3 inline-block">
+          <span>{{ settings.store_brand_name | default: shop.name }}</span>
+        </a>
+        <p class="text-slate-400 text-sm leading-relaxed max-w-sm">
+          علامة تجارية رائدة متخصصة في تقديم أحدث حلول المنتجات المبتكرة بأسلوب عالي الأناقة والجودة. نلتزم دائماً برضاكم التام.
+        </p>
+      </div>
+
+      <!-- Navigation Links -->
+      <div>
+        <h4 class="font-bold text-white text-base mb-3">روابط سريعة</h4>
+        <ul class="flex flex-col gap-2 text-sm text-slate-400">
+          <li><a href="#features" class="hover:text-blue-400">المميزات الرئيسية</a></li>
+          <li><a href="#reviews" class="hover:text-blue-400">آراء العملاء</a></li>
+          <li><a href="#faq" class="hover:text-blue-400">الأسئلة الشائعة</a></li>
+        </ul>
+      </div>
+
+      <!-- Legal Links -->
+      <div>
+        <h4 class="font-bold text-white text-base mb-3">الشروط والسياسات</h4>
+        <ul class="flex flex-col gap-2 text-sm text-slate-400">
+          <li><a href="/policies/privacy-policy" class="hover:text-blue-400">سياسة الخصوصية</a></li>
+          <li><a href="/policies/terms-of-service" class="hover:text-blue-400">شروط الخدمة</a></li>
+          <li><a href="/policies/refund-policy" class="hover:text-blue-400">سياسة الإرجاع والضمان</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter -->
+      <div>
+        <h4 class="font-bold text-white text-base mb-3">اشترك للحصول على العروض الحصرية</h4>
+        <p class="text-xs text-slate-400 mb-3">احصل على خصم 10% إضافي على طلبك القادم عند الاشتراك.</p>
+        <div class="flex gap-2">
+          <input type="email" placeholder="بريدك الإلكتروني..." class="bg-slate-800 border border-slate-700 rounded-full px-4 py-2 text-sm text-white focus:outline-none focus:border-blue-500 flex-1">
+          <button type="button" class="btn btn-primary text-xs py-2 px-4">اشتراك</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar & Copyright -->
+    <div class="border-t border-slate-700/60 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+      <p>© {{ 'now' | date: "%Y" }} متجر خطوة | Khatwa Store. جميع الحقوق محفوظة.</p>
+      <div class="flex items-center gap-3">
+        <span class="bg-slate-800 px-2.5 py-1 rounded text-slate-300 font-mono">VISA</span>
+        <span class="bg-slate-800 px-2.5 py-1 rounded text-slate-300 font-mono">MasterCard</span>
+        <span class="bg-slate-800 px-2.5 py-1 rounded text-slate-300 font-mono">Apple Pay</span>
+        <span class="bg-slate-800 px-2.5 py-1 rounded text-slate-300 font-mono">Mada / مدى</span>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": []
+}
+{% endschema %}

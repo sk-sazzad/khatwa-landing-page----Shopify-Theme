@@ -1,0 +1,17 @@
+{
+  "current": {
+    "default_language": "ar",
+    "enable_rtl": true,
+    "store_brand_name": "خطوة | Khatwa",
+    "color_primary": "#2563eb",
+    "color_primary_hover": "#1d4ed8",
+    "color_secondary": "#10b981",
+    "color_bg_main": "#0f172a",
+    "color_bg_card": "#1e293b",
+    "color_text_main": "#f8fafc",
+    "color_text_muted": "#94a3b8",
+    "color_badge_discount": "#ef4444",
+    "enable_cart_drawer": true,
+    "free_shipping_threshold": 100
+  }
+}

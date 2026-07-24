@@ -1,0 +1,72 @@
+<div id="CartDrawerOverlay" class="cart-drawer-overlay"></div>
+
+<div id="CartDrawer" class="cart-drawer" role="dialog" aria-modal="true" aria-label="{{ 'cart.title' | t }}">
+  
+  <!-- Cart Header -->
+  <div class="cart-header">
+    <div class="flex items-center gap-2">
+      {% render 'icon-cart' %}
+      <h3 class="font-bold text-lg text-white">{{ 'cart.title' | t }}</h3>
+      <span class="bg-blue-600/30 text-blue-400 text-xs font-bold px-2 py-0.5 rounded-full border border-blue-500/30">1</span>
+    </div>
+    <button type="button" class="js-close-cart text-slate-400 hover:text-white text-xl font-bold p-1">
+      ✕
+    </button>
+  </div>
+
+  <!-- Free Shipping Progress Bar -->
+  <div class="bg-slate-800/80 px-6 py-3 border-b border-slate-700">
+    <div class="flex items-center justify-between text-xs font-semibold mb-1.5">
+      <span class="text-emerald-400">🎉 {{ 'cart.free_shipping_unlocked' | t }}</span>
+      <span class="text-slate-400">100%</span>
+    </div>
+    <div class="w-full bg-slate-700 h-2 rounded-full overflow-hidden">
+      <div class="bg-emerald-500 h-full w-full rounded-full transition-all"></div>
+    </div>
+  </div>
+
+  <!-- Cart Body (Items List) -->
+  <div class="cart-body flex flex-col gap-4">
+    <div class="glass-card p-4 flex gap-3 items-center border border-slate-700">
+      <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=160&q=80" alt="Product" class="w-16 h-16 rounded-xl object-cover">
+      
+      <div class="flex-1">
+        <h4 class="font-bold text-sm text-white">Khatwa Ultra-Comfort Pro</h4>
+        <span class="text-xs text-slate-400">أسود ملكي / Black - EU 42</span>
+        <div class="flex items-center justify-between mt-2">
+          <!-- Quantity Controls -->
+          <div class="flex items-center gap-2 bg-slate-800 px-2 py-1 rounded-lg border border-slate-700 text-xs">
+            <button type="button" class="text-slate-400 hover:text-white font-bold px-1.5">-</button>
+            <span class="font-bold text-white px-1">1</span>
+            <button type="button" class="text-slate-400 hover:text-white font-bold px-1.5">+</button>
+          </div>
+          <span class="font-bold text-emerald-400 text-sm">$129.00</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Footer -->
+  <div class="cart-footer">
+    <div class="flex items-center justify-between mb-2">
+      <span class="text-slate-400 text-sm font-semibold">{{ 'cart.subtotal' | t }}</span>
+      <span class="text-white font-bold text-xl">$129.00</span>
+    </div>
+    
+    <p class="text-xs text-slate-400 mb-4 text-center">
+      الضرائب ورسوم الشحن محسوبة عند الدفع | Taxes included
+    </p>
+
+    <a href="/checkout" class="btn btn-primary w-full text-base py-3.5 flex items-center justify-center gap-2">
+      <span>🔒 {{ 'cart.checkout' | t }}</span>
+    </a>
+  </div>
+
+</div>
+
+{% schema %}
+{
+  "name": "Cart Drawer",
+  "settings": []
+}
+{% endschema %}

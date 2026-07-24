@@ -1,0 +1,137 @@
+<section class="hero-section">
+  <div class="container">
+    <div class="hero-grid">
+      
+      <!-- Product Media Gallery -->
+      <div class="hero-media-wrapper">
+        <div class="main-image-frame">
+          <span class="discount-tag">
+            {{ 'product.discount_off' | t }} 45%
+          </span>
+          <img id="MainProductImage" 
+               src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1000&q=80" 
+               alt="Khatwa Flagship Product" 
+               width="800" 
+               height="800" 
+               loading="eager">
+        </div>
+
+        <div class="media-thumbnails">
+          <button class="thumb-btn js-thumb-btn active" data-full-src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1000&q=80">
+            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=300&q=80" alt="View 1">
+          </button>
+          <button class="thumb-btn js-thumb-btn" data-full-src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=1000&q=80">
+            <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=300&q=80" alt="View 2">
+          </button>
+          <button class="thumb-btn js-thumb-btn" data-full-src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=1000&q=80">
+            <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=300&q=80" alt="View 3">
+          </button>
+        </div>
+      </div>
+
+      <!-- Hero Product Details & Purchasing Card -->
+      <div class="hero-content">
+        <!-- Stock status -->
+        <div class="stock-indicator">
+          <span class="stock-dot"></span>
+          <span>{{ 'product.in_stock' | t }}</span>
+        </div>
+
+        <!-- Headline Title -->
+        <h1 class="hero-title">
+          <span class="gradient-text">حذاء خطوة الفاخر </span>
+          <br>Khatwa Ultra-Comfort Pro
+        </h1>
+
+        <!-- Star Rating -->
+        <div class="star-rating-box">
+          <div class="stars">
+            {% for i in (1..5) %}
+              {% render 'icon-star' %}
+            {% endfor %}
+          </div>
+          <span class="font-bold text-white">4.95</span>
+          <span>(1,482 {{ 'product.reviews_count' | t }})</span>
+        </div>
+
+        <!-- Pricing -->
+        <div class="price-box my-2">
+          <span class="price-current">$129.00</span>
+          <span class="price-compare">$235.00</span>
+          <span class="bg-emerald-500/20 text-emerald-400 text-sm font-bold px-3 py-1 rounded-full border border-emerald-500/30">
+            وفر $106 الآن | Save $106 Today
+          </span>
+        </div>
+
+        <!-- Limited Time Countdown Banner -->
+        <div class="countdown-box">
+          <div class="flex items-center gap-2 text-red-400">
+            {% render 'icon-clock' %}
+            <span>ينتهي العرض الخاطف خلال | Flash Sale Ends In:</span>
+          </div>
+          <div id="OfferCountdownTimer" class="timer-digits">00:00:00</div>
+        </div>
+
+        <!-- Key Benefits List -->
+        <div class="flex flex-col gap-2.5 my-2">
+          <div class="flex items-center gap-3 text-sm font-semibold text-slate-200">
+            <span class="text-blue-400">{% render 'icon-check' %}</span>
+            <span>تصميم مريح مع وسادة هواء فائقة المرونة لاستخدام يدوم طوال اليوم</span>
+          </div>
+          <div class="flex items-center gap-3 text-sm font-semibold text-slate-200">
+            <span class="text-blue-400">{% render 'icon-check' %}</span>
+            <span>خامات متينة ومقاومة للماء والتعرق بنسبة 100%</span>
+          </div>
+          <div class="flex items-center gap-3 text-sm font-semibold text-slate-200">
+            <span class="text-blue-400">{% render 'icon-check' %}</span>
+            <span>شحن مجاني وتقديم ضمان استبدال وتأكيد بعد التوصيل</span>
+          </div>
+        </div>
+
+        <!-- Variants Selection -->
+        <div class="flex flex-col gap-2 my-2">
+          <label class="text-xs font-bold uppercase tracking-wider text-slate-400">{{ 'product.select_variant' | t }}</label>
+          <div class="flex gap-2">
+            <button type="button" class="px-4 py-2 rounded-xl bg-blue-600 text-white font-bold border border-blue-400 text-sm">أسود ملكي / Black</button>
+            <button type="button" class="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 font-bold border border-slate-700 hover:border-slate-500 text-sm">أبيض ناصع / White</button>
+            <button type="button" class="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 font-bold border border-slate-700 hover:border-slate-500 text-sm">كحلي مميز / Navy</button>
+          </div>
+        </div>
+
+        <!-- Primary Call to Action Button -->
+        <button id="MainBuyButton" type="button" class="btn btn-primary btn-pulse w-full text-lg py-4 js-open-cart">
+          {% render 'icon-cart' %}
+          <span>{{ 'product.buy_now' | t }}</span>
+        </button>
+
+        <!-- Trust Subtext -->
+        <div class="flex items-center justify-center gap-6 text-xs text-slate-400 font-medium mt-1">
+          <span class="flex items-center gap-1">🔒 دفع مشفّر 100%</span>
+          <span class="flex items-center gap-1">🚚 شحن سريع حتى باب المنزل</span>
+          <span class="flex items-center gap-1">🔄 إرجاع مجاني خلال 30 يوم</span>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Landing Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Hero Title",
+      "default": "Khatwa Ultra-Comfort Pro"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Landing Hero"
+    }
+  ]
+}
+{% endschema %}

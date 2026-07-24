@@ -1,0 +1,58 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}" dir="{% if request.locale.iso_code == 'ar' or settings.default_language == 'ar' %}rtl{% else %}ltr{% endif %}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="{{ settings.color_primary }}">
+  
+  <title>
+    {{ page_title }}{% if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}{% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+  </title>
+
+  {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+
+  <!-- Google Fonts: Cairo (Arabic) & Outfit (English) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  {{ 'theme.css' | asset_url | stylesheet_tag }}
+
+  {{ content_for_header }}
+
+  <script>
+    document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+    window.KhatwaTheme = {
+      moneyFormat: {{ shop.money_format | json }},
+      currentLang: "{{ request.locale.iso_code | default: settings.default_language }}",
+      freeShippingThreshold: {{ settings.free_shipping_threshold | default: 100 }}
+    };
+  </script>
+</head>
+
+<body class="template-{{ template.name | handle }} bg-main text-main antialiased overflow-x-hidden">
+
+  <!-- Header Section -->
+  {% section 'header' %}
+
+  <!-- Main Content Layout -->
+  <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+    {{ content_for_layout }}
+  </main>
+
+  <!-- Sticky Add-to-Cart Bar -->
+  {% section 'sticky-atc' %}
+
+  <!-- Slide-out Cart Drawer -->
+  {% section 'cart-drawer' %}
+
+  <!-- Footer Section -->
+  {% section 'footer' %}
+
+  <!-- Theme JavaScript -->
+  {{ 'theme.js' | asset_url | script_tag }}
+</body>
+</html>

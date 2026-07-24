@@ -1,0 +1,54 @@
+<header class="site-header">
+  <div class="container">
+    <nav class="header-nav">
+      <!-- Brand Logo -->
+      <a href="{{ routes.root_url }}" class="brand-logo">
+        {% if section.settings.logo != blank %}
+          <img src="{{ section.settings.logo | image_url: width: 180 }}" alt="{{ shop.name }}" width="150" height="40">
+        {% else %}
+          <span>{{ settings.store_brand_name | default: shop.name }}</span>
+          <span class="badge">OFFICIAL</span>
+        {% endif %}
+      </a>
+
+      <!-- Quick Nav Links -->
+      <div class="hidden md:flex items-center gap-6 font-semibold text-sm">
+        <a href="#features" class="hover:text-blue-400 transition-colors"> المميزات | Features</a>
+        <a href="#reviews" class="hover:text-blue-400 transition-colors"> التقييمات | Reviews</a>
+        <a href="#faq" class="hover:text-blue-400 transition-colors"> الأسئلة الشائعة | FAQ</a>
+      </div>
+
+      <!-- Language & Cart Actions -->
+      <div class="flex items-center gap-4">
+        <!-- Language Switcher -->
+        <div class="flex items-center gap-1 bg-slate-800/80 p-1 rounded-full border border-slate-700 text-xs font-semibold">
+          <button type="button" class="js-lang-switch px-3 py-1 rounded-full transition-all {% if request.locale.iso_code == 'ar' or settings.default_language == 'ar' %}bg-blue-600 text-white{% else %}text-slate-400 hover:text-white{% endif %}" data-lang="ar">
+            العربية
+          </button>
+          <button type="button" class="js-lang-switch px-3 py-1 rounded-full transition-all {% if request.locale.iso_code == 'en' %}bg-blue-600 text-white{% else %}text-slate-400 hover:text-white{% endif %}" data-lang="en">
+            EN
+          </button>
+        </div>
+
+        <!-- Cart Trigger -->
+        <button type="button" class="cart-icon-btn js-open-cart" aria-label="Open Cart">
+          {% render 'icon-cart' %}
+          <span class="cart-badge-count js-cart-count">{{ cart.item_count | default: 1 }}</span>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Store Logo"
+    }
+  ]
+}
+{% endschema %}

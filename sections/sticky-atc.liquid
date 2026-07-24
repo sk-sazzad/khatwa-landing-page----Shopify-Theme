@@ -1,0 +1,34 @@
+<div id="StickyAtcBar" class="sticky-atc-bar">
+  <div class="container">
+    <div class="sticky-atc-container">
+      
+      <!-- Product Info -->
+      <div class="sticky-product-info">
+        <img class="sticky-thumb" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=150&q=80" alt="Khatwa Product" width="48" height="48">
+        <div>
+          <h4 class="font-bold text-sm text-white line-clamp-1">Khatwa Ultra-Comfort Pro</h4>
+          <div class="flex items-center gap-2">
+            <span class="text-emerald-400 font-bold text-base">$129.00</span>
+            <span class="text-slate-400 text-xs line-through">$235.00</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action CTA -->
+      <div class="flex items-center gap-3">
+        <button type="button" class="btn btn-primary text-sm py-2.5 px-6 js-open-cart">
+          {% render 'icon-cart' %}
+          <span>{{ 'product.add_to_cart' | t }}</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Sticky Add to Cart",
+  "settings": []
+}
+{% endschema %}

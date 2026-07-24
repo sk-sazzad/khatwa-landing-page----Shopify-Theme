@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>متجر خطوة | Khatwa Store - Shopify Theme Preview</title>
+  
+  <!-- Tailwind CSS CDN for utility classes in preview -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Fonts: Cairo & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./assets/theme.css">
+</head>
+
+<body class="bg-main text-main antialiased overflow-x-hidden">
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="header-nav">
+        <a href="#" class="brand-logo">
+          <span>خطوة | Khatwa</span>
+          <span class="badge">OFFICIAL</span>
+        </a>
+
+        <div class="hidden md:flex items-center gap-6 font-semibold text-sm">
+          <a href="#features" class="hover:text-blue-400 transition-colors">المميزات | Features</a>
+          <a href="#reviews" class="hover:text-blue-400 transition-colors">التقييمات | Reviews</a>
+          <a href="#faq" class="hover:text-blue-400 transition-colors">الأسئلة الشائعة | FAQ</a>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <div class="flex items-center gap-1 bg-slate-800/80 p-1 rounded-full border border-slate-700 text-xs font-semibold">
+            <button type="button" class="js-lang-switch px-3 py-1 rounded-full transition-all bg-blue-600 text-white" data-lang="ar">العربية</button>
+            <button type="button" class="js-lang-switch px-3 py-1 rounded-full transition-all text-slate-400 hover:text-white" data-lang="en">EN</button>
+          </div>
+
+          <button type="button" class="cart-icon-btn js-open-cart" aria-label="Open Cart">
+            <svg class="icon icon-cart" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <span class="cart-badge-count js-cart-count">1</span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-grid">
+        
+        <div class="hero-media-wrapper">
+          <div class="main-image-frame">
+            <span class="discount-tag">خصم 45% OFF</span>
+            <img id="MainProductImage" 
+                 src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1000&q=80" 
+                 alt="Khatwa Flagship Product" 
+                 width="800" 
+                 height="800" 
+                 loading="eager">
+          </div>
+
+          <div class="media-thumbnails">
+            <button class="thumb-btn js-thumb-btn active" data-full-src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1000&q=80">
+              <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=300&q=80" alt="View 1">
+            </button>
+            <button class="thumb-btn js-thumb-btn" data-full-src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=1000&q=80">
+              <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=300&q=80" alt="View 2">
+            </button>
+            <button class="thumb-btn js-thumb-btn" data-full-src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=1000&q=80">
+              <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=300&q=80" alt="View 3">
+            </button>
+          </div>
+        </div>
+
+        <div class="hero-content">
+          <div class="stock-indicator">
+            <span class="stock-dot"></span>
+            <span>متوفر - جاهز للشحن الفوري</span>
+          </div>
+
+          <h1 class="hero-title">
+            <span class="gradient-text">حذاء خطوة الفاخر </span>
+            <br>Khatwa Ultra-Comfort Pro
+          </h1>
+
+          <div class="star-rating-box">
+            <div class="stars flex text-amber-400 gap-1">
+              ★★★★★
+            </div>
+            <span class="font-bold text-white">4.95</span>
+            <span>(1,482 تقييمات موثقة)</span>
+          </div>
+
+          <div class="price-box my-2">
+            <span class="price-current">$129.00</span>
+            <span class="price-compare">$235.00</span>
+            <span class="bg-emerald-500/20 text-emerald-400 text-sm font-bold px-3 py-1 rounded-full border border-emerald-500/30">
+              وفر $106 الآن
+            </span>
+          </div>
+
+          <div class="countdown-box">
+            <div class="flex items-center gap-2 text-red-400">
+              ⏱️ <span>ينتهي العرض الخاطف خلال:</span>
+            </div>
+            <div id="OfferCountdownTimer" class="timer-digits">23:14:05</div>
+          </div>
+
+          <div class="flex flex-col gap-2.5 my-2">
+            <div class="flex items-center gap-3 text-sm font-semibold text-slate-200">
+              <span class="text-blue-400">✓</span>
+              <span>تصميم مريح مع وسادة هواء فائقة المرونة لاستخدام يدوم طوال اليوم</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm font-semibold text-slate-200">
+              <span class="text-blue-400">✓</span>
+              <span>خامات متينة ومقاومة للماء والتعرق بنسبة 100%</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm font-semibold text-slate-200">
+              <span class="text-blue-400">✓</span>
+              <span>شحن مجاني وتقديم ضمان استبدال وتأكيد بعد التوصيل</span>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-2 my-2">
+            <label class="text-xs font-bold uppercase tracking-wider text-slate-400">اختر الخيار:</label>
+            <div class="flex gap-2">
+              <button type="button" class="px-4 py-2 rounded-xl bg-blue-600 text-white font-bold border border-blue-400 text-sm">أسود ملكي / Black</button>
+              <button type="button" class="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 font-bold border border-slate-700 hover:border-slate-500 text-sm">أبيض ناصع / White</button>
+              <button type="button" class="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 font-bold border border-slate-700 hover:border-slate-500 text-sm">كحلي مميز / Navy</button>
+            </div>
+          </div>
+
+          <button id="MainBuyButton" type="button" class="btn btn-primary btn-pulse w-full text-lg py-4 js-open-cart">
+            🛒 <span>شراء الآن - توصيل سريع</span>
+          </button>
+
+          <div class="flex items-center justify-center gap-6 text-xs text-slate-400 font-medium mt-1">
+            <span>🔒 دفع مشفّر 100%</span>
+            <span>🚚 شحن سريع حتى باب المنزل</span>
+            <span>🔄 إرجاع مجاني خلال 30 يوم</span>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="features-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">
+          لماذا يفضل الجميع <span class="gradient-text">منتج خطوة؟</span>
+        </h2>
+        <p class="section-subtitle">
+          تم تصميمه بأحدث التقنيات ليمنحك تجربة استثنائية يجمع فيها بين الأناقة المطلقة والراحة الدائمة.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <div class="glass-card feature-card">
+          <div class="feature-icon">🛡️</div>
+          <h3 class="text-xl font-bold mb-2">جودة خامات عالية للغاية</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            مصنوع من ألياف متطورة تقاوم الصدمات والخدوش، مما يضمن لك الاستدامة لفترات طويلة مع الحفاظ على المظهر الجديد.
+          </p>
+        </div>
+
+        <div class="glass-card feature-card">
+          <div class="feature-icon">🚚</div>
+          <h3 class="text-xl font-bold mb-2">راحة وتوسيد هواء متطور</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            يمتص الصدمات أثناء المشي لمسافات طويلة، ويقلل الضغط عن الظهر والركبتين لتشعر بالخفة في كل خطوة.
+          </p>
+        </div>
+
+        <div class="glass-card feature-card">
+          <div class="feature-icon">⏱️</div>
+          <h3 class="text-xl font-bold mb-2">تهوية ومحيط عملي</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            تصميم ذكي يسمح بتدفق الهواء ومنع تكون الرطوبة، ليحافظ على الانتعاش والنظافة طوال ساعات العمل والرياضة.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Bar -->
+  <section class="trust-bar">
+    <div class="container">
+      <div class="trust-grid">
+        <div class="trust-item">
+          <div class="trust-item-icon">🚚</div>
+          <div>
+            <h4 class="font-bold text-base">شحن سريع ومجاني</h4>
+            <p class="text-xs text-slate-400 mt-0.5">توصيل مباشر حتى باب منزلكم</p>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-item-icon">🛡️</div>
+          <div>
+            <h4 class="font-bold text-base">ضمان استرجاع 30 يوم</h4>
+            <p class="text-xs text-slate-400 mt-0.5">تسوق بأمان ودون أي مخاطرة</p>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-item-icon">🔒</div>
+          <div>
+            <h4 class="font-bold text-base">دفع آمن ومشفّر 100%</h4>
+            <p class="text-xs text-slate-400 mt-0.5">حماية كاملة لبياناتك المالية</p>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-item-icon">🎧</div>
+          <div>
+            <h4 class="font-bold text-base">خدمة عملاء على مدار الساعة</h4>
+            <p class="text-xs text-slate-400 mt-0.5">نحن هنا لمساعدتك في أي وقت</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews Section -->
+  <section id="reviews" class="reviews-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">آراء وتقييمات عملائنا الكرام</h2>
+        <p class="section-subtitle">انضم إلى آلاف العملاء السعداء الذين يثقون في منتجات خطوة يومياً</p>
+
+        <div class="inline-flex items-center justify-center gap-3 bg-slate-800/80 px-6 py-3 rounded-full border border-slate-700 mt-4">
+          <div class="stars text-amber-400 flex gap-1">★★★★★</div>
+          <span class="font-bold text-white text-lg">4.9 / 5.0</span>
+          <span class="text-slate-400 text-sm">بناءً على أكثر من 1,480 تقييم موثق</span>
+        </div>
+      </div>
+
+      <div class="reviews-grid">
+        <div class="glass-card review-card">
+          <div class="flex items-center justify-between">
+            <div class="stars text-amber-400 flex gap-1">★★★★★</div>
+            <span class="verified-tag">✓ مشتري موثق</span>
+          </div>
+          <p class="text-slate-200 text-sm leading-relaxed">
+            "بصراحة منتج رائع جداً ومريح فوق التوقعات! طلبته ووصلني خلال يومين فقط والشحن كان سريع جداً. التوسيد خفيف ويخليك تمشي بدون أي تعب."
+          </p>
+          <div class="review-author">
+            <div class="author-avatar">أ.ع</div>
+            <div>
+              <h4 class="font-bold text-sm">أحمد العتيبي</h4>
+              <span class="text-xs text-slate-400">الرياض، المملكة العربية السعودية</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card review-card">
+          <div class="flex items-center justify-between">
+            <div class="stars text-amber-400 flex gap-1">★★★★★</div>
+            <span class="verified-tag">✓ Verified Buyer</span>
+          </div>
+          <p class="text-slate-200 text-sm leading-relaxed">
+            "The quality is exceptional! Exactly as described in the video. Highly recommend Khatwa store for anyone looking for daily comfort."
+          </p>
+          <div class="review-author">
+            <div class="author-avatar">M.K</div>
+            <div>
+              <h4 class="font-bold text-sm">Michael K.</h4>
+              <span class="text-xs text-slate-400">Dubai, UAE</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card review-card">
+          <div class="flex items-center justify-between">
+            <div class="stars text-amber-400 flex gap-1">★★★★★</div>
+            <span class="verified-tag">✓ مشتري موثق</span>
+          </div>
+          <p class="text-slate-200 text-sm leading-relaxed">
+            "اشتريت زوجين لي ولأخي والمنتج يستاهل كل ريال! الخامة ممتازة وتغليف فاخر، وتعامل خدمة العملاء قمة في الرقي والاحترافية."
+          </p>
+          <div class="review-author">
+            <div class="author-avatar">س.م</div>
+            <div>
+              <h4 class="font-bold text-sm">سارة الشهري</h4>
+              <span class="text-xs text-slate-400">جدة، المملكة العربية السعودية</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="faq-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">الأسئلة الشائعة</h2>
+        <p class="section-subtitle">كل ما تحتاجه من معلومات حول المنتج وطريقة الشحن والتوصيل</p>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item active">
+          <button type="button" class="faq-question js-faq-question">
+            <span>كم يستغرق توصيل الطلب؟ | How long does shipping take?</span>
+            <span class="faq-icon transition-transform">▼</span>
+          </button>
+          <div class="faq-answer">
+            يستغرق التوصيل داخل معظم المدن الرئيسية من 24 إلى 48 ساعة فقط. ويصل لجميع المناطق الأخرى خلال 2 إلى 4 أيام عمل كحد أقصى.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-question js-faq-question">
+            <span>ما هي سياسة الاستبدال والاسترجاع؟ | What is the return policy?</span>
+            <span class="faq-icon transition-transform">▼</span>
+          </button>
+          <div class="faq-answer">
+            نوفر ضمان استرجاع واستبدال كامل خلال 30 يوم من تاريخ استلام الطلب بدون أي أسئلة. تواصل معنا وسيقوم فريقنا بالخدمة الفورية.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-question js-faq-question">
+            <span>هل الدفع عند الاستلام متاح؟ | Is Cash on Delivery available?</span>
+            <span class="faq-icon transition-transform">▼</span>
+          </button>
+          <div class="faq-answer">
+            نعم! نوفر خيار الدفع عند الاستلام (COD) بالإضافة إلى طرق الدفع الإلكتروني المباشر المشفرة والمضمونة.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sticky ATC Bar -->
+  <div id="StickyAtcBar" class="sticky-atc-bar">
+    <div class="container">
+      <div class="sticky-atc-container">
+        <div class="sticky-product-info">
+          <img class="sticky-thumb" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=150&q=80" alt="Khatwa Product" width="48" height="48">
+          <div>
+            <h4 class="font-bold text-sm text-white line-clamp-1">Khatwa Ultra-Comfort Pro</h4>
+            <div class="flex items-center gap-2">
+              <span class="text-emerald-400 font-bold text-base">$129.00</span>
+              <span class="text-slate-400 text-xs line-through">$235.00</span>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary text-sm py-2.5 px-6 js-open-cart">
+          🛒 <span>إضافة إلى السلة</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Drawer -->
+  <div id="CartDrawerOverlay" class="cart-drawer-overlay"></div>
+  <div id="CartDrawer" class="cart-drawer" role="dialog" aria-modal="true">
+    <div class="cart-header">
+      <div class="flex items-center gap-2">
+        <h3 class="font-bold text-lg text-white">سلة التسوق الخاصة بك</h3>
+        <span class="bg-blue-600/30 text-blue-400 text-xs font-bold px-2 py-0.5 rounded-full border border-blue-500/30">1</span>
+      </div>
+      <button type="button" class="js-close-cart text-slate-400 hover:text-white text-xl font-bold p-1">✕</button>
+    </div>
+
+    <div class="bg-slate-800/80 px-6 py-3 border-b border-slate-700">
+      <div class="flex items-center justify-between text-xs font-semibold mb-1.5">
+        <span class="text-emerald-400">🎉 مبروك! لقد حصلت على شحن مجاني!</span>
+        <span class="text-slate-400">100%</span>
+      </div>
+      <div class="w-full bg-slate-700 h-2 rounded-full overflow-hidden">
+        <div class="bg-emerald-500 h-full w-full rounded-full transition-all"></div>
+      </div>
+    </div>
+
+    <div class="cart-body flex flex-col gap-4">
+      <div class="glass-card p-4 flex gap-3 items-center border border-slate-700">
+        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=160&q=80" alt="Product" class="w-16 h-16 rounded-xl object-cover">
+        <div class="flex-1">
+          <h4 class="font-bold text-sm text-white">Khatwa Ultra-Comfort Pro</h4>
+          <span class="text-xs text-slate-400">أسود ملكي / Black - EU 42</span>
+          <div class="flex items-center justify-between mt-2">
+            <div class="flex items-center gap-2 bg-slate-800 px-2 py-1 rounded-lg border border-slate-700 text-xs">
+              <button type="button" class="text-slate-400 hover:text-white font-bold px-1.5">-</button>
+              <span class="font-bold text-white px-1">1</span>
+              <button type="button" class="text-slate-400 hover:text-white font-bold px-1.5">+</button>
+            </div>
+            <span class="font-bold text-emerald-400 text-sm">$129.00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cart-footer">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-slate-400 text-sm font-semibold">المجموع الفرعي</span>
+        <span class="text-white font-bold text-xl">$129.00</span>
+      </div>
+      <p class="text-xs text-slate-400 mb-4 text-center">الضرائب ورسوم الشحن محسوبة عند الدفع</p>
+      <a href="#" class="btn btn-primary w-full text-base py-3.5 flex items-center justify-center gap-2">
+        🔒 <span>متابعة الشراء والتأكيد</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="#" class="brand-logo mb-3 inline-block">
+            <span>خطوة | Khatwa</span>
+          </a>
+          <p class="text-slate-400 text-sm leading-relaxed max-w-sm">
+            علامة تجارية رائدة متخصصة في تقديم أحدث حلول المنتجات المبتكرة بأسلوب عالي الأناقة والجودة.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-white text-base mb-3">روابط سريعة</h4>
+          <ul class="flex flex-col gap-2 text-sm text-slate-400">
+            <li><a href="#features" class="hover:text-blue-400">المميزات الرئيسية</a></li>
+            <li><a href="#reviews" class="hover:text-blue-400">آراء العملاء</a></li>
+            <li><a href="#faq" class="hover:text-blue-400">الأسئلة الشائعة</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-white text-base mb-3">الشروط والسياسات</h4>
+          <ul class="flex flex-col gap-2 text-sm text-slate-400">
+            <li><a href="#" class="hover:text-blue-400">سياسة الخصوصية</a></li>
+            <li><a href="#" class="hover:text-blue-400">شروط الخدمة</a></li>
+            <li><a href="#" class="hover:text-blue-400">سياسة الإرجاع والضمان</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-white text-base mb-3">اشترك للحصول على العروض الحصرية</h4>
+          <div class="flex gap-2 mt-2">
+            <input type="email" placeholder="بريدك الإلكتروني..." class="bg-slate-800 border border-slate-700 rounded-full px-4 py-2 text-sm text-white focus:outline-none focus:border-blue-500 flex-1">
+            <button type="button" class="btn btn-primary text-xs py-2 px-4">اشتراك</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-slate-700/60 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+        <p>© 2026 متجر خطوة | Khatwa Store. جميع الحقوق محفوظة.</p>
+        <div class="flex items-center gap-3">
+          <span class="bg-slate-800 px-2.5 py-1 rounded text-slate-300 font-mono">VISA</span>
+          <span class="bg-slate-800 px-2.5 py-1 rounded text-slate-300 font-mono">MasterCard</span>
+          <span class="bg-slate-800 px-2.5 py-1 rounded text-slate-300 font-mono">Apple Pay</span>
+          <span class="bg-slate-800 px-2.5 py-1 rounded text-slate-300 font-mono">Mada / مدى</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./assets/theme.js"></script>
+</body>
+</html>
