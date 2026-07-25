@@ -1,0 +1,287 @@
+<section id="top" class="py-8 lg:py-16 relative overflow-hidden">
+  <!-- Background Glows -->
+  <div class="absolute top-10 right-1/4 w-96 h-96 bg-blue-500/15 rounded-full blur-3xl pointer-events-none -z-10"></div>
+  <div class="absolute bottom-10 left-10 w-96 h-96 bg-purple-500/15 rounded-full blur-3xl pointer-events-none -z-10"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+      
+      <!-- Gallery Left -->
+      <div class="flex flex-col-reverse sm:flex-row gap-4">
+        <!-- Thumbnails -->
+        <div class="flex sm:flex-col gap-2.5 overflow-x-auto pb-2 sm:pb-0 scrollbar-none" id="hero-thumbnails">
+          {% if section.blocks.size > 0 %}
+            {% for block in section.blocks %}
+              <button
+                type="button"
+                class="hero-thumb relative w-16 h-16 sm:w-20 sm:h-20 aspect-square rounded-xl overflow-hidden border bg-white shrink-0 cursor-pointer transition-all duration-300 {% if forloop.first %}border-blue-600 ring-4 ring-blue-500/30 opacity-100 scale-105 shadow-md{% else %}border-slate-200 opacity-70 hover:opacity-100{% endif %}"
+                data-index="{{ forloop.index0 }}"
+                data-img-url="{% if block.settings.image != blank %}{{ block.settings.image | image_url: width: 800 }}{% else %}https://media.base44.com/images/public/user_69da7b6f0cdb618ca188b19b/b1ea75f66_O1CN01Q1qKXy1hiUaOYcOKo_2222575514311-0-cib.jpg{% endif %}"
+              >
+                <img
+                  src="{% if block.settings.image != blank %}{{ block.settings.image | image_url: width: 200 }}{% else %}https://media.base44.com/images/public/user_69da7b6f0cdb618ca188b19b/b1ea75f66_O1CN01Q1qKXy1hiUaOYcOKo_2222575514311-0-cib.jpg{% endif %}"
+                  alt="مصغرة {{ forloop.index }}"
+                  class="w-full h-full object-contain object-center p-2"
+                >
+              </button>
+            {% endfor %}
+          {% else %}
+            {% for i in (1..6) %}
+              <button
+                type="button"
+                class="hero-thumb relative w-16 h-16 sm:w-20 sm:h-20 aspect-square rounded-xl overflow-hidden border bg-white shrink-0 cursor-pointer transition-all duration-300 {% if forloop.first %}border-blue-600 ring-4 ring-blue-500/30 opacity-100 scale-105 shadow-md{% else %}border-slate-200 opacity-70 hover:opacity-100{% endif %}"
+                data-index="{{ forloop.index0 }}"
+                data-img-url="https://media.base44.com/images/public/user_69da7b6f0cdb618ca188b19b/b1ea75f66_O1CN01Q1qKXy1hiUaOYcOKo_2222575514311-0-cib.jpg"
+              >
+                <img
+                  src="https://media.base44.com/images/public/user_69da7b6f0cdb618ca188b19b/b1ea75f66_O1CN01Q1qKXy1hiUaOYcOKo_2222575514311-0-cib.jpg"
+                  alt="مصغرة {{ i }}"
+                  class="w-full h-full object-contain object-center p-2"
+                >
+              </button>
+            {% endfor %}
+          {% endif %}
+        </div>
+
+        <!-- Main Stage Image Container -->
+        <div class="relative flex-1 p-[1px] bg-gradient-to-tr from-blue-500 via-indigo-500 via-purple-500 to-rose-500 rounded-[2rem] shadow-2xl shadow-indigo-500/20 transition-all duration-300 group">
+          <div class="relative aspect-square rounded-[1.85rem] bg-white overflow-hidden flex items-center justify-center w-full p-4 lg:p-6">
+            
+            <img
+              id="hero-main-img"
+              src="{% if section.settings.hero_image != blank %}{{ section.settings.hero_image | image_url: width: 800 }}{% else %}https://media.base44.com/images/public/user_69da7b6f0cdb618ca188b19b/b1ea75f66_O1CN01Q1qKXy1hiUaOYcOKo_2222575514311-0-cib.jpg{% endif %}"
+              alt="حذاء كروس كلاسيك ستار"
+              class="w-full h-full object-contain object-center z-10 select-none drop-shadow-xl"
+            >
+
+            <!-- Top Right: Discount Badge -->
+            <div class="absolute top-4 right-4 z-20 flex flex-col items-start gap-1">
+              <span class="bg-gradient-to-r from-red-600 to-rose-500 text-white text-xs font-black px-3.5 py-1.5 rounded-full shadow-lg tracking-wider uppercase flex items-center gap-1.5">
+                {{ section.settings.discount_badge | default: 'خصم 37%-' }}
+              </span>
+              <span class="bg-emerald-600/90 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full shadow-sm">
+                {{ section.settings.savings_tag | default: 'وفر 110 ر.س' }}
+              </span>
+            </div>
+
+            <!-- Top Left: Feature Tag -->
+            <div class="absolute top-4 left-4 z-20 hidden sm:flex items-center gap-1.5 bg-white/80 backdrop-blur-md text-slate-800 border border-white/40 text-xs font-black px-3 py-1.5 rounded-full shadow-md">
+              <span>{{ section.settings.tagline_1 | default: 'فوم EVA خفيف جداً' }}</span>
+            </div>
+
+            <!-- Bottom Right: Waterproof Tag -->
+            <div class="absolute bottom-4 right-4 z-20 hidden sm:flex items-center gap-1.5 bg-blue-600/90 backdrop-blur-md text-white text-xs font-extrabold px-3 py-1.5 rounded-full shadow-md">
+              <span>{{ section.settings.tagline_2 | default: 'مقاوم للماء 100%' }}</span>
+            </div>
+
+            <!-- Next / Prev Nav Arrows -->
+            <button
+              type="button"
+              id="hero-prev"
+              class="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/90 text-slate-800 shadow-lg border border-slate-200 flex items-center justify-center opacity-80 hover:opacity-100 hover:scale-110 active:scale-95 transition-all cursor-pointer"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+            <button
+              type="button"
+              id="hero-next"
+              class="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/90 text-slate-800 shadow-lg border border-slate-200 flex items-center justify-center opacity-80 hover:opacity-100 hover:scale-110 active:scale-95 transition-all cursor-pointer"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Details & Selection Right -->
+      <div class="flex flex-col gap-6 text-right">
+        <div>
+          <!-- Rating -->
+          <div className="flex items-center gap-2 mb-2">
+            <span class="text-sm font-extrabold text-amber-600 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200">
+              {{ section.settings.reviews_rating_text | default: '4.8 ★ 4,892 تقييم موثق' }}
+            </span>
+          </div>
+
+          <!-- Title -->
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 leading-tight">
+            {{ section.settings.heading_main | default: 'حذاء كروس كلاسيك' }}
+            <span class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
+              {{ section.settings.heading_highlight | default: 'ستار' }}
+            </span>
+          </h1>
+        </div>
+
+        <!-- Price & Flash Sale Card -->
+        <div class="relative overflow-hidden bg-gradient-to-br from-rose-500/10 via-amber-500/10 to-purple-500/10 p-5 rounded-3xl border-2 border-rose-500/40 shadow-xl shadow-rose-500/10 space-y-3.5">
+          
+          <div class="flex items-center justify-between flex-wrap gap-2 pb-3 border-b border-rose-200/60">
+            <div class="flex items-center gap-2">
+              <span class="text-xs sm:text-sm font-black uppercase tracking-wider bg-gradient-to-r from-rose-600 via-amber-600 to-purple-600 bg-clip-text text-transparent">
+                {{ section.settings.flash_sale_title | default: 'عروض التخفيضات الكبرى — لفترة محدودة' }}
+              </span>
+            </div>
+            <div class="flex items-center gap-1.5 bg-white/90 px-3 py-1 rounded-full border border-rose-200 shadow-xs text-xs font-mono font-black text-rose-600" id="hero-countdown">
+              <span>03س : 42د : 18ث</span>
+            </div>
+          </div>
+
+          <!-- Price Numbers & Savings -->
+          <div class="flex items-baseline justify-between flex-wrap gap-3">
+            <div class="flex items-baseline gap-3">
+              <span class="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight">
+                {{ section.settings.price | default: '189' }} <span class="text-2xl font-black text-rose-600">ر.س</span>
+              </span>
+              <span class="text-xl text-slate-400 line-through font-bold">
+                {{ section.settings.compare_at_price | default: '299' }} ر.س
+              </span>
+            </div>
+
+            <span class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white text-xs font-black px-3.5 py-1.5 rounded-full shadow-md">
+              وفر {{ section.settings.savings_amount | default: '110' }} ر.س (خصم 37%)
+            </span>
+          </div>
+
+          <!-- Progress bar -->
+          <div class="space-y-1.5 pt-1">
+            <div class="flex items-center justify-between text-xs font-extrabold text-slate-700">
+              <span class="text-amber-600 font-black">تم بيع 67%</span>
+            </div>
+            <div class="w-full h-3 rounded-full bg-slate-200 overflow-hidden p-0.5 shadow-inner">
+              <div class="h-full rounded-full bg-gradient-to-r from-amber-500 via-rose-500 to-purple-600 w-[67%]"></div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- CTA -->
+        <div class="pt-2">
+          <a
+            href="#order"
+            class="w-full bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-400 hover:from-emerald-300 hover:to-teal-300 text-slate-950 font-black py-4 px-8 rounded-full text-lg tracking-wide shadow-xl shadow-emerald-500/25 transition-all cursor-pointer flex items-center justify-center gap-2 border border-emerald-300/50"
+          >
+            <span>{{ section.settings.buy_button_text | default: 'اشترِ الآن — توصيل سريع' }}</span>
+          </a>
+        </div>
+
+        <!-- Trust highlights -->
+        <div class="grid grid-cols-3 gap-2 pt-3 border-t border-slate-200 text-center">
+          <div class="flex flex-col items-center gap-1.5 p-2 rounded-xl bg-blue-50/50 border border-blue-100">
+            <span class="text-xs font-bold text-slate-700">ضمان لمدة سنتين</span>
+          </div>
+          <div class="flex flex-col items-center gap-1.5 p-2 rounded-xl bg-purple-50/50 border border-purple-100">
+            <span class="text-xs font-bold text-slate-700">توصيل سريع</span>
+          </div>
+          <div class="flex flex-col items-center gap-1.5 p-2 rounded-xl bg-emerald-50/50 border border-emerald-100">
+            <span class="text-xs font-bold text-slate-700">استرجاع سهل</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "قسم الهيرو والمنتج",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading_main",
+      "label": "العنوان الرئيسي",
+      "default": "حذاء كروس كلاسيك"
+    },
+    {
+      "type": "text",
+      "id": "heading_highlight",
+      "label": "الكلمة الملونة بالعنوان",
+      "default": "ستار"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "الصورة الرئيسية للمنتج"
+    },
+    {
+      "type": "text",
+      "id": "discount_badge",
+      "label": "شارة الخصم",
+      "default": "خصم 37%-"
+    },
+    {
+      "type": "text",
+      "id": "savings_tag",
+      "label": "شارة التوفير",
+      "default": "وفر 110 ر.س"
+    },
+    {
+      "type": "text",
+      "id": "tagline_1",
+      "label": "وسام خاص 1",
+      "default": "فوم EVA خفيف جداً"
+    },
+    {
+      "type": "text",
+      "id": "tagline_2",
+      "label": "وسام خاص 2",
+      "default": "مقاوم للماء 100%"
+    },
+    {
+      "type": "text",
+      "id": "reviews_rating_text",
+      "label": "نص تقييمات العملاء",
+      "default": "4.8 ★ 4,892 تقييم موثق"
+    },
+    {
+      "type": "text",
+      "id": "flash_sale_title",
+      "label": "عنوان شريط التخفيض السريع",
+      "default": "عروض التخفيضات الكبرى — لفترة محدودة"
+    },
+    {
+      "type": "text",
+      "id": "price",
+      "label": "السعر الحالي (ر.س)",
+      "default": "189"
+    },
+    {
+      "type": "text",
+      "id": "compare_at_price",
+      "label": "السعر السابق (ر.س)",
+      "default": "299"
+    },
+    {
+      "type": "text",
+      "id": "savings_amount",
+      "label": "مبلغ التوفير (ر.س)",
+      "default": "110"
+    },
+    {
+      "type": "text",
+      "id": "buy_button_text",
+      "label": "نص زر الشراء الرئيسي",
+      "default": "اشترِ الآن — توصيل سريع"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "gallery_image",
+      "name": "صورة للمعرض",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "الصورة"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "قسم الهيرو والمنتج"
+    }
+  ]
+}
+{% endschema %}

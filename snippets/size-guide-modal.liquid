@@ -1,0 +1,53 @@
+<div
+  id="size-guide-modal"
+  class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs transition-opacity duration-200 hidden opacity-0"
+  aria-modal="true"
+  role="dialog"
+>
+  <div
+    class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full border border-slate-200 shadow-2xl relative text-right transform transition-transform duration-200 scale-95"
+    onclick="event.stopPropagation()"
+  >
+    <div class="flex items-center justify-between mb-4 border-b border-slate-100 pb-3">
+      <h3 class="text-xl font-extrabold text-slate-900">
+        {{ section.settings.size_modal_title | default: 'دليل المقاسات والقياسات' }}
+      </h3>
+      <button
+        type="button"
+        id="close-size-guide"
+        class="p-1 rounded-full text-slate-400 hover:text-slate-600 cursor-pointer"
+        aria-label="إغلاق"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="overflow-x-auto">
+      <table class="w-full text-right text-sm">
+        <thead>
+          <tr class="border-b border-slate-200 text-xs font-bold uppercase tracking-wider text-slate-400">
+            <th class="py-2.5 px-3">المقاس الأوروبي (EU)</th>
+            <th class="py-2.5 px-3">طول القدم (سم)</th>
+            <th class="py-2.5 px-3">المقاس الأمريكي (US)</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-slate-100 font-medium text-slate-700">
+          <tr class="hover:bg-slate-50"><td class="py-2.5 px-3 font-bold">EU 36</td><td class="py-2.5 px-3">23 سم</td><td class="py-2.5 px-3">W5 / M3</td></tr>
+          <tr class="hover:bg-slate-50"><td class="py-2.5 px-3 font-bold">EU 37</td><td class="py-2.5 px-3">23.5 سم</td><td class="py-2.5 px-3">W6 / M4</td></tr>
+          <tr class="hover:bg-slate-50"><td class="py-2.5 px-3 font-bold">EU 38</td><td class="py-2.5 px-3">24 سم</td><td class="py-2.5 px-3">W7 / M5</td></tr>
+          <tr class="hover:bg-slate-50"><td class="py-2.5 px-3 font-bold">EU 39/40</td><td class="py-2.5 px-3">25 سم</td><td class="py-2.5 px-3">W8-9 / M6-7</td></tr>
+          <tr class="hover:bg-slate-50"><td class="py-2.5 px-3 font-bold">EU 41</td><td class="py-2.5 px-3">26 سم</td><td class="py-2.5 px-3">W10 / M8</td></tr>
+          <tr class="hover:bg-slate-50"><td class="py-2.5 px-3 font-bold">EU 42/43</td><td class="py-2.5 px-3">27 سم</td><td class="py-2.5 px-3">M9-10</td></tr>
+          <tr class="hover:bg-slate-50"><td class="py-2.5 px-3 font-bold">EU 44</td><td class="py-2.5 px-3">28 سم</td><td class="py-2.5 px-3">M11</td></tr>
+          <tr class="hover:bg-slate-50"><td class="py-2.5 px-3 font-bold">EU 45</td><td class="py-2.5 px-3">29 سم</td><td class="py-2.5 px-3">M12</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="mt-4 text-xs text-slate-500 leading-relaxed bg-slate-50 p-3 rounded-xl border border-slate-200">
+      <strong>تلميح:</strong> إذا كنت بين مقاسين أو تفضل مقاساً واسعاً ومريحاً، ننصح باختيار مقاس أكبر بنمرة واحدة.
+    </p>
+  </div>
+</div>

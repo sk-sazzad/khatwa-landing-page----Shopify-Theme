@@ -1,0 +1,132 @@
+<section id="faq" class="py-16 lg:py-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Trust Cards -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-16 lg:mb-20">
+      <div class="bg-gradient-to-b from-blue-50/80 to-indigo-50/40 p-6 rounded-2xl flex flex-col items-center text-center gap-3 border border-blue-200 shadow-xs hover:-translate-y-1 transition-all">
+        <div class="p-3.5 rounded-2xl bg-blue-600 text-white shadow-md">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+        </div>
+        <h3 class="font-extrabold text-slate-900 text-base">{{ section.settings.trust_1_title | default: 'دفع آمن ومضمون' }}</h3>
+        <p class="text-xs text-slate-600 leading-relaxed font-medium">{{ section.settings.trust_1_desc | default: 'بياناتك مشفرة ومحمية بالكامل' }}</p>
+      </div>
+
+      <div class="bg-gradient-to-b from-sky-50/80 to-teal-50/40 p-6 rounded-2xl flex flex-col items-center text-center gap-3 border border-sky-200 shadow-xs hover:-translate-y-1 transition-all">
+        <div class="p-3.5 rounded-2xl bg-sky-600 text-white shadow-md">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1"/></svg>
+        </div>
+        <h3 class="font-extrabold text-slate-900 text-base">{{ section.settings.trust_2_title | default: 'شحن سريع للغاية' }}</h3>
+        <p class="text-xs text-slate-600 leading-relaxed font-medium">{{ section.settings.trust_2_desc | default: 'توصيل سريع لجميع مناطق المملكة' }}</p>
+      </div>
+
+      <div class="bg-gradient-to-b from-amber-50/80 to-orange-50/40 p-6 rounded-2xl flex flex-col items-center text-center gap-3 border border-amber-200 shadow-xs hover:-translate-y-1 transition-all">
+        <div class="p-3.5 rounded-2xl bg-amber-500 text-white shadow-md">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+        </div>
+        <h3 class="font-extrabold text-slate-900 text-base">{{ section.settings.trust_3_title | default: 'جودة عالية ومضمونة' }}</h3>
+        <p class="text-xs text-slate-600 leading-relaxed font-medium">{{ section.settings.trust_3_desc | default: 'مصنوع من أجود أنواع فوم إيفا' }}</p>
+      </div>
+
+      <div class="bg-gradient-to-b from-emerald-50/80 to-teal-50/40 p-6 rounded-2xl flex flex-col items-center text-center gap-3 border border-emerald-200 shadow-xs hover:-translate-y-1 transition-all">
+        <div class="p-3.5 rounded-2xl bg-emerald-600 text-white shadow-md">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+        </div>
+        <h3 class="font-extrabold text-slate-900 text-base">{{ section.settings.trust_4_title | default: 'استبدال واسترجاع مرن' }}</h3>
+        <p class="text-xs text-slate-600 leading-relaxed font-medium">{{ section.settings.trust_4_desc | default: 'سياسة استبدال خلال 14 يوماً' }}</p>
+      </div>
+    </div>
+
+    <!-- FAQ Accordion -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-start">
+      <div class="lg:col-span-1 text-right">
+        <span class="inline-block text-xs font-black uppercase tracking-widest bg-gradient-to-r from-sky-600 to-indigo-600 text-white px-4 py-1.5 rounded-full shadow-sm mb-3">
+          {{ section.settings.faq_badge | default: 'الأسئلة الشائعة' }}
+        </span>
+        <h2 class="text-3xl font-black text-slate-900 tracking-tight">
+          {{ section.settings.faq_title | default: 'كل ما تحتاج معرفته عن منتجاتنا' }}
+        </h2>
+        <p class="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
+          {{ section.settings.faq_desc | default: 'هل لديك استفسار عن المقاسات أو التوصيل أو الاسترجاع؟ نحن هنا لخدمتك دائماً عبر الواتساب.' }}
+        </p>
+      </div>
+
+      <div class="lg:col-span-2 bg-white rounded-3xl border border-sky-200 overflow-hidden shadow-md divide-y divide-sky-100">
+        {% if section.blocks.size > 0 %}
+          {% for block in section.blocks %}
+            <div class="faq-item transition-colors" {{ block.shopify_attributes }}>
+              <button
+                type="button"
+                class="faq-toggle w-full flex items-center justify-between p-5 text-right font-bold text-slate-900 text-base cursor-pointer hover:bg-slate-50 transition-colors"
+              >
+                <span>{{ block.settings.question }}</span>
+                <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </button>
+              <div class="faq-content hidden px-5 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-3 text-right">
+                {{ block.settings.answer }}
+              </div>
+            </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "الضمان والأسئلة الشائعة",
+  "settings": [
+    { "type": "text", "id": "trust_1_title", "label": "عنوان كرت 1", "default": "دفع آمن ومضمون" },
+    { "type": "text", "id": "trust_1_desc", "label": "وصف كرت 1", "default": "بياناتك مشفرة ومحمية بالكامل" },
+    { "type": "text", "id": "trust_2_title", "label": "عنوان كرت 2", "default": "شحن سريع للغاية" },
+    { "type": "text", "id": "trust_2_desc", "label": "وصف كرت 2", "default": "توصيل سريع لجميع مناطق المملكة" },
+    { "type": "text", "id": "trust_3_title", "label": "عنوان كرت 3", "default": "جودة عالية ومضمونة" },
+    { "type": "text", "id": "trust_3_desc", "label": "وصف كرت 3", "default": "مصنوع من أجود أنواع فوم إيفا" },
+    { "type": "text", "id": "trust_4_title", "label": "عنوان كرت 4", "default": "استبدال واسترجاع مرن" },
+    { "type": "text", "id": "trust_4_desc", "label": "وصف كرت 4", "default": "سياسة استبدال خلال 14 يوماً" },
+    { "type": "text", "id": "faq_badge", "label": "شارة الأسئلة الشائعة", "default": "الأسئلة الشائعة" },
+    { "type": "text", "id": "faq_title", "label": "عنوان قسم الأسئلة", "default": "كل ما تحتاج معرفته عن منتجاتنا" },
+    { "type": "textarea", "id": "faq_desc", "label": "وصف قسم الأسئلة", "default": "هل لديك استفسار عن المقاسات أو التوصيل أو الاسترجاع؟ نحن هنا لخدمتك دائماً." }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "سؤال وجواب",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "السؤال",
+          "default": "كم يستغرق التوصيل؟"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "الجواب",
+          "default": "<p>نوفر خدمة التوصيل السريع لجميع مناطق المملكة العربية السعودية خلال 2 إلى 4 أيام عمل.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "الضمان والأسئلة الشائعة",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "كم يستغرق التوصيل؟",
+            "answer": "<p>نوفر خدمة التوصيل السريع لجميع مناطق المملكة العربية السعودية. يتم تجهيز الطلبات خلال 24 ساعة وتصلك مباشرة حتى باب منزلك خلال 2 إلى 4 أيام عمل.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "ما هي سياسة الاسترجاع والاستبدال؟",
+            "answer": "<p>نقدم سياسة استرجاع واستبدال مرنة خلال 14 يوماً. إذا لم يكن المقاس مناسباً أو أردت التغيير، تواصل معنا وستتم خدمتك فوراً.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

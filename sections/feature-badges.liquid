@@ -1,0 +1,75 @@
+<section id="feat" class="py-12 border-y border-slate-200 bg-gradient-to-r from-slate-50 via-blue-50/20 to-indigo-50/20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
+      {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}
+          <div
+            class="flex flex-col items-center justify-center text-center p-5 rounded-2xl bg-white border shadow-xs transition-all duration-300 hover:-translate-y-1.5 hover:shadow-md cursor-default"
+            {{ block.shopify_attributes }}
+          >
+            {% if block.settings.image != blank %}
+              <img src="{{ block.settings.image | image_url: width: 100 }}" alt="{{ block.settings.title }}" class="w-10 h-10 mb-3 object-contain">
+            {% else %}
+              <div class="p-3.5 rounded-2xl bg-blue-100 mb-3 shadow-xs text-blue-600">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              </div>
+            {% endif %}
+            <span class="text-xs sm:text-sm font-black text-slate-900">
+              {{ block.settings.title }}
+            </span>
+          </div>
+        {% endfor %}
+      {% else %}
+        {% assign default_badges = "مقاوم للماء,خفيف الوزن,تهوية فائقة,سريع الجفاف,مانع للانزلاق,سهل التنظيف" | split: "," %}
+        {% for badge in default_badges %}
+          <div class="flex flex-col items-center justify-center text-center p-5 rounded-2xl bg-white border border-slate-200 shadow-xs transition-all duration-300 hover:-translate-y-1.5 hover:shadow-md cursor-default">
+            <div class="p-3.5 rounded-2xl bg-blue-100 mb-3 shadow-xs text-blue-600">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <span class="text-xs sm:text-sm font-black text-slate-900">{{ badge }}</span>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "أوسمة مميزات المنتج",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "وسام ميزة",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "عنوان الميزة",
+          "default": "مقاوم للماء"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "أيقونة/صورة الميزة"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "أوسمة مميزات المنتج",
+      "blocks": [
+        { "type": "badge", "settings": { "title": "مقاوم للماء" } },
+        { "type": "badge", "settings": { "title": "خفيف الوزن" } },
+        { "type": "badge", "settings": { "title": "تهوية فائقة" } },
+        { "type": "badge", "settings": { "title": "سريع الجفاف" } },
+        { "type": "badge", "settings": { "title": "مانع للانزلاق" } },
+        { "type": "badge", "settings": { "title": "سهل التنظيف" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

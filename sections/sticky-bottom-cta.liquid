@@ -1,0 +1,69 @@
+<div
+  id="sticky-bottom-bar"
+  class="fixed bottom-0 inset-x-0 z-50 p-3 sm:hidden transition-all duration-300 translate-y-0 opacity-100"
+>
+  <div class="bg-white/95 backdrop-blur-xl rounded-full p-2 pr-6 pl-2 flex items-center justify-between border border-slate-200 shadow-2xl shadow-slate-900/15 max-w-md mx-auto gap-2">
+    
+    <!-- Price side on right -->
+    <div class="flex flex-col justify-center text-right">
+      <div class="flex items-baseline gap-1.5">
+        <span class="text-2xl font-black text-[#2bbd92] tracking-tight">
+          {{ section.settings.price | default: '189' }} <span class="text-sm font-extrabold text-slate-700">ر.س</span>
+        </span>
+        <span class="text-xs font-semibold text-slate-400 line-through">
+          {{ section.settings.compare_price | default: '299' }}
+        </span>
+      </div>
+      <span class="text-[10px] font-extrabold text-rose-500 uppercase tracking-wider -mt-1">
+        {{ section.settings.discount_tag | default: '🔥 خصم 37%-' }}
+      </span>
+    </div>
+
+    <!-- Action button on left -->
+    <a
+      href="#order"
+      class="bg-gradient-to-r from-[#4ad0a8] to-[#2bbd92] hover:from-[#3ec29a] hover:to-[#22a880] text-white font-extrabold px-6 py-3 rounded-full text-base shadow-lg shadow-[#2bbd92]/30 cursor-pointer transition-all active:scale-95 flex items-center gap-2"
+    >
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+      <span>{{ section.settings.button_label | default: 'اطلب الآن' }}</span>
+    </a>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "شريط الشراء السريع المائل",
+  "settings": [
+    {
+      "type": "text",
+      "id": "price",
+      "label": "السعر الحالي",
+      "default": "189"
+    },
+    {
+      "type": "text",
+      "id": "compare_price",
+      "label": "السعر السابق",
+      "default": "299"
+    },
+    {
+      "type": "text",
+      "id": "discount_tag",
+      "label": "تاغ الخصم",
+      "default": "🔥 خصم 37%-"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "عنوان زر الشراء",
+      "default": "اطلب الآن"
+    }
+  ],
+  "presets": [
+    {
+      "name": "شريط الشراء السريع المائل"
+    }
+  ]
+}
+{% endschema %}

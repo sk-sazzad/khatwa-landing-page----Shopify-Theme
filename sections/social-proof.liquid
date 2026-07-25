@@ -1,0 +1,93 @@
+<section class="bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white py-16 relative overflow-hidden border-y border-indigo-900/50">
+  <div class="absolute top-0 right-1/3 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute bottom-0 left-1/4 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <p class="text-center text-xs font-black uppercase tracking-widest text-indigo-400 mb-10 bg-indigo-900/40 border border-indigo-700/50 w-max mx-auto px-4 py-1 rounded-full">
+      {{ section.settings.section_tag | default: 'محل ثقة آلاف العملاء' }}
+    </p>
+    
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+      {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}
+          <div class="p-4 rounded-2xl bg-white/5 backdrop-blur-xs border border-white/10 hover:border-white/20 transition-all" {{ block.shopify_attributes }}>
+            <div class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent font-mono">
+              {{ block.settings.number }}{{ block.settings.suffix }}
+            </div>
+            <div class="text-xs sm:text-sm font-bold text-indigo-200 mt-2">
+              {{ block.settings.label }}
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
+          <div class="text-3xl sm:text-4xl lg:text-5xl font-black bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent font-mono">+48,920</div>
+          <div class="text-xs sm:text-sm font-bold text-indigo-200 mt-2">عميل سعيد</div>
+        </div>
+        <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
+          <div class="text-3xl sm:text-4xl lg:text-5xl font-black bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent font-mono">+127,500</div>
+          <div class="text-xs sm:text-sm font-bold text-indigo-200 mt-2">طلب تم توصيله</div>
+        </div>
+        <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
+          <div class="text-3xl sm:text-4xl lg:text-5xl font-black bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent font-mono">4,892</div>
+          <div class="text-xs sm:text-sm font-bold text-indigo-200 mt-2">تقييم إيجابي</div>
+        </div>
+        <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
+          <div class="text-3xl sm:text-4xl lg:text-5xl font-black bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent font-mono">15</div>
+          <div class="text-xs sm:text-sm font-bold text-indigo-200 mt-2">مدينة ودولة</div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "إحصائيات وثقة العملاء",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_tag",
+      "label": "العنوان العلوي للقسم",
+      "default": "محل ثقة آلاف العملاء"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "رقم إحصائي",
+      "settings": [
+        {
+          "type": "text",
+          "id": "number",
+          "label": "الرقم",
+          "default": "48,920"
+        },
+        {
+          "type": "text",
+          "id": "suffix",
+          "label": "اللاحقة (مثل +)",
+          "default": "+"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "الوصف",
+          "default": "عميل سعيد"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "إحصائيات وثقة العملاء",
+      "blocks": [
+        { "type": "stat", "settings": { "number": "48,920", "suffix": "+", "label": "عميل سعيد" } },
+        { "type": "stat", "settings": { "number": "127,500", "suffix": "+", "label": "طلب تم توصيله" } },
+        { "type": "stat", "settings": { "number": "4,892", "suffix": "", "label": "تقييم إيجابي" } },
+        { "type": "stat", "settings": { "number": "15", "suffix": "", "label": "مدينة ودولة" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

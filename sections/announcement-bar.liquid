@@ -1,0 +1,97 @@
+<div class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white h-10 flex items-center justify-center overflow-hidden relative shadow-sm text-xs sm:text-sm font-semibold tracking-wide">
+  {% if section.blocks.size > 0 %}
+    {% for block in section.blocks %}
+      <div
+        class="announcement-msg absolute flex items-center gap-2 transition-all duration-500 ease-in-out {% if forloop.first %}opacity-100 translate-y-0 scale-100 pointer-events-auto{% else %}opacity-0 -translate-y-3 scale-95 pointer-events-none{% endif %}"
+        data-index="{{ forloop.index0 }}"
+        {{ block.shopify_attributes }}
+      >
+        {% if block.settings.icon == 'truck' %}
+          <svg class="w-4 h-4 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1"/></svg>
+        {% elsif block.settings.icon == 'flame' %}
+          <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/></svg>
+        {% else %}
+          <svg class="w-4 h-4 text-yellow-400 fill-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        {% endif %}
+        <span>{{ block.settings.text }}</span>
+      </div>
+    {% endfor %}
+  {% else %}
+    <div class="announcement-msg flex items-center gap-2">
+      <span>توصيل سريع لجميع مدن المملكة — شحن إكسبريس</span>
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "شريط الإعلانات",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "لون الخلفية",
+      "default": "#2563eb"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "لون النص",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "رسالة إعلانية",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "نص الرسالة",
+          "default": "توصيل سريع لجميع مدن المملكة — شحن إكسبريس"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "الأيقونة",
+          "options": [
+            { "value": "truck", "label": "شاحنة توصيل" },
+            { "value": "flame", "label": "شعلة عرض" },
+            { "value": "star", "label": "نجمة تقييم" }
+          ],
+          "default": "truck"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "شريط الإعلانات",
+      "blocks": [
+        {
+          "type": "announcement",
+          "settings": {
+            "text": "توصيل سريع لجميع مدن المملكة — شحن إكسبريس",
+            "icon": "truck"
+          }
+        },
+        {
+          "type": "announcement",
+          "settings": {
+            "text": "عرض لفترة محدودة — وفر 37% اليوم فقط",
+            "icon": "flame"
+          }
+        },
+        {
+          "type": "announcement",
+          "settings": {
+            "text": "راحة إيفا الفائقة · 4,892 تقييم موثق",
+            "icon": "star"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
