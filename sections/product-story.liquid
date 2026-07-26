@@ -18,10 +18,15 @@
 
     <div class="flex flex-col gap-12 lg:gap-20">
       {% for block in section.blocks %}
+        {% assign story_img = block.settings.image_url %}
+        {% if block.settings.image != blank %}
+          {% assign story_img = block.settings.image | image_url: width: 1000 %}
+        {% endif %}
+
         {% if block.settings.is_bleed %}
           <!-- Full Bleed Banner Card -->
           <div class="relative rounded-3xl overflow-hidden shadow-xl flex items-end group" style="min-height:360px" {{ block.shopify_attributes }}>
-            <img src="{{ block.settings.image_url }}" alt="{{ block.settings.title }}" class="story-bleed-image absolute inset-0 w-full h-full object-cover" />
+            <img src="{{ story_img }}" alt="{{ block.settings.title }}" class="story-bleed-image absolute inset-0 w-full h-full object-cover" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent"></div>
             <div class="relative p-6 sm:p-10 lg:p-12 text-white max-w-2xl">
               <span class="text-xs font-bold tracking-widest uppercase text-blue-400">{{ block.settings.number }}</span>
@@ -44,7 +49,7 @@
           {% assign is_even = forloop.index | modulo: 2 %}
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-white/90 via-blue-50/40 to-indigo-50/30 dark:from-slate-800/90 dark:via-slate-800/60 dark:to-indigo-950/30 border border-blue-100/80 dark:border-slate-700/80 shadow-md" {{ block.shopify_attributes }}>
             <div class="aspect-4-3 rounded-3xl overflow-hidden bg-slate-100 dark:bg-slate-800 shadow-md {% if is_even == 0 %}lg:order-2{% endif %}">
-              <img src="{{ block.settings.image_url }}" alt="{{ block.settings.title }}" class="story-image w-full h-full object-cover" />
+              <img src="{{ story_img }}" alt="{{ block.settings.title }}" class="story-image w-full h-full object-cover" />
             </div>
             <div class="flex flex-col gap-4 {% if is_even == 0 %}lg:order-1{% endif %}">
               <div>
@@ -91,7 +96,8 @@
         { "type": "text", "id": "number", "label": "Number Badge", "default": "01" },
         { "type": "text", "id": "title", "label": "Title", "default": "راحة قصوى" },
         { "type": "textarea", "id": "description", "label": "Description", "default": "مصمّم للارتداء طوال اليوم، يحتضن كروس كلاسيك ستار كلوجز قدمك برغوة EVA الناعمة والمرنة التي تتكيف مع كل خطوة." },
-        { "type": "text", "id": "image_url", "label": "Image URL", "default": "https://media.base44.com/images/public/6a646958821430317adbf321/749895e7f_generated_7b449968.png" },
+        { "type": "image_picker", "id": "image", "label": "Upload Image" },
+        { "type": "text", "id": "image_url", "label": "Or Image URL", "default": "https://media.base44.com/images/public/6a646958821430317adbf321/749895e7f_generated_7b449968.png" },
         { "type": "text", "id": "benefits", "label": "Benefits (comma separated)", "default": "نعل بيئي مريح,رغوة EVA ناعمة,تصميم يوزع الضغط" },
         { "type": "checkbox", "id": "is_bleed", "label": "Full Bleed Banner Layout", "default": false }
       ]

@@ -135,7 +135,11 @@
 
             <div class="flex items-center gap-4">
               <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-slate-100 to-blue-50 dark:from-slate-900 dark:to-slate-800 p-1 shrink-0 overflow-hidden border border-blue-200/60 dark:border-slate-700 shadow-xs">
-                <img id="order-preview-img" src="https://media.base44.com/images/public/user_69da7b6f0cdb618ca188b19b/b1ea75f66_O1CN01Q1qKXy1hiUaOYcOKo_2222575514311-0-cib.jpg" alt="معاينة المنتج" class="w-full h-full object-contain" />
+                {% assign order_img = "https://media.base44.com/images/public/user_69da7b6f0cdb618ca188b19b/b1ea75f66_O1CN01Q1qKXy1hiUaOYcOKo_2222575514311-0-cib.jpg" %}
+                {% if section.settings.product_image != blank %}
+                  {% assign order_img = section.settings.product_image | image_url: width: 300 %}
+                {% endif %}
+                <img id="order-preview-img" src="{{ order_img }}" alt="معاينة المنتج" class="w-full h-full object-contain" />
               </div>
               <div>
                 <h4 class="font-extrabold text-slate-900 dark:text-white text-sm sm:text-base">{{ section.settings.product_title }}</h4>
@@ -196,6 +200,7 @@
     { "type": "text", "id": "title_highlight", "label": "Title Highlight", "default": "طلبك" },
     { "type": "text", "id": "subtitle", "label": "Subtitle Description", "default": "دفع سريع — استلم حذاءك خلال 2-4 أيام عمل" },
     { "type": "text", "id": "product_title", "label": "Summary Product Title", "default": "كروس كلاسيك ستار كلوجز" },
+    { "type": "image_picker", "id": "product_image", "label": "Upload Summary Product Image" },
     { "type": "text", "id": "unit_price", "label": "Unit Price SAR", "default": "189" }
   ],
   "presets": [

@@ -64,9 +64,13 @@
         <div class="review-card bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-700/80 shadow-xs flex flex-col gap-3" {{ block.shopify_attributes }}>
           <div class="flex items-start justify-between gap-3">
             <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-black text-sm shrink-0">
-                {{ block.settings.author | slice: 0 }}
-              </div>
+              {% if block.settings.avatar != blank %}
+                <img src="{{ block.settings.avatar | image_url: width: 100 }}" alt="{{ block.settings.author }}" class="w-10 h-10 rounded-full object-cover shrink-0" />
+              {% else %}
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-black text-sm shrink-0">
+                  {{ block.settings.author | slice: 0 }}
+                </div>
+              {% endif %}
               <div>
                 <p class="font-extrabold text-slate-900 dark:text-white text-sm">{{ block.settings.author }}</p>
                 <p class="text-xs text-slate-500 dark:text-slate-400">{{ block.settings.location }} · {{ block.settings.date }}</p>
@@ -112,6 +116,7 @@
       "type": "review",
       "name": "Review Card",
       "settings": [
+        { "type": "image_picker", "id": "avatar", "label": "Upload Customer Avatar" },
         { "type": "text", "id": "author", "label": "Author Name", "default": "أحمد القحطاني" },
         { "type": "text", "id": "location", "label": "City / Location", "default": "الرياض" },
         { "type": "text", "id": "date", "label": "Date String", "default": "منذ أسبوعين" },
