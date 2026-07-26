@@ -37,7 +37,7 @@ window.KhatwaTheme = window.KhatwaTheme || {};
   function initAnnouncementBar() {
     const items = document.querySelectorAll('.ann-item');
     if (!items.length) return;
-    
+
     setInterval(() => {
       items[state.annIndex].classList.remove('visible-ann');
       items[state.annIndex].classList.add('hidden-ann');
@@ -65,7 +65,7 @@ window.KhatwaTheme = window.KhatwaTheme || {};
     state.selectedImgIndex = idx;
     const mainImg = $('main-img');
     const skeleton = $('img-skeleton');
-    
+
     if (mainImg) {
       mainImg.classList.add('loading');
       if (skeleton) skeleton.style.display = 'block';
@@ -79,7 +79,7 @@ window.KhatwaTheme = window.KhatwaTheme || {};
         }
       });
 
-      const newSrc = mainImg.dataset['img-' + idx] || mainImg.src;
+      const newSrc = mainImg.getAttribute('data-img-' + idx) || mainImg.src;
       if (mainImg.src !== newSrc) {
         mainImg.src = newSrc;
       } else {
@@ -118,10 +118,10 @@ window.KhatwaTheme = window.KhatwaTheme || {};
   // ─── 4. COLOR & SIZE SELECTION SYNC ──────────────────────────────────────────
   window.selectColor = function (name, imgIndex) {
     state.selectedColor = name;
-    
+
     const heroColorLabel = $('selected-color-label');
     if (heroColorLabel) heroColorLabel.textContent = name;
-    
+
     const orderColorLabel = $('order-color-label');
     if (orderColorLabel) orderColorLabel.textContent = name;
 
@@ -144,7 +144,7 @@ window.KhatwaTheme = window.KhatwaTheme || {};
 
   window.selectSize = function (size) {
     state.selectedSize = size;
-    
+
     const sizeErr = $('size-error');
     if (sizeErr) sizeErr.classList.add('hidden');
     const errSize = $('err-size');
