@@ -500,13 +500,14 @@ window.KhatwaTheme = window.KhatwaTheme || {};
       } else {
         if (btn) { btn.disabled = false; btn.classList.remove('opacity-50'); }
         if (btnText) btnText.textContent = 'تأكيد الطلب';
-        alert('حدث خطأ. يرجى المحاولة مرة أخرى.');
+        const errDetail = (data && data.error) ? (typeof data.error === 'object' ? JSON.stringify(data.error) : data.error) : 'حدث خطأ. يرجى المحاولة مرة أخرى.';
+        alert(errDetail);
       }
     })
     .catch(function(err) {
       if (btn) { btn.disabled = false; btn.classList.remove('opacity-50'); }
       if (btnText) btnText.textContent = 'تأكيد الطلب';
-      alert('حدث خطأ في الاتصال. يرجى المحاولة مرة أخرى.');
+      alert('حدث خطأ في الاتصال: ' + (err && err.message ? err.message : err));
     });
   };
 
