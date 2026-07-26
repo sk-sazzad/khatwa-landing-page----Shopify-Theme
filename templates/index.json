@@ -148,8 +148,8 @@
         "feature_FPGXPN": {
           "type": "feature",
           "settings": {
-            "title": "مقاوم للماء",
-            "icon": "water",
+            "title": "خفيف الوزن",
+            "icon": "feather",
             "card_bg_class": "bg-gradient-to-b from-blue-500/10 via-cyan-500/10 to-blue-500/5 dark:from-blue-950/40 dark:to-cyan-950/20",
             "card_border_class": "border-blue-200 dark:border-blue-800/60",
             "icon_bg_class": "bg-blue-100 dark:bg-blue-900/60"
@@ -158,8 +158,8 @@
         "feature_aBRDJE": {
           "type": "feature",
           "settings": {
-            "title": "مقاوم للماء",
-            "icon": "water",
+            "title": "شبكي التهوية",
+            "icon": "wind",
             "card_bg_class": "bg-gradient-to-b from-blue-500/10 via-cyan-500/10 to-blue-500/5 dark:from-blue-950/40 dark:to-cyan-950/20",
             "card_border_class": "border-blue-200 dark:border-blue-800/60",
             "icon_bg_class": "bg-blue-100 dark:bg-blue-900/60"
@@ -168,8 +168,8 @@
         "feature_pchK8V": {
           "type": "feature",
           "settings": {
-            "title": "مقاوم للماء",
-            "icon": "water",
+            "title": "سريع الجفاف",
+            "icon": "sun",
             "card_bg_class": "bg-gradient-to-b from-blue-500/10 via-cyan-500/10 to-blue-500/5 dark:from-blue-950/40 dark:to-cyan-950/20",
             "card_border_class": "border-blue-200 dark:border-blue-800/60",
             "icon_bg_class": "bg-blue-100 dark:bg-blue-900/60"
@@ -178,8 +178,8 @@
         "feature_ghLd3D": {
           "type": "feature",
           "settings": {
-            "title": "مقاوم للماء",
-            "icon": "water",
+            "title": "مانع للانزلاق",
+            "icon": "shield",
             "card_bg_class": "bg-gradient-to-b from-blue-500/10 via-cyan-500/10 to-blue-500/5 dark:from-blue-950/40 dark:to-cyan-950/20",
             "card_border_class": "border-blue-200 dark:border-blue-800/60",
             "icon_bg_class": "bg-blue-100 dark:bg-blue-900/60"
@@ -188,8 +188,8 @@
         "feature_mBVLmG": {
           "type": "feature",
           "settings": {
-            "title": "مقاوم للماء",
-            "icon": "water",
+            "title": "سهل التنظيف",
+            "icon": "sparkle",
             "card_bg_class": "bg-gradient-to-b from-blue-500/10 via-cyan-500/10 to-blue-500/5 dark:from-blue-950/40 dark:to-cyan-950/20",
             "card_border_class": "border-blue-200 dark:border-blue-800/60",
             "icon_bg_class": "bg-blue-100 dark:bg-blue-900/60"
