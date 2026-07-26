@@ -458,57 +458,107 @@ window.KhatwaTheme = window.KhatwaTheme || {};
       'الكمية: ' + state.quantity
     ].join('\n');
 
-    // Send order to Cloudflare Worker → Shopify Admin
-    const priceEl = document.getElementById('grand-total');
-    const totalPrice = priceEl ? priceEl.dataset.price * state.quantity : 0;
+    // If variantId is present, use Shopify Cart API
+    if (variantId && variantId > 0) {
+      fetch('/cart/clear.js', { method: 'POST' })
+        .then(function () {
+          return fetch('/cart/add.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              items: [{
+                id: variantId,
+                quantity: state.quantity,
+                properties: {
+                  'اللون': state.selectedColor || 'أبيض عاجي',
+                  'المقاس': state.selectedSize,
+                  'اسم العميل': name,
+                  'رقم الهاتف': phone,
+                  'المدينة': city,
+                  'عنوان التوصيل': address
+                }
+              }]
+            })
+          });
+        })
+        .then(function (res) {
+          if (!res.ok) {
+            return res.json().then(function (err) { throw err; });
+          }
+          return res.json();
+        })
+        .then(function () {
+          return fetch('/cart/update.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              note: orderNote,
+              attributes: {
+                'customer_name': name,
+                'customer_phone': phone,
+                'delivery_city': city,
+                'delivery_address': address
+              }
+            })
+          });
+        })
+        .then(function () {
+          var formWrapper = document.getElementById('order-form-wrapper');
+          if (formWrapper) formWrapper.classList.add('hidden');
 
-    fetch('https://layvora-order-api.khandokerfahim85.workers.dev', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        name: name,
-        phone: phone,
-        city: city,
-        address: address,
-        color: state.selectedColor || '',
-        size: state.selectedSize || '',
-        quantity: state.quantity,
-        variant_id: variantId || 0,
-        price: totalPrice
-      })
-    })
-    .then(function(res) { return res.json(); })
-    .then(function(data) {
-      if (data.success) {
-        var formWrapper = document.getElementById('order-form-wrapper');
+          var success = document.getElementById('order-success');
+          if (success) success.classList.remove('hidden');
+
+          var msg = document.getElementById('success-msg');
+          if (msg) {
+            msg.innerHTML = 'شكراً لك، <strong>' + name + '</strong>! سيتصل بك فريق التوصيل قريباً على <strong>' + phone + '</strong>.';
+          }
+
+          var details = document.getElementById('success-details');
+          if (details) {
+            details.innerHTML = '<div><strong>المدينة:</strong> ' + city + '</div><div><strong>العنوان:</strong> ' + address + '</div>';
+          }
+
+          if (btn) {
+            btn.disabled = false;
+            btn.classList.remove('opacity-50');
+          }
+        })
+        .catch(function (err) {
+          console.error('Shopify Cart Submission Error:', err);
+          if (btn) {
+            btn.disabled = false;
+            btn.classList.remove('opacity-50');
+          }
+          if (btnText) btnText.textContent = 'تأكيد الطلب';
+          const errMsg = (err && err.description) ? err.description : 'تعذر تقديم الطلب تلقائياً. يرجى التأكد من اختيار المنتج في إعدادات الثيم.';
+          alert(errMsg);
+        });
+    } else {
+      // Fallback: Display success screen if variant ID is not configured in Customizer yet
+      setTimeout(() => {
+        const formWrapper = $('order-form-wrapper');
         if (formWrapper) formWrapper.classList.add('hidden');
 
-        var success = document.getElementById('order-success');
+        const success = $('order-success');
         if (success) success.classList.remove('hidden');
 
-        var msg = document.getElementById('success-msg');
+        const msg = $('success-msg');
         if (msg) {
-          msg.innerHTML = 'شكراً لك، <strong>' + name + '</strong>! سيتصل بك فريق التوصيل قريباً على <strong>' + phone + '</strong>.';
+          msg.innerHTML = 'شكراً لك، <strong class="text-slate-900 dark:text-white">' + name + '</strong>! لقد استلمنا طلبك لـ <span class="font-bold">' + state.quantity + '× ' + (state.selectedColor || 'المنتج') + ' (' + state.selectedSize + ')</span>. سيتصل بك فريق التوصيل قريباً على <span class="font-bold">' + phone + '</span>.';
         }
 
-        var details = document.getElementById('success-details');
+        const details = $('success-details');
         if (details) {
-          details.innerHTML = '<div><strong>المدينة:</strong> ' + city + '</div><div><strong>العنوان:</strong> ' + address + '</div><div><strong>رقم الطلب:</strong> #' + (data.order_number || '') + '</div>';
+          details.innerHTML = '<div><strong>مدينة التوصيل:</strong> ' + city + '</div><div><strong>العنوان:</strong> ' + address + '</div><div><strong>المبلغ الإجمالي:</strong> ' + (state.basePrice * state.quantity) + ' ر.س (الدفع عند الاستلام)</div>';
         }
 
-        if (btn) { btn.disabled = false; btn.classList.remove('opacity-50'); }
-      } else {
-        if (btn) { btn.disabled = false; btn.classList.remove('opacity-50'); }
-        if (btnText) btnText.textContent = 'تأكيد الطلب';
-        const errDetail = (data && data.error) ? (typeof data.error === 'object' ? JSON.stringify(data.error) : data.error) : 'حدث خطأ. يرجى المحاولة مرة أخرى.';
-        alert(errDetail);
-      }
-    })
-    .catch(function(err) {
-      if (btn) { btn.disabled = false; btn.classList.remove('opacity-50'); }
-      if (btnText) btnText.textContent = 'تأكيد الطلب';
-      alert('حدث خطأ في الاتصال: ' + (err && err.message ? err.message : err));
-    });
+        if (btn) {
+          btn.disabled = false;
+          btn.classList.remove('opacity-50');
+        }
+      }, 800);
+    }
   };
 
   window.resetOrder = function () {
