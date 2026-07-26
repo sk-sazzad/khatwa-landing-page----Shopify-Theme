@@ -475,11 +475,11 @@ window.KhatwaTheme = window.KhatwaTheme || {};
     };
 
     function showSuccessScreen() {
-      var formWrapper = document.getElementById('order-form-wrapper');
-      if (formWrapper) formWrapper.classList.add('hidden');
-
       var success = document.getElementById('order-success');
-      if (success) success.classList.remove('hidden');
+      if (success) {
+        success.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
 
       var msg = document.getElementById('success-msg');
       if (msg) {
@@ -625,6 +625,7 @@ window.KhatwaTheme = window.KhatwaTheme || {};
   window.resetOrder = function () {
     const success = $('order-success');
     if (success) success.classList.add('hidden');
+    document.body.style.overflow = '';
 
     const formWrapper = $('order-form-wrapper');
     if (formWrapper) formWrapper.classList.remove('hidden');
