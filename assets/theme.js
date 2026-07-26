@@ -483,12 +483,71 @@ window.KhatwaTheme = window.KhatwaTheme || {};
 
       var msg = document.getElementById('success-msg');
       if (msg) {
-        msg.innerHTML = 'شكراً لك، <strong>' + name + '</strong>! سيتصل بك فريق التوصيل قريباً على <strong>' + phone + '</strong>.';
+        msg.innerHTML = 'شكراً لك، <strong class="text-slate-900 dark:text-white font-extrabold">' + name + '</strong>! تم تسجيل طلبك بنجاح وسيتصل بك فريق التوصيل لتأكيد الشحن على الرقم <span class="font-extrabold text-blue-600 dark:text-blue-400" dir="ltr">' + phone + '</span>.';
       }
 
       var details = document.getElementById('success-details');
       if (details) {
-        details.innerHTML = '<div><strong>المدينة:</strong> ' + city + '</div><div><strong>العنوان:</strong> ' + address + '</div><div><strong>المبلغ الإجمالي:</strong> ' + priceVal + ' ر.س (الدفع عند الاستلام)</div>';
+        var productTitleEl = document.querySelector('h4.font-extrabold');
+        var productTitle = productTitleEl ? productTitleEl.textContent.trim() : 'كروس كلاسيك ستار كلوجز';
+        var previewImg = document.getElementById('order-preview-img');
+        var previewSrc = previewImg ? previewImg.src : '';
+
+        details.innerHTML = `
+          <!-- Product Summary Box -->
+          <div class="bg-gradient-to-r from-blue-50/80 to-indigo-50/60 dark:from-slate-900/90 dark:to-slate-900/80 p-4 sm:p-5 rounded-2xl border border-blue-100 dark:border-slate-700/80 flex items-center justify-between gap-4 shadow-sm">
+            <div class="flex items-center gap-3.5">
+              ${previewSrc ? `<img src="${previewSrc}" class="w-16 h-16 rounded-xl object-contain bg-white dark:bg-slate-800 p-1.5 border border-slate-200 dark:border-slate-700 shrink-0 shadow-xs" alt="Product" />` : ''}
+              <div>
+                <h5 class="font-extrabold text-slate-900 dark:text-white text-sm sm:text-base">${productTitle}</h5>
+                <div class="flex items-center gap-2 mt-1 text-xs">
+                  <span class="bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 px-2 py-0.5 rounded-md font-bold">${state.selectedColor || 'أبيض عاجي'}</span>
+                  <span class="bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 px-2 py-0.5 rounded-md font-bold">${state.selectedSize || 'N/A'}</span>
+                  <span class="text-slate-500 font-bold">× ${state.quantity}</span>
+                </div>
+              </div>
+            </div>
+            <div class="text-left shrink-0">
+              <span class="text-[11px] text-slate-500 dark:text-slate-400 block font-bold">الإجمالي الكلي</span>
+              <span class="text-xl sm:text-2xl font-black text-blue-600 dark:text-blue-400">${priceVal} <span class="text-xs font-bold text-slate-500">ر.س</span></span>
+            </div>
+          </div>
+
+          <!-- Customer Delivery Info Grid -->
+          <div class="bg-slate-50 dark:bg-slate-900/60 p-4 sm:p-5 rounded-2xl border border-slate-200/80 dark:border-slate-800 grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+            <div class="flex items-start gap-2.5">
+              <span class="w-8 h-8 rounded-xl bg-blue-100 dark:bg-blue-950 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0 text-sm font-bold shadow-xs">👤</span>
+              <div>
+                <span class="text-slate-400 block text-[11px] font-bold">اسم العميل</span>
+                <strong class="text-slate-900 dark:text-white text-sm font-extrabold">${name}</strong>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-2.5">
+              <span class="w-8 h-8 rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 text-sm font-bold shadow-xs">📞</span>
+              <div>
+                <span class="text-slate-400 block text-[11px] font-bold">رقم الهاتف</span>
+                <strong class="text-slate-900 dark:text-white text-sm font-extrabold" dir="ltr">${phone}</strong>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-2.5">
+              <span class="w-8 h-8 rounded-xl bg-purple-100 dark:bg-purple-950 text-purple-600 dark:text-purple-400 flex items-center justify-center shrink-0 text-sm font-bold shadow-xs">🏙️</span>
+              <div>
+                <span class="text-slate-400 block text-[11px] font-bold">المدينة</span>
+                <strong class="text-slate-900 dark:text-white text-sm font-extrabold">${city}</strong>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-2.5">
+              <span class="w-8 h-8 rounded-xl bg-amber-100 dark:bg-amber-950 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0 text-sm font-bold shadow-xs">🏠</span>
+              <div>
+                <span class="text-slate-400 block text-[11px] font-bold">عنوان التوصيل</span>
+                <strong class="text-slate-900 dark:text-white text-sm font-extrabold">${address}</strong>
+              </div>
+            </div>
+          </div>
+        `;
       }
 
       if (btn) {
