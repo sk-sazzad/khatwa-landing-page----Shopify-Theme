@@ -26,6 +26,16 @@ window.KhatwaTheme = window.KhatwaTheme || {};
     return document.getElementById(id);
   }
 
+  function escapeHTML(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
+
   function scrollToOrder() {
     const el = $('order') || $('order-form-wrapper');
     if (el) {
@@ -483,7 +493,7 @@ window.KhatwaTheme = window.KhatwaTheme || {};
 
       var msg = document.getElementById('success-msg');
       if (msg) {
-        msg.innerHTML = 'شكراً لك، <strong class="text-slate-900 dark:text-white font-extrabold">' + name + '</strong>! تم تسجيل طلبك بنجاح وسيتصل بك فريق التوصيل لتأكيد الشحن على الرقم <span class="font-extrabold text-blue-600 dark:text-blue-400" dir="ltr">' + phone + '</span>.';
+        msg.innerHTML = 'شكراً لك، <strong class="text-slate-900 dark:text-white font-extrabold">' + escapeHTML(name) + '</strong>! تم تسجيل طلبك بنجاح وسيتصل بك فريق التوصيل لتأكيد الشحن على الرقم <span class="font-extrabold text-blue-600 dark:text-blue-400" dir="ltr">' + escapeHTML(phone) + '</span>.';
       }
 
       var details = document.getElementById('success-details');
@@ -499,10 +509,10 @@ window.KhatwaTheme = window.KhatwaTheme || {};
             <div class="flex items-center gap-3.5">
               ${previewSrc ? `<img src="${previewSrc}" class="w-16 h-16 rounded-xl object-contain bg-white dark:bg-slate-800 p-1.5 border border-slate-200 dark:border-slate-700 shrink-0 shadow-xs" alt="Product" />` : ''}
               <div>
-                <h5 class="font-extrabold text-slate-900 dark:text-white text-sm sm:text-base">${productTitle}</h5>
+                <h5 class="font-extrabold text-slate-900 dark:text-white text-sm sm:text-base">${escapeHTML(productTitle)}</h5>
                 <div class="flex items-center gap-2 mt-1 text-xs">
-                  <span class="bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 px-2 py-0.5 rounded-md font-bold">${state.selectedColor || 'أبيض عاجي'}</span>
-                  <span class="bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 px-2 py-0.5 rounded-md font-bold">${state.selectedSize || 'N/A'}</span>
+                  <span class="bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 px-2 py-0.5 rounded-md font-bold">${escapeHTML(state.selectedColor || 'أبيض عاجي')}</span>
+                  <span class="bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 px-2 py-0.5 rounded-md font-bold">${escapeHTML(state.selectedSize || 'N/A')}</span>
                   <span class="text-slate-500 font-bold">× ${state.quantity}</span>
                 </div>
               </div>
@@ -519,7 +529,7 @@ window.KhatwaTheme = window.KhatwaTheme || {};
               <span class="w-8 h-8 rounded-xl bg-blue-100 dark:bg-blue-950 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0 text-sm font-bold shadow-xs">👤</span>
               <div>
                 <span class="text-slate-400 block text-[11px] font-bold">اسم العميل</span>
-                <strong class="text-slate-900 dark:text-white text-sm font-extrabold">${name}</strong>
+                <strong class="text-slate-900 dark:text-white text-sm font-extrabold">${escapeHTML(name)}</strong>
               </div>
             </div>
 
@@ -527,7 +537,7 @@ window.KhatwaTheme = window.KhatwaTheme || {};
               <span class="w-8 h-8 rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 text-sm font-bold shadow-xs">📞</span>
               <div>
                 <span class="text-slate-400 block text-[11px] font-bold">رقم الهاتف</span>
-                <strong class="text-slate-900 dark:text-white text-sm font-extrabold" dir="ltr">${phone}</strong>
+                <strong class="text-slate-900 dark:text-white text-sm font-extrabold" dir="ltr">${escapeHTML(phone)}</strong>
               </div>
             </div>
 
@@ -535,7 +545,7 @@ window.KhatwaTheme = window.KhatwaTheme || {};
               <span class="w-8 h-8 rounded-xl bg-purple-100 dark:bg-purple-950 text-purple-600 dark:text-purple-400 flex items-center justify-center shrink-0 text-sm font-bold shadow-xs">🏙️</span>
               <div>
                 <span class="text-slate-400 block text-[11px] font-bold">المدينة</span>
-                <strong class="text-slate-900 dark:text-white text-sm font-extrabold">${city}</strong>
+                <strong class="text-slate-900 dark:text-white text-sm font-extrabold">${escapeHTML(city)}</strong>
               </div>
             </div>
 
@@ -543,7 +553,7 @@ window.KhatwaTheme = window.KhatwaTheme || {};
               <span class="w-8 h-8 rounded-xl bg-amber-100 dark:bg-amber-950 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0 text-sm font-bold shadow-xs">🏠</span>
               <div>
                 <span class="text-slate-400 block text-[11px] font-bold">عنوان التوصيل</span>
-                <strong class="text-slate-900 dark:text-white text-sm font-extrabold">${address}</strong>
+                <strong class="text-slate-900 dark:text-white text-sm font-extrabold">${escapeHTML(address)}</strong>
               </div>
             </div>
           </div>
