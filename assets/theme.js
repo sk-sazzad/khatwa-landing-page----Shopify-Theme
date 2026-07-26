@@ -468,12 +468,16 @@ window.KhatwaTheme = window.KhatwaTheme || {};
       'الكمية: ' + state.quantity
     ].join('\n');
 
+    // Generate unique Order ID (e.g. KHT-84920)
+    const generatedOrderId = 'KHT-' + Math.floor(10000 + Math.random() * 90000);
+
     // Google Sheet Script URL (from global variable, hidden input, or direct fallback URL)
     const defaultSheetUrl = 'https://script.google.com/macros/s/AKfycbwEteodimCTIkk62BZLMauc1QRd_RKznlYb482QJsyj0Gmr2u0pqO2hCjn_IXePvQnN/exec';
     const sheetScriptUrl = (window.GOOGLE_SHEET_SCRIPT_URL || (document.getElementById('google-sheet-url') ? document.getElementById('google-sheet-url').value : '') || defaultSheetUrl).trim();
 
     const priceVal = state.basePrice * state.quantity;
     const orderData = {
+      order_id: generatedOrderId,
       name: name,
       phone: phone,
       city: city,
@@ -485,15 +489,35 @@ window.KhatwaTheme = window.KhatwaTheme || {};
     };
 
     function showSuccessScreen() {
+      var formWrapper = document.getElementById('order-form-wrapper');
+      if (formWrapper) formWrapper.classList.add('hidden');
+
       var success = document.getElementById('order-success');
       if (success) {
         success.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
+      }
+
+      var orderIdBadge = document.getElementById('success-order-id');
+      if (orderIdBadge) {
+        orderIdBadge.textContent = '#' + generatedOrderId;
+      }
+
+      var whatsappLink = document.getElementById('success-whatsapp-link');
+      if (whatsappLink) {
+        var waMessage = encodeURIComponent('مرحباً، أريد الاستفسار عن الطلب رقم #' + generatedOrderId);
+        whatsappLink.href = 'https://wa.me/966500000000?text=' + waMessage;
       }
 
       var msg = document.getElementById('success-msg');
       if (msg) {
         msg.innerHTML = 'شكراً لك، <strong class="text-slate-900 dark:text-white font-extrabold">' + escapeHTML(name) + '</strong>! تم تسجيل طلبك بنجاح وسيتصل بك فريق التوصيل لتأكيد الشحن على الرقم <span class="font-extrabold text-blue-600 dark:text-blue-400" dir="ltr">' + escapeHTML(phone) + '</span>.';
+      }
+
+      // Smoothly redirect view to the Thank You Page section
+      window.location.hash = 'thank-you';
+      const orderSec = document.getElementById('order') || success;
+      if (orderSec) {
+        orderSec.scrollIntoView({ behavior: 'smooth' });
       }
 
       var details = document.getElementById('success-details');
@@ -636,9 +660,13 @@ window.KhatwaTheme = window.KhatwaTheme || {};
     const success = $('order-success');
     if (success) success.classList.add('hidden');
     document.body.style.overflow = '';
+    if (window.location.hash === '#thank-you') {
+      history.pushState('', document.title, window.location.pathname + window.location.search);
+    }
 
     const formWrapper = $('order-form-wrapper');
     if (formWrapper) formWrapper.classList.remove('hidden');
+    scrollToOrder();
 
     ['inp-name', 'inp-phone', 'inp-city', 'inp-address'].forEach(id => {
       const el = $(id);
