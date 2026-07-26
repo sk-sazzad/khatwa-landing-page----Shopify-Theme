@@ -25,6 +25,17 @@
     ]
   },
   {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon Image",
+        "info": "Will be scaled down to 32x32px"
+      }
+    ]
+  },
+  {
     "name": "Colors",
     "settings": [
       {
