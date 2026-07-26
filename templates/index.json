@@ -1,0 +1,41 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-product",
+      "settings": {}
+    },
+    "features": {
+      "type": "feature-badges",
+      "settings": {}
+    },
+    "story": {
+      "type": "product-story",
+      "settings": {}
+    },
+    "social_proof": {
+      "type": "social-proof",
+      "settings": {}
+    },
+    "reviews": {
+      "type": "reviews",
+      "settings": {}
+    },
+    "trust_faq": {
+      "type": "trust-faq",
+      "settings": {}
+    },
+    "quick_order": {
+      "type": "quick-order-form",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "features",
+    "story",
+    "social_proof",
+    "reviews",
+    "trust_faq",
+    "quick_order"
+  ]
+}

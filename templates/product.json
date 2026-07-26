@@ -1,0 +1,31 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-product",
+      "settings": {}
+    },
+    "features": {
+      "type": "feature-badges",
+      "settings": {}
+    },
+    "story": {
+      "type": "product-story",
+      "settings": {}
+    },
+    "reviews": {
+      "type": "reviews",
+      "settings": {}
+    },
+    "quick_order": {
+      "type": "quick-order-form",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "features",
+    "story",
+    "reviews",
+    "quick_order"
+  ]
+}

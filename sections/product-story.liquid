@@ -1,0 +1,116 @@
+{% comment %}
+  Product Story Section with dynamic story blocks and full-bleed layout options
+{% endcomment %}
+
+<section id="story" class="py-16 lg:py-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+      <span class="inline-block text-xs font-black uppercase tracking-widest bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white px-4 py-1.5 rounded-full shadow-sm mb-3">
+        {{ section.settings.badge_text }}
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
+        {{ section.settings.title_prefix }} <span class="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">{{ section.settings.title_highlight }}</span>
+      </h2>
+      <p class="mt-3 text-slate-600 dark:text-slate-300 text-base sm:text-lg">
+        {{ section.settings.subtitle }}
+      </p>
+    </div>
+
+    <div class="flex flex-col gap-12 lg:gap-20">
+      {% for block in section.blocks %}
+        {% if block.settings.is_bleed %}
+          <!-- Full Bleed Banner Card -->
+          <div class="relative rounded-3xl overflow-hidden shadow-xl flex items-end group" style="min-height:360px" {{ block.shopify_attributes }}>
+            <img src="{{ block.settings.image_url }}" alt="{{ block.settings.title }}" class="story-bleed-image absolute inset-0 w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent"></div>
+            <div class="relative p-6 sm:p-10 lg:p-12 text-white max-w-2xl">
+              <span class="text-xs font-bold tracking-widest uppercase text-blue-400">{{ block.settings.number }}</span>
+              <h3 class="text-2xl sm:text-3xl lg:text-4xl font-black mt-1">{{ block.settings.title }}</h3>
+              <p class="mt-2 text-slate-200 text-sm sm:text-base leading-relaxed">{{ block.settings.description }}</p>
+              
+              {% assign benefits = block.settings.benefits | split: "," %}
+              <div class="flex flex-wrap gap-x-6 gap-y-2 mt-4 text-xs sm:text-sm font-semibold">
+                {% for b in benefits %}
+                  <div class="flex items-center gap-1.5 text-emerald-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>{{ b | strip }}</span>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        {% else %}
+          <!-- Standard Side-by-Side Card -->
+          {% assign is_even = forloop.index | modulo: 2 %}
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-white/90 via-blue-50/40 to-indigo-50/30 dark:from-slate-800/90 dark:via-slate-800/60 dark:to-indigo-950/30 border border-blue-100/80 dark:border-slate-700/80 shadow-md" {{ block.shopify_attributes }}>
+            <div class="aspect-4-3 rounded-3xl overflow-hidden bg-slate-100 dark:bg-slate-800 shadow-md {% if is_even == 0 %}lg:order-2{% endif %}">
+              <img src="{{ block.settings.image_url }}" alt="{{ block.settings.title }}" class="story-image w-full h-full object-cover" />
+            </div>
+            <div class="flex flex-col gap-4 {% if is_even == 0 %}lg:order-1{% endif %}">
+              <div>
+                <span class="inline-block text-xs font-black tracking-widest uppercase bg-blue-100 dark:bg-blue-950 text-blue-600 dark:text-blue-400 px-3 py-1 rounded-lg border border-blue-200 dark:border-blue-800">
+                  {{ block.settings.number }}
+                </span>
+              </div>
+              <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">{{ block.settings.title }}</h3>
+              <p class="text-slate-600 dark:text-slate-300 text-base leading-relaxed">{{ block.settings.description }}</p>
+              
+              {% assign benefits = block.settings.benefits | split: "," %}
+              <div class="flex flex-col gap-2.5 mt-2">
+                {% for b in benefits %}
+                  <div class="flex items-center gap-2.5 font-bold text-slate-800 dark:text-slate-200 text-sm">
+                    <div class="w-5 h-5 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white flex items-center justify-center shrink-0 shadow-xs">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    </div>
+                    <span>{{ b | strip }}</span>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Story",
+  "settings": [
+    { "type": "text", "id": "badge_text", "label": "Badge Text", "default": "مصمّم للراحة" },
+    { "type": "text", "id": "title_prefix", "label": "Title Prefix", "default": "مصمّم لكل" },
+    { "type": "text", "id": "title_highlight", "label": "Title Highlight", "default": "لحظة" },
+    { "type": "textarea", "id": "subtitle", "label": "Subtitle Description", "default": "من روتين الصباح إلى مغامرات الشاطئ — اكتشف لماذا كروس كلاسيك ستار كلوجز هو الحذاء الوحيد الذي ستحتاجه." }
+  ],
+  "blocks": [
+    {
+      "type": "story_block",
+      "name": "Story Block",
+      "settings": [
+        { "type": "text", "id": "number", "label": "Number Badge", "default": "01" },
+        { "type": "text", "id": "title", "label": "Title", "default": "راحة قصوى" },
+        { "type": "textarea", "id": "description", "label": "Description", "default": "مصمّم للارتداء طوال اليوم، يحتضن كروس كلاسيك ستار كلوجز قدمك برغوة EVA الناعمة والمرنة التي تتكيف مع كل خطوة." },
+        { "type": "text", "id": "image_url", "label": "Image URL", "default": "https://media.base44.com/images/public/6a646958821430317adbf321/749895e7f_generated_7b449968.png" },
+        { "type": "text", "id": "benefits", "label": "Benefits (comma separated)", "default": "نعل بيئي مريح,رغوة EVA ناعمة,تصميم يوزع الضغط" },
+        { "type": "checkbox", "id": "is_bleed", "label": "Full Bleed Banner Layout", "default": false }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Story",
+      "blocks": [
+        { "type": "story_block", "settings": { "number": "01", "title": "راحة قصوى", "description": "مصمّم للارتداء طوال اليوم، يحتضن كروس كلاسيك ستار كلوجز قدمك برغوة EVA الناعمة والمرنة التي تتكيف مع كل خطوة. يوزّع نعل القدم المريح الضغط بشكل متساوٍ، حتى تبقى مرتاحاً من الصباح حتى المساء.", "image_url": "https://media.base44.com/images/public/6a646958821430317adbf321/749895e7f_generated_7b449968.png", "benefits": "نعل بيئي مريح,رغوة EVA ناعمة,تصميم يوزع الضغط", "is_bleed": false } },
+        { "type": "story_block", "settings": { "number": "02", "title": "ارتداء طوال اليوم", "description": "سواء كنت في العمل أو تقضي مشاوير يومية أو تسترخي في المنزل، يمنحك هذا الحذاء راحة دائمة. بنيته الخفيفة تجعلك بالكاد تشعر به — ساعة بعد ساعة.", "image_url": "https://media.base44.com/images/public/user_69da7b6f0cdb618ca188b19b/b1ea75f66_O1CN01Q1qKXy1hiUaOYcOKo_2222575514311-0-cib.jpg", "benefits": "خفيف للغاية 500 جرام,وسادة هوائية طوال اليوم,لا يحتاج فترة تكيّف", "is_bleed": false } },
+        { "type": "story_block", "settings": { "number": "03", "title": "تصميم مقاوم للماء", "description": "مصنوع من مادة EVA المقاومة للماء بشكل كامل. المطر أو الرشاشات أو جانب المسبح — قدماك تبقى جافة والحذاء يبقى نظيفاً.", "image_url": "https://media.base44.com/images/public/6a646958821430317adbf321/749895e7f_generated_7b449968.png", "benefits": "100% مقاوم للماء,سطح طارد للمياه,مثالي للمسبح والمطر", "is_bleed": true } },
+        { "type": "story_block", "settings": { "number": "04", "title": "بنية تهوية ممتازة", "description": "فتحات التهوية المصممة بعناية تحافظ على تدفق الهواء، وتمنع تراكم الحرارة وتحافظ على قدميك باردتين وطازجتين حتى في أشد أيام الصيف حرارة.", "image_url": "https://media.base44.com/images/public/6a646958821430317adbf321/4e9d15372_generated_765a4d6b.png", "benefits": "فتحات تهوية,تدفق هواء مبرد,مقاوم للروائح", "is_bleed": false } },
+        { "type": "story_block", "settings": { "number": "05", "title": "وسادة ناعمة", "description": "النعل الأوسط EVA بسماكة 2.5 سم يمتص الصدمات مع كل خطوة، ويقلل التعب ويحمي مفاصلك. ونعل خارجي مضاد للانزلاق يمسك بكل سطح — رطب أو جاف.", "image_url": "https://media.base44.com/images/public/6a646958821430317adbf321/89195c20a_generated_a8c38b98.png", "benefits": "امتصاص الصدمات,كعب مبطّن 2.5 سم,مانع للانزلاق", "is_bleed": false } },
+        { "type": "story_block", "settings": { "number": "06", "title": "مثالي للشاطئ", "description": "الرمال والبحر والشمس — صُنع هذا الحذاء من أجل الشاطئ. رغوة EVA سريعة الجفاف تعني أنك تخرج من الماء وتمشي بكامل الراحة.", "image_url": "https://media.base44.com/images/public/6a646958821430317adbf321/c39405eaf_generated_6bb8b354.png", "benefits": "مقاوم للرمال,رغوة سريعة الجفاف,آمن لمياه البحر", "is_bleed": true } },
+        { "type": "story_block", "settings": { "number": "07", "title": "مثالي للحديقة", "description": "حماية مغلقة من الأمام مع سهولة التنظيف. مثالي للبستنة والأعمال الخارجية أو التجوّل في الحديقة — الطين يُزال في ثوانٍ.", "image_url": "https://media.base44.com/images/public/6a646958821430317adbf321/a7f2069dc_generated_c3db5b48.png", "benefits": "حماية مغلقة,سطح مقاوم للطين,تنظيف بالشطف فقط", "is_bleed": false } },
+        { "type": "story_block", "settings": { "number": "08", "title": "تنظيف سهل", "description": "بقع أو طين أو غبار؟ فقط اشطفه بالماء الجاري. مادة EVA المقولبة في قطعة واحدة بلا درزات لا تحبس الأوساخ — ينظف في ثوانٍ ويجف في دقائق.", "image_url": "https://media.base44.com/images/public/user_69da7b6f0cdb618ca188b19b/287d6c3b3_O1CN01gob97R1hiUaMmxo8f_2222575514311-0-cib.jpg", "benefits": "سطح يُشطف بسهولة,بلا درزات ولا أوساخ مختبئة,يجف في دقائق", "is_bleed": false } }
+      ]
+    }
+  ]
+}
+{% endschema %}

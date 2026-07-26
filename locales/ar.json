@@ -1,0 +1,22 @@
+{
+  "general": {
+    "store_title": "خطوة - كروس كلاسيك ستار كلوجز",
+    "shop_now": "تسوّق الآن",
+    "buy_now": "اشترِ الآن — توصيل سريع",
+    "order_now": "اطلب الآن",
+    "submit_order": "تأكيد الطلب",
+    "order_submitting": "جاري تقديم الطلب...",
+    "free_shipping": "مجاناً",
+    "fast_delivery": "توصيل سريع"
+  },
+  "product": {
+    "reviews_count": "تقييم موثّق",
+    "discount": "خصم",
+    "save": "وفّر",
+    "color": "اللون",
+    "size": "المقاس",
+    "quantity": "الكمية",
+    "size_guide": "دليل المقاسات والقياسات",
+    "select_size_error": "الرجاء اختيار المقاس قبل الطلب."
+  }
+}

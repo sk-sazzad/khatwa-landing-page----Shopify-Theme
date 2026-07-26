@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "quick_order": {
+      "type": "quick-order-form",
+      "settings": {}
+    }
+  },
+  "order": [
+    "quick_order"
+  ]
+}

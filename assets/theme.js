@@ -1,133 +1,504 @@
-/* Cross Classic Star Clogs — Shopify Arabic RTL Theme JS */
-document.addEventListener('DOMContentLoaded', function () {
+/**
+ * Shopify Theme JS - خطوة - Landing Page
+ * Full interactivity, state management, animations, and cart integration.
+ */
 
-  /* ── FAQ Accordion ── */
-  document.querySelectorAll('.faq-toggle').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var item    = btn.closest('.faq-item');
-      var content = item ? item.querySelector('.faq-content') : null;
-      var chevron = btn.querySelector('svg');
-      if (!content) return;
+window.KhatwaTheme = window.KhatwaTheme || {};
 
-      var isOpen = !content.classList.contains('hidden');
+(function () {
+  'use strict';
 
-      /* Close all others */
-      document.querySelectorAll('.faq-content').forEach(function (c) {
-        c.classList.add('hidden');
-      });
-      document.querySelectorAll('.faq-toggle svg').forEach(function (s) {
-        s.classList.remove('rotate-180', 'text-blue-600');
-      });
+  // Global Theme State
+  const state = {
+    selectedImgIndex: 0,
+    selectedColor: '',
+    selectedSize: '',
+    quantity: 1,
+    basePrice: 189,
+    annIndex: 0,
+    statsAnimated: false,
+    reviewBarsAnimated: false,
+    faqOpen: 0
+  };
 
-      if (!isOpen) {
-        content.classList.remove('hidden');
-        if (chevron) {
-          chevron.classList.add('rotate-180', 'text-blue-600');
-        }
-      }
-    });
-  });
+  // Utility Functions
+  function $(id) {
+    return document.getElementById(id);
+  }
 
-  /* Open first FAQ by default */
-  var firstFaq = document.querySelector('.faq-item .faq-content');
-  var firstChevron = document.querySelector('.faq-item .faq-toggle svg');
-  if (firstFaq) firstFaq.classList.remove('hidden');
-  if (firstChevron) firstChevron.classList.add('rotate-180', 'text-blue-600');
+  function scrollToOrder() {
+    const el = $('order') || $('order-form-wrapper');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
 
-  /* ── Countdown Timer (Hero Section) ── */
-  var countdownEl = document.getElementById('hero-countdown');
-  if (countdownEl) {
-    var hours = 3, minutes = 42, seconds = 18;
-    setInterval(function () {
-      if (seconds > 0) {
-        seconds--;
-      } else if (minutes > 0) {
-        minutes--;
-        seconds = 59;
-      } else if (hours > 0) {
-        hours--;
-        minutes = 59;
-        seconds = 59;
+  // ─── 1. ANNOUNCEMENT BAR ROTATOR ───────────────────────────────────────────
+  function initAnnouncementBar() {
+    const items = document.querySelectorAll('.ann-item');
+    if (!items.length) return;
+    
+    setInterval(() => {
+      items[state.annIndex].classList.remove('visible-ann');
+      items[state.annIndex].classList.add('hidden-ann');
+      state.annIndex = (state.annIndex + 1) % items.length;
+      items[state.annIndex].classList.remove('hidden-ann');
+      items[state.annIndex].classList.add('visible-ann');
+    }, 3800);
+  }
+
+  // ─── 2. NAVBAR SCROLL STYLING ────────────────────────────────────────────────
+  function initNavbarScroll() {
+    const nav = $('navbar');
+    if (!nav) return;
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 12) {
+        nav.classList.add('border-b', 'border-slate-200', 'dark:border-slate-800', 'shadow-sm');
       } else {
-        hours = 3; minutes = 59; seconds = 59;
+        nav.classList.remove('border-b', 'border-slate-200', 'dark:border-slate-800', 'shadow-sm');
       }
-      var pad = function (n) { return String(n).padStart(2, '0'); };
-      countdownEl.querySelector('span').textContent =
-        pad(hours) + 'س : ' + pad(minutes) + 'د : ' + pad(seconds) + 'ث';
-    }, 1000);
+    }, { passive: true });
   }
 
-  /* ── Stock Progress Bar Animation ── */
-  var stockFill = document.querySelector('.stock-fill, [class*="from-amber-500"][class*="rounded-full"]');
-  if (stockFill) {
-    setTimeout(function () {
-      stockFill.style.width = '67%';
-    }, 300);
-  }
+  // ─── 3. GALLERY SYSTEM ───────────────────────────────────────────────────────
+  window.setImage = function (idx) {
+    state.selectedImgIndex = idx;
+    const mainImg = $('main-img');
+    const skeleton = $('img-skeleton');
+    
+    if (mainImg) {
+      mainImg.classList.add('loading');
+      if (skeleton) skeleton.style.display = 'block';
 
-  /* ── Smooth scroll for anchor links ── */
-  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
-    a.addEventListener('click', function (e) {
-      var target = document.querySelector(a.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth' });
+      const thumbnails = document.querySelectorAll('.hero-thumb-btn');
+      thumbnails.forEach((btn, i) => {
+        if (i === idx) {
+          btn.className = 'relative w-16 h-16 sm:w-20 sm:h-20 aspect-square rounded-xl overflow-hidden border bg-white shrink-0 cursor-pointer transition-all duration-300 hero-thumb-btn border-blue-600 ring-4 ring-blue-500/30 opacity-100 scale-105 shadow-md';
+        } else {
+          btn.className = 'relative w-16 h-16 sm:w-20 sm:h-20 aspect-square rounded-xl overflow-hidden border bg-white shrink-0 cursor-pointer transition-all duration-300 hero-thumb-btn border-slate-200 opacity-70 hover:opacity-100';
+        }
+      });
+
+      const newSrc = mainImg.dataset['img-' + idx] || mainImg.src;
+      if (mainImg.src !== newSrc) {
+        mainImg.src = newSrc;
+      } else {
+        mainImg.classList.remove('loading');
+        if (skeleton) skeleton.style.display = 'none';
+      }
+
+      mainImg.onload = function () {
+        mainImg.classList.remove('loading');
+        if (skeleton) skeleton.style.display = 'none';
+      };
+    }
+
+    const orderPreview = $('order-preview-img');
+    if (orderPreview && mainImg) {
+      orderPreview.src = mainImg.src;
+    }
+  };
+
+  window.prevImg = function () {
+    const mainImg = $('main-img');
+    if (!mainImg) return;
+    const total = parseInt(mainImg.dataset.totalImages || '1', 10);
+    const nextIdx = state.selectedImgIndex === 0 ? total - 1 : state.selectedImgIndex - 1;
+    window.setImage(nextIdx);
+  };
+
+  window.nextImg = function () {
+    const mainImg = $('main-img');
+    if (!mainImg) return;
+    const total = parseInt(mainImg.dataset.totalImages || '1', 10);
+    const nextIdx = state.selectedImgIndex === total - 1 ? 0 : state.selectedImgIndex + 1;
+    window.setImage(nextIdx);
+  };
+
+  // ─── 4. COLOR & SIZE SELECTION SYNC ──────────────────────────────────────────
+  window.selectColor = function (name, imgIndex) {
+    state.selectedColor = name;
+    
+    const heroColorLabel = $('selected-color-label');
+    if (heroColorLabel) heroColorLabel.textContent = name;
+    
+    const orderColorLabel = $('order-color-label');
+    if (orderColorLabel) orderColorLabel.textContent = name;
+
+    document.querySelectorAll('.color-swatch-btn').forEach(btn => {
+      if (btn.dataset.colorName === name) {
+        btn.classList.add('ring-4', 'ring-blue-500/40', 'border-white', 'dark:border-slate-800', 'scale-110', 'shadow-md');
+        btn.classList.remove('border-slate-300', 'dark:border-slate-700');
+      } else {
+        btn.classList.remove('ring-4', 'ring-blue-500/40', 'border-white', 'dark:border-slate-800', 'scale-110', 'shadow-md');
+        btn.classList.add('border-slate-300', 'dark:border-slate-700');
       }
     });
+
+    if (imgIndex !== undefined && imgIndex >= 0) {
+      window.setImage(parseInt(imgIndex, 10));
+    }
+
+    updateOrderSummary();
+  };
+
+  window.selectSize = function (size) {
+    state.selectedSize = size;
+    
+    const sizeErr = $('size-error');
+    if (sizeErr) sizeErr.classList.add('hidden');
+    const errSize = $('err-size');
+    if (errSize) errSize.classList.add('hidden');
+
+    const orderSizeLabel = $('order-size-label');
+    if (orderSizeLabel) orderSizeLabel.textContent = size;
+
+    document.querySelectorAll('.size-select-btn').forEach(btn => {
+      if (btn.dataset.sizeValue === size) {
+        btn.className = 'size-select-btn py-2.5 px-3 rounded-xl border text-sm font-black transition-all cursor-pointer border-transparent bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-500/25 scale-102';
+      } else {
+        btn.className = 'size-select-btn py-2.5 px-3 rounded-xl border text-sm font-black transition-all cursor-pointer border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:border-blue-400';
+      }
+    });
+
+    updateOrderSummary();
+  };
+
+  window.heroBuyNow = function () {
+    if (!state.selectedSize) {
+      const sizeErr = $('size-error');
+      if (sizeErr) sizeErr.classList.remove('hidden');
+    }
+    scrollToOrder();
+  };
+
+  // ─── 5. COUNTDOWN TIMER ─────────────────────────────────────────────────────
+  function initCountdownTimer() {
+    const el = $('countdown');
+    if (!el) return;
+
+    let totalSeconds = parseInt(el.dataset.seconds || '13338', 10); // default 3h 42m 18s
+
+    function update() {
+      const h = Math.floor(totalSeconds / 3600);
+      const m = Math.floor((totalSeconds % 3600) / 60);
+      const s = totalSeconds % 60;
+      el.textContent =
+        String(h).padStart(2, '0') + 'h : ' +
+        String(m).padStart(2, '0') + 'm : ' +
+        String(s).padStart(2, '0') + 's';
+    }
+
+    update();
+    setInterval(() => {
+      if (totalSeconds > 0) {
+        totalSeconds--;
+      } else {
+        totalSeconds = 14400; // reset to 4h
+      }
+      update();
+    }, 1000);
+
+    const stockBar = $('stock-bar');
+    if (stockBar) {
+      setTimeout(() => {
+        stockBar.style.width = '67%';
+      }, 200);
+    }
+  }
+
+  // ─── 6. INTERSECTION OBSERVERS (STATS & REVIEWS) ───────────────────────────
+  function initObservers() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          if (entry.target.id === 'social-proof' && !state.statsAnimated) {
+            state.statsAnimated = true;
+            animateStats();
+          }
+          if (entry.target.id === 'reviews' && !state.reviewBarsAnimated) {
+            state.reviewBarsAnimated = true;
+            animateReviewBars();
+          }
+        }
+      });
+    }, { threshold: 0.2 });
+
+    ['social-proof', 'reviews'].forEach(id => {
+      const target = $(id);
+      if (target) observer.observe(target);
+    });
+  }
+
+  function animateStats() {
+    document.querySelectorAll('.stat-counter').forEach(el => {
+      const target = parseInt(el.dataset.target || '0', 10);
+      const suffix = el.dataset.suffix || '';
+      let start = 0;
+      const duration = 1800;
+      const step = Math.ceil(target / (duration / 16));
+      const timer = setInterval(() => {
+        start += step;
+        if (start >= target) {
+          start = target;
+          clearInterval(timer);
+        }
+        el.textContent = start.toLocaleString('ar-SA') + suffix;
+      }, 16);
+    });
+  }
+
+  function animateReviewBars() {
+    document.querySelectorAll('.review-bar').forEach(bar => {
+      setTimeout(() => {
+        bar.style.width = (bar.dataset.width || '0') + '%';
+      }, 100);
+    });
+  }
+
+  // ─── 7. FAQ ACCORDION ────────────────────────────────────────────────────────
+  window.toggleFaq = function (index) {
+    const allAnswers = document.querySelectorAll('.faq-answer');
+    const allIcons = document.querySelectorAll('.faq-icon');
+
+    allAnswers.forEach((ans, i) => {
+      const icon = allIcons[i];
+      if (i === index) {
+        const isOpen = ans.classList.contains('max-h-48');
+        if (isOpen) {
+          ans.classList.remove('max-h-48', 'opacity-100', 'pb-5');
+          ans.classList.add('max-h-0', 'opacity-0');
+          if (icon) icon.classList.remove('rotate-45');
+        } else {
+          ans.classList.add('max-h-48', 'opacity-100', 'pb-5');
+          ans.classList.remove('max-h-0', 'opacity-0');
+          if (icon) icon.classList.add('rotate-45');
+        }
+      } else {
+        ans.classList.remove('max-h-48', 'opacity-100', 'pb-5');
+        ans.classList.add('max-h-0', 'opacity-0');
+        if (icon) icon.classList.remove('rotate-45');
+      }
+    });
+  };
+
+  // ─── 8. QUANTITY & SUMMARY CALCULATIONS ──────────────────────────────────────
+  window.changeQty = function (delta) {
+    state.quantity = Math.max(1, Math.min(10, state.quantity + delta));
+    const qtyDisplay = $('qty-display');
+    if (qtyDisplay) qtyDisplay.textContent = state.quantity;
+    updateOrderSummary();
+  };
+
+  function updateOrderSummary() {
+    const priceEl = $('order-base-price');
+    if (priceEl) {
+      state.basePrice = parseFloat(priceEl.dataset.price || '189');
+    }
+
+    const total = state.basePrice * state.quantity;
+    const colorLabel = state.selectedColor || 'أبيض عاجي';
+    const sizeLabel = state.selectedSize || 'اختر المقاس';
+
+    const desc = $('order-product-desc');
+    if (desc) desc.textContent = colorLabel + ' · ' + sizeLabel;
+
+    const qtyLabel = $('order-qty-label');
+    if (qtyLabel) qtyLabel.textContent = 'الكمية: ' + state.quantity;
+
+    const subtotalLabel = $('subtotal-label');
+    if (subtotalLabel) subtotalLabel.textContent = 'المجموع الفرعي (' + state.quantity + ' × ' + state.basePrice + ' ر.س)';
+
+    const subtotalVal = $('subtotal-val');
+    if (subtotalVal) subtotalVal.textContent = total + ' ر.س';
+
+    const grandTotal = $('grand-total');
+    if (grandTotal) {
+      grandTotal.innerHTML = total + ' <span class="text-base font-extrabold text-slate-500">ر.س</span>';
+    }
+  }
+
+  // ─── 9. ORDER FORM VALIDATION & SUBMISSION ───────────────────────────────────
+  function showErr(id, msg) {
+    const el = $(id);
+    if (!el) return;
+    el.textContent = msg;
+    el.classList.remove('hidden');
+    const inp = $(id.replace('err-', 'inp-'));
+    if (inp) {
+      inp.classList.add('border-red-500');
+      inp.classList.remove('border-slate-200', 'dark:border-slate-700');
+    }
+  }
+
+  function clearErr(id) {
+    const el = $(id);
+    if (!el) return;
+    el.classList.add('hidden');
+    const inp = $(id.replace('err-', 'inp-'));
+    if (inp) {
+      inp.classList.remove('border-red-500');
+      inp.classList.add('border-slate-200', 'dark:border-slate-700');
+    }
+  }
+
+  window.submitOrder = function () {
+    const nameInp = $('inp-name');
+    const phoneInp = $('inp-phone');
+    const cityInp = $('inp-city');
+    const addressInp = $('inp-address');
+
+    const name = nameInp ? nameInp.value.trim() : '';
+    const phone = phoneInp ? phoneInp.value.trim() : '';
+    const city = cityInp ? cityInp.value : '';
+    const address = addressInp ? addressInp.value.trim() : '';
+
+    let valid = true;
+
+    if (!name) {
+      showErr('err-name', 'الرجاء إدخال اسمك الكامل.');
+      valid = false;
+    } else {
+      clearErr('err-name');
+    }
+
+    if (!phone || !/^[+]?[0-9\s\-]{8,}$/.test(phone)) {
+      showErr('err-phone', 'الرجاء إدخال رقم هاتف صحيح.');
+      valid = false;
+    } else {
+      clearErr('err-phone');
+    }
+
+    if (!city) {
+      showErr('err-city', 'الرجاء اختيار مدينتك.');
+      valid = false;
+    } else {
+      clearErr('err-city');
+    }
+
+    if (!address) {
+      showErr('err-address', 'الرجاء إدخال عنوان التوصيل.');
+      valid = false;
+    } else {
+      clearErr('err-address');
+    }
+
+    if (!state.selectedSize) {
+      const errSize = $('err-size');
+      if (errSize) {
+        errSize.textContent = 'الرجاء اختيار المقاس.';
+        errSize.classList.remove('hidden');
+      }
+      valid = false;
+    } else {
+      const errSize = $('err-size');
+      if (errSize) errSize.classList.add('hidden');
+    }
+
+    if (!valid) return;
+
+    const btn = $('submit-btn');
+    const btnText = $('submit-btn-text');
+    if (btn) {
+      btn.disabled = true;
+      btn.classList.add('opacity-50');
+    }
+    if (btnText) btnText.textContent = 'جاري تقديم الطلب...';
+
+    // Simulate order submission & optional Shopify Ajax Cart Add
+    setTimeout(() => {
+      const formWrapper = $('order-form-wrapper');
+      if (formWrapper) formWrapper.classList.add('hidden');
+
+      const success = $('order-success');
+      if (success) success.classList.remove('hidden');
+
+      const msg = $('success-msg');
+      if (msg) {
+        msg.innerHTML = 'شكراً لك، <strong class="text-slate-900 dark:text-white">' + name + '</strong>! لقد استلمنا طلبك لـ <span class="font-bold">' + state.quantity + '× ' + (state.selectedColor || 'المنتج') + ' (' + state.selectedSize + ')</span>. سيتصل بك فريق التوصيل قريباً على <span class="font-bold">' + phone + '</span>.';
+      }
+
+      const details = $('success-details');
+      if (details) {
+        details.innerHTML = '<div><strong>مدينة التوصيل:</strong> ' + city + '</div><div><strong>العنوان:</strong> ' + address + '</div><div><strong>المبلغ الإجمالي:</strong> ' + (state.basePrice * state.quantity) + ' ر.س (الدفع عند الاستلام)</div>';
+      }
+
+      if (btn) {
+        btn.disabled = false;
+        btn.classList.remove('opacity-50');
+      }
+    }, 1200);
+  };
+
+  window.resetOrder = function () {
+    const success = $('order-success');
+    if (success) success.classList.add('hidden');
+
+    const formWrapper = $('order-form-wrapper');
+    if (formWrapper) formWrapper.classList.remove('hidden');
+
+    ['inp-name', 'inp-phone', 'inp-city', 'inp-address'].forEach(id => {
+      const el = $(id);
+      if (el) el.value = '';
+    });
+
+    state.quantity = 1;
+    const qtyDisplay = $('qty-display');
+    if (qtyDisplay) qtyDisplay.textContent = '1';
+
+    const btnText = $('submit-btn-text');
+    if (btnText) btnText.textContent = 'تأكيد الطلب';
+
+    updateOrderSummary();
+  };
+
+  // ─── 10. SIZE GUIDE MODAL ─────────────────────────────────────────────────────
+  window.openSizeGuide = function () {
+    const modal = $('size-modal');
+    if (modal) modal.classList.remove('hidden');
+  };
+
+  window.closeSizeGuide = function () {
+    const modal = $('size-modal');
+    if (modal) modal.classList.add('hidden');
+  };
+
+  // ─── 11. STICKY MOBILE BOTTOM CTA ─────────────────────────────────────────────
+  function initStickyCta() {
+    const cta = $('sticky-cta');
+    const orderSec = $('order');
+    if (!cta || !orderSec) return;
+
+    window.addEventListener('scroll', () => {
+      const rect = orderSec.getBoundingClientRect();
+      const pastHero = window.scrollY > 200;
+      const beforeOrderEnd = rect.top > window.innerHeight - 100;
+      if (pastHero && beforeOrderEnd) {
+        cta.classList.remove('sticky-cta-hidden');
+        cta.classList.add('sticky-cta-visible');
+      } else {
+        cta.classList.add('sticky-cta-hidden');
+        cta.classList.remove('sticky-cta-visible');
+      }
+    }, { passive: true });
+  }
+
+  // ─── INITIALIZATION ──────────────────────────────────────────────────────────
+  document.addEventListener('DOMContentLoaded', () => {
+    initAnnouncementBar();
+    initNavbarScroll();
+    initCountdownTimer();
+    initObservers();
+    initStickyCta();
+
+    // Default selection
+    const firstColor = document.querySelector('.color-swatch-btn');
+    if (firstColor) {
+      state.selectedColor = firstColor.dataset.colorName || 'أبيض عاجي';
+    }
+    updateOrderSummary();
   });
 
-  /* ── Rating bars animation on scroll ── */
-  var ratingBars = document.querySelectorAll('.rating-bar-fill, [class*="from-amber-400"][class*="h-full"]');
-  if (ratingBars.length) {
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          /* Already set via inline style — trigger reflow */
-          var el = entry.target;
-          var width = el.style.width;
-          el.style.width = '0';
-          setTimeout(function () { el.style.width = width; }, 50);
-          observer.unobserve(el);
-        }
-      });
-    }, { threshold: 0.3 });
+  window.scrollToOrder = scrollToOrder;
 
-    ratingBars.forEach(function (bar) {
-      observer.observe(bar);
-    });
-  }
-
-  /* ── Social proof counter animation ── */
-  var statNumbers = document.querySelectorAll('.stat-number');
-  if (statNumbers.length) {
-    var statObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          var el = entry.target;
-          var rawText = el.textContent.replace(/[^0-9]/g, '');
-          var target = parseInt(rawText, 10);
-          if (!target) return;
-
-          var suffix = el.textContent.replace(/[0-9,]/g, '');
-          var start = performance.now();
-          var duration = 2000;
-
-          function animate(now) {
-            var elapsed = now - start;
-            var progress = Math.min(elapsed / duration, 1);
-            var easeOut = 1 - Math.pow(1 - progress, 3);
-            var current = Math.floor(easeOut * target);
-            el.textContent = current.toLocaleString('ar-SA') + suffix;
-            if (progress < 1) requestAnimationFrame(animate);
-          }
-
-          requestAnimationFrame(animate);
-          statObserver.unobserve(el);
-        }
-      });
-    }, { threshold: 0.3 });
-
-    statNumbers.forEach(function (el) { statObserver.observe(el); });
-  }
-
-});
+})();

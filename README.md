@@ -1,3 +1,4 @@
-# Khatwa Shopify Theme
+# خطوة - Landing Page (Shopify Theme)
 
-Ready for custom theme development.
+Ready for custom theme development and deployment.
+

@@ -1,0 +1,120 @@
+{% comment %}
+  Trust Badges & Accordion FAQ Section
+{% endcomment %}
+
+<section id="faq" class="py-16 lg:py-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Trust Cards Grid -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-16 lg:mb-20">
+      <div class="trust-card bg-gradient-to-b from-blue-50/80 to-indigo-50/40 dark:from-slate-800 dark:to-blue-950/30 p-6 rounded-2xl flex flex-col items-center text-center gap-3 border border-blue-200/80 dark:border-blue-900/50 shadow-xs">
+        <div class="p-3.5 rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-500/20">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3 class="font-extrabold text-slate-900 dark:text-white text-base">{{ section.settings.trust_1_title }}</h3>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-medium">{{ section.settings.trust_1_desc }}</p>
+      </div>
+
+      <div class="trust-card bg-gradient-to-b from-sky-50/80 to-teal-50/40 dark:from-slate-800 dark:to-sky-950/30 p-6 rounded-2xl flex flex-col items-center text-center gap-3 border border-sky-200/80 dark:border-sky-900/50 shadow-xs">
+        <div class="p-3.5 rounded-2xl bg-sky-600 text-white shadow-md shadow-sky-500/20">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><polygon points="12 12 22 12 22 17 12 17 12 12"/><circle cx="17" cy="21" r="2"/><circle cx="7" cy="21" r="2"/></svg>
+        </div>
+        <h3 class="font-extrabold text-slate-900 dark:text-white text-base">{{ section.settings.trust_2_title }}</h3>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-medium">{{ section.settings.trust_2_desc }}</p>
+      </div>
+
+      <div class="trust-card bg-gradient-to-b from-amber-50/80 to-orange-50/40 dark:from-slate-800 dark:to-amber-950/30 p-6 rounded-2xl flex flex-col items-center text-center gap-3 border border-amber-200/80 dark:border-amber-900/50 shadow-xs">
+        <div class="p-3.5 rounded-2xl bg-amber-500 text-white shadow-md shadow-amber-500/20">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+        </div>
+        <h3 class="font-extrabold text-slate-900 dark:text-white text-base">{{ section.settings.trust_3_title }}</h3>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-medium">{{ section.settings.trust_3_desc }}</p>
+      </div>
+
+      <div class="trust-card bg-gradient-to-b from-emerald-50/80 to-teal-50/40 dark:from-slate-800 dark:to-emerald-950/30 p-6 rounded-2xl flex flex-col items-center text-center gap-3 border border-emerald-200/80 dark:border-emerald-900/50 shadow-xs">
+        <div class="p-3.5 rounded-2xl bg-emerald-600 text-white shadow-md shadow-emerald-500/20">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+        </div>
+        <h3 class="font-extrabold text-slate-900 dark:text-white text-base">{{ section.settings.trust_4_title }}</h3>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-medium">{{ section.settings.trust_4_desc }}</p>
+      </div>
+    </div>
+
+    <!-- FAQ Accordion -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-start">
+      <div class="lg:col-span-1">
+        <span class="inline-block text-xs font-black uppercase tracking-widest bg-gradient-to-r from-sky-600 to-indigo-600 text-white px-4 py-1.5 rounded-full shadow-sm mb-3">
+          {{ section.settings.faq_badge }}
+        </span>
+        <h2 class="text-3xl font-black text-slate-900 dark:text-white tracking-tight">
+          {{ section.settings.faq_title_prefix }} <span class="bg-gradient-to-r from-sky-600 to-indigo-600 bg-clip-text text-transparent">{{ section.settings.faq_title_highlight }}</span>
+        </h2>
+        <p class="mt-3 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+          {{ section.settings.faq_subtitle }}
+        </p>
+      </div>
+
+      <div class="lg:col-span-2 bg-gradient-to-br from-white via-sky-50/20 to-indigo-50/30 dark:from-slate-800 dark:via-slate-800 dark:to-indigo-950/20 rounded-3xl border border-sky-200/60 dark:border-slate-700/80 overflow-hidden shadow-md divide-y divide-sky-100 dark:divide-slate-700" id="faq-list">
+        {% for block in section.blocks %}
+          {% if block.type == 'faq' %}
+            <div class="border-0" {{ block.shopify_attributes }}>
+              <button type="button" onclick="toggleFaq({{ forloop.index0 }})" class="w-full flex items-center justify-between gap-4 px-6 py-5 text-right font-extrabold text-slate-900 dark:text-white text-sm sm:text-base cursor-pointer hover:bg-sky-50/40 dark:hover:bg-slate-700/30 transition-colors">
+                <span>{{ block.settings.question }}</span>
+                <span class="faq-icon shrink-0 w-6 h-6 rounded-full bg-sky-100 dark:bg-slate-700 flex items-center justify-center text-sky-600 dark:text-sky-400 transition-transform {% if forloop.first %}rotate-45{% endif %}">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </span>
+              </button>
+              <div class="faq-answer px-6 {% if forloop.first %}max-h-48 opacity-100 pb-5{% else %}max-h-0 opacity-0{% endif %}">
+                <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">{{ block.settings.answer }}</p>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Trust Cards & FAQ",
+  "settings": [
+    { "type": "text", "id": "trust_1_title", "label": "Trust Card 1 Title", "default": "دفع آمن" },
+    { "type": "text", "id": "trust_1_desc", "label": "Trust Card 1 Subtitle", "default": "بياناتك مشفّرة ومحمية بالكامل" },
+    { "type": "text", "id": "trust_2_title", "label": "Trust Card 2 Title", "default": "شحن سريع" },
+    { "type": "text", "id": "trust_2_desc", "label": "Trust Card 2 Subtitle", "default": "توصيل سريع في جميع أنحاء المملكة" },
+    { "type": "text", "id": "trust_3_title", "label": "Trust Card 3 Title", "default": "جودة فاخرة" },
+    { "type": "text", "id": "trust_3_desc", "label": "Trust Card 3 Subtitle", "default": "مصنوع من رغوة EVA عالية الجودة" },
+    { "type": "text", "id": "trust_4_title", "label": "Trust Card 4 Title", "default": "استرجاع سهل" },
+    { "type": "text", "id": "trust_4_desc", "label": "Trust Card 4 Subtitle", "default": "سياسة استرجاع مريحة لمدة 14 يوم" },
+    { "type": "text", "id": "faq_badge", "label": "FAQ Badge Text", "default": "الأسئلة الشائعة" },
+    { "type": "text", "id": "faq_title_prefix", "label": "FAQ Title Prefix", "default": "كل ما تحتاج" },
+    { "type": "text", "id": "faq_title_highlight", "label": "FAQ Title Highlight", "default": "معرفته" },
+    { "type": "textarea", "id": "faq_subtitle", "label": "FAQ Subtitle", "default": "لديك أسئلة حول المقاسات أو التوصيل أو الاسترجاع؟ نحن هنا للمساعدة. تواصل معنا عبر واتساب في أي وقت." }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ Item",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "كم يستغرق وقت الشحن؟" },
+        { "type": "textarea", "id": "answer", "label": "Answer", "default": "نقدّم شحناً سريعاً في جميع أنحاء المملكة العربية السعودية. تُعالج الطلبات خلال 24 ساعة وتُوصَّل مباشرة إلى باب منزلك خلال 2-4 أيام عمل." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust Cards & FAQ",
+      "blocks": [
+        { "type": "faq", "settings": { "question": "كم يستغرق وقت الشحن؟", "answer": "نقدّم شحناً سريعاً في جميع أنحاء المملكة العربية السعودية. تُعالج الطلبات خلال 24 ساعة وتُوصَّل مباشرة إلى باب منزلك خلال 2-4 أيام عمل." } },
+        { "type": "faq", "settings": { "question": "ما هي سياسة الاسترجاع؟", "answer": "نقدّم سياسة استرجاع سهلة لمدة 14 يوماً. إذا لم يناسبك الحذاء أو لم تكن راضياً تماماً، تواصل معنا عبر واتساب لاسترجاع أو استبدال سهل." } },
+        { "type": "faq", "settings": { "question": "كيف أختار المقاس الصحيح؟", "answer": "أحذيتنا تتبع المقاسات الأوروبية القياسية. إذا كنت بين مقاسين أو تفضّل مقاساً أوسع، ننصح بأخذ مقاس أكبر. راجع دليل المقاسات للقياسات الدقيقة." } },
+        { "type": "faq", "settings": { "question": "كيف أنظّف الحذاء؟", "answer": "فقط اشطفه بالماء والصابون الخفيف. مادة EVA مقاومة للماء وسريعة الجفاف، لذلك سيكون حذاؤك جاهزاً للارتداء مجدداً في دقائق." } },
+        { "type": "faq", "settings": { "question": "ما هي المواد المستخدمة؟", "answer": "مصنوع من رغوة EVA مقولبة في قطعة واحدة — خفيف الوزن ومتين وخالٍ من المواد الكيميائية الضارة. يتميّز النعل الخارجي بملمس مضاد للانزلاق لضمان السلامة على جميع الأسطح." } },
+        { "type": "faq", "settings": { "question": "هل يوجد ضمان؟", "answer": "كل زوج تأتي مع ضمان سنتين ضد عيوب التصنيع. إذا واجهت أي مشكلة، تواصل مع فريق الدعم للحصول على بديل." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

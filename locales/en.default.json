@@ -1,0 +1,22 @@
+{
+  "general": {
+    "store_title": "Khatwa - Cross Classic Star Clogs",
+    "shop_now": "Shop Now",
+    "buy_now": "Buy Now — Fast Shipping",
+    "order_now": "Order Now",
+    "submit_order": "Confirm Order",
+    "order_submitting": "Submitting Order...",
+    "free_shipping": "Free",
+    "fast_delivery": "Fast Shipping"
+  },
+  "product": {
+    "reviews_count": "Verified Reviews",
+    "discount": "Discount",
+    "save": "Save",
+    "color": "Color",
+    "size": "Size",
+    "quantity": "Quantity",
+    "size_guide": "Size Guide",
+    "select_size_error": "Please select a size before ordering."
+  }
+}

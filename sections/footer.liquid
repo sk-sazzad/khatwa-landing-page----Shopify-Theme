@@ -1,50 +1,36 @@
-<footer class="bg-slate-900 text-slate-300 pt-12 pb-12 border-t border-slate-800 text-right">
+{% comment %}
+  Footer Section
+{% endcomment %}
+
+<footer class="bg-slate-900 text-slate-300 pt-12 pb-12 border-t border-slate-800">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex flex-col sm:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-800">
-      <!-- Brand -->
       <div class="space-y-2 text-center sm:text-right">
-        <a href="#top" class="text-2xl sm:text-3xl font-black text-white tracking-tight inline-block">
-          {{ section.settings.brand_title | default: 'خطوة' }}
+        <a href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" class="text-2xl sm:text-3xl font-black text-white tracking-tight inline-block">
+          {{ section.settings.brand_name }}
         </a>
         <p class="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-md">
-          {{ section.settings.brand_desc | default: 'أحذية إيفا الفاخرة المصممة لراحتك اليومية. مقاومة للماء، ذات تهوية فائقة، خفيفة الوزن، ومصنوعة لتدوم طويلاً.' }}
+          {{ section.settings.brand_description }}
         </p>
       </div>
     </div>
-
-    <!-- Bottom Copyright -->
     <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-      <p>{{ section.settings.copyright_text | default: '© 2026 جميع الحقوق محفوظة لـ كروس كلاسيك السعودية.' }}</p>
+      <p id="footer-year">© {{ 'now' | date: "%Y" }} {{ section.settings.copyright_text }}</p>
     </div>
   </div>
 </footer>
 
 {% schema %}
 {
-  "name": "الفوتر والفوتر السفلي",
+  "name": "Footer",
   "settings": [
-    {
-      "type": "text",
-      "id": "brand_title",
-      "label": "عنوان المتجر بالفوتر",
-      "default": "خطوة"
-    },
-    {
-      "type": "textarea",
-      "id": "brand_desc",
-      "label": "الوصف المختصر بالفوتر",
-      "default": "أحذية إيفا الفاخرة المصممة لراحتك اليومية. مقاومة للماء، ذات تهوية فائقة، خفيفة الوزن، ومصنوعة لتدوم طويلاً."
-    },
-    {
-      "type": "text",
-      "id": "copyright_text",
-      "label": "نص الحقوق والمحفوظات",
-      "default": "© 2026 جميع الحقوق محفوظة لـ كروس كلاسيك السعودية."
-    }
+    { "type": "text", "id": "brand_name", "label": "Brand Name", "default": "خطوة" },
+    { "type": "textarea", "id": "brand_description", "label": "Brand Description", "default": "أحذية EVA الفاخرة مصممة للراحة اليومية. مقاومة للماء وخفيفة الوزن وتدوم طويلاً." },
+    { "type": "text", "id": "copyright_text", "label": "Copyright Text", "default": "Cross Classic المملكة العربية السعودية. جميع الحقوق محفوظة." }
   ],
   "presets": [
     {
-      "name": "الفوتر والفوتر السفلي"
+      "name": "Footer"
     }
   ]
 }

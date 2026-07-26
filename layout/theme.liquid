@@ -1,57 +1,55 @@
-<!doctype html>
-<html class="no-js" lang="{{ request.locale.iso_code | default: 'ar' }}" dir="rtl">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="theme-color" content="{{ settings.color_primary | default: '#2563eb' }}">
-    <link rel="canonical" href="{{ canonical_url }}">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page_title }}{% if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}{% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}</title>
 
-    {%- if settings.favicon != blank -%}
-      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
-    {%- endif -%}
+  {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
 
-    <title>
-      {{ page_title }}
-      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
-      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
-    </title>
+  <!-- Fonts & Tailwind -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: 'class' };
+  </script>
 
-    {% if page_description %}
-      <meta name="description" content="{{ page_description | escape }}">
-    {% endif %}
+  <!-- Theme CSS & JS -->
+  {{ 'theme.css' | asset_url | stylesheet_tag }}
+  {{ 'theme.js' | asset_url | script_tag }}
 
-    <!-- Cairo Arabic Google Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  {{ content_for_header }}
+</head>
+<body class="min-h-screen bg-gradient-to-b from-blue-50/80 via-indigo-50/50 to-amber-50/50 dark:from-slate-950 dark:via-indigo-950/50 dark:to-slate-950 text-slate-900 dark:text-slate-100 font-sans antialiased relative overflow-x-hidden transition-colors duration-300">
 
-    {{ content_for_header }}
+  <!-- Background Orbs -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden" style="z-index:-10">
+    <div class="absolute -top-32 -right-32 w-96 h-96 bg-blue-500/25 dark:bg-blue-600/15 rounded-full blur-3xl animate-pulse"></div>
+    <div class="absolute top-1/4 -left-32 w-96 h-96 bg-purple-500/25 dark:bg-purple-600/15 rounded-full blur-3xl"></div>
+    <div class="absolute top-1/2 right-1/4 bg-rose-400/20 dark:bg-rose-600/10 rounded-full blur-3xl" style="width:32rem;height:32rem"></div>
+    <div class="absolute top-3/4 -right-20 w-96 h-96 bg-teal-400/20 dark:bg-teal-600/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-10 left-10 w-96 h-96 bg-amber-400/20 dark:bg-amber-600/10 rounded-full blur-3xl"></div>
+  </div>
 
-    <!-- Theme Stylesheet -->
-    {{ 'theme.css' | asset_url | stylesheet_tag }}
-  </head>
-  <body class="bg-gradient-to-b from-blue-50/80 via-indigo-50/50 via-purple-50/60 via-rose-50/40 to-amber-50/50 text-slate-900 font-sans antialiased relative min-h-screen">
-    
-    <!-- Global Floating Background Orbs -->
-    <div class="fixed inset-0 pointer-events-none overflow-hidden -z-10">
-      <div class="absolute -top-32 -right-32 w-96 h-96 bg-blue-500/25 rounded-full blur-3xl animate-pulse"></div>
-      <div class="absolute top-1/4 -left-32 w-96 h-96 bg-purple-500/25 rounded-full blur-3xl"></div>
-      <div class="absolute top-1/2 right-1/4 w-[32rem] h-[32rem] bg-rose-400/20 rounded-full blur-3xl"></div>
-      <div class="absolute top-3/4 -right-20 w-96 h-96 bg-teal-400/20 rounded-full blur-3xl"></div>
-      <div class="absolute bottom-10 left-10 w-96 h-96 bg-amber-400/20 rounded-full blur-3xl"></div>
-    </div>
+  <!-- Announcement Bar & Header Sections -->
+  {% section 'announcement-bar' %}
+  {% section 'header' %}
 
-    <main id="MainContent" role="main" tabindex="-1">
-      {{ content_for_layout }}
-    </main>
+  <!-- Main Content -->
+  <main id="MainContent" role="main" class="focus-none">
+    {{ content_for_layout }}
+  </main>
 
-    <!-- Theme Scripts -->
-    {{ 'theme.js' | asset_url | script_tag }}
-    {{ 'announcement-bar.js' | asset_url | script_tag }}
-    {{ 'sticky-cta.js' | asset_url | script_tag }}
-    {{ 'size-guide-modal.js' | asset_url | script_tag }}
-    {{ 'order-checkout.js' | asset_url | script_tag }}
-  </body>
+  <!-- Footer Section -->
+  {% section 'footer' %}
+
+  <!-- Snippets / Modals -->
+  {% render 'size-guide-modal' %}
+  {% render 'sticky-cta' %}
+
+</body>
 </html>

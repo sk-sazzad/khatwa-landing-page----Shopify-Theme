@@ -1,0 +1,250 @@
+{% comment %}
+  Hero Product Section with gallery, countdown timer, swatches & CTAs
+{% endcomment %}
+
+<section id="top" class="py-8 lg:py-16 relative overflow-hidden">
+  <div class="absolute top-10 right-1/4 w-96 h-96 bg-blue-500/15 dark:bg-blue-600/10 rounded-full blur-3xl pointer-events-none" style="z-index:-1"></div>
+  <div class="absolute bottom-10 left-10 w-96 h-96 bg-purple-500/15 dark:bg-purple-600/10 rounded-full blur-3xl pointer-events-none" style="z-index:-1"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+
+      <!-- Gallery -->
+      <div class="flex flex-col-reverse sm:flex-row gap-4">
+        <!-- Thumbnails -->
+        <div id="thumbnails" class="flex sm:flex-col gap-2.5 overflow-x-auto pb-2 sm:pb-0 scrollbar-none">
+          {% for block in section.blocks %}
+            {% if block.type == 'image_slide' %}
+              <button type="button" onclick="setImage({{ forloop.index0 }})" class="relative w-16 h-16 sm:w-20 sm:h-20 aspect-square rounded-xl overflow-hidden border bg-white shrink-0 cursor-pointer transition-all duration-300 hero-thumb-btn {% if forloop.first %}border-blue-600 ring-4 ring-blue-500/30 opacity-100 scale-105 shadow-md{% else %}border-slate-200 opacity-70 hover:opacity-100{% endif %}">
+                <img src="{{ block.settings.image_url }}" alt="صورة مصغرة {{ forloop.index }}" class="w-full h-full object-contain object-center p-2" />
+                {% if forloop.first %}
+                  <div class="absolute bottom-1 left-1 w-2.5 h-2.5 rounded-full bg-blue-600 border-2 border-white"></div>
+                {% endif %}
+              </button>
+            {% endif %}
+          {% endfor %}
+        </div>
+
+        <!-- Main Image -->
+        <div class="relative flex-1 p-px bg-gradient-to-tr from-blue-500 via-indigo-500 via-purple-500 to-rose-500 rounded-3xl shadow-2xl shadow-indigo-500/20 group" style="border-radius:2rem">
+          <div class="relative aspect-square rounded-3xl bg-white overflow-hidden flex items-center justify-center w-full p-4 lg:p-6" style="border-radius:1.85rem">
+            <div class="absolute inset-8 bg-gradient-to-tr from-blue-400/10 via-indigo-400/15 to-purple-400/10 rounded-full blur-2xl pointer-events-none"></div>
+            <div id="img-skeleton" class="absolute inset-0 bg-slate-50 skeleton z-20 rounded-3xl hidden"></div>
+            
+            {% assign first_block = section.blocks | where: "type", "image_slide" | first %}
+            {% assign total_images = section.blocks | where: "type", "image_slide" | size %}
+            <img id="main-img" 
+                 src="{{ first_block.settings.image_url }}" 
+                 data-total-images="{{ total_images }}"
+                 {% for block in section.blocks %}{% if block.type == 'image_slide' %}data-img-{{ forloop.index0 }}="{{ block.settings.image_url }}"{% endif %}{% endfor %}
+                 alt="{{ section.settings.title }}" 
+                 class="img-main w-full h-full object-contain object-center z-10 select-none drop-shadow-xl" style="border-radius:1.85rem" />
+
+            <!-- Badges -->
+            <div class="absolute top-4 right-4 z-20 flex flex-col items-start gap-1">
+              <span class="bg-gradient-to-r from-red-600 to-rose-500 text-white text-xs font-black px-3.5 py-1.5 rounded-full shadow-lg tracking-wider uppercase flex items-center gap-1.5">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation:spin 6s linear infinite"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+                {{ section.settings.discount_tag }}
+              </span>
+              <span class="bg-emerald-600/90 backdrop-blur-md text-white text-xs font-bold px-2.5 py-0.5 rounded-full shadow-sm">{{ section.settings.save_tag }}</span>
+            </div>
+            <div class="absolute top-4 left-4 z-20 hidden sm:flex items-center gap-1.5 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md text-slate-800 dark:text-slate-200 border border-white/40 dark:border-slate-700/60 text-xs font-black px-3 py-1.5 rounded-full shadow-md">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-indigo-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg>
+              <span>{{ section.settings.feature_badge_1 }}</span>
+            </div>
+            <div class="absolute bottom-4 right-4 z-20 hidden sm:flex items-center gap-1.5 bg-blue-600/90 backdrop-blur-md text-white text-xs font-extrabold px-3 py-1.5 rounded-full shadow-md">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>
+              <span>{{ section.settings.feature_badge_2 }}</span>
+            </div>
+
+            <!-- Nav arrows -->
+            <button type="button" onclick="prevImg()" aria-label="الصورة السابقة" class="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/90 dark:bg-slate-900/90 text-slate-800 dark:text-slate-100 shadow-lg border border-slate-200 dark:border-slate-700 flex items-center justify-center opacity-80 hover:opacity-100 hover:scale-110 active:scale-95 transition-all cursor-pointer">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+            <button type="button" onclick="nextImg()" aria-label="الصورة التالية" class="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/90 dark:bg-slate-900/90 text-slate-800 dark:text-slate-100 shadow-lg border border-slate-200 dark:border-slate-700 flex items-center justify-center opacity-80 hover:opacity-100 hover:scale-110 active:scale-95 transition-all cursor-pointer">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Details -->
+      <div class="flex flex-col gap-6">
+        <!-- Rating -->
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <div class="flex text-amber-400">
+              {% for i in (1..5) %}
+                <svg class="w-4 h-4 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              {% endfor %}
+            </div>
+            <span class="text-sm font-extrabold text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/60 px-2.5 py-0.5 rounded-full border border-amber-200/60 dark:border-amber-800/60">
+              <span id="hero-rating">{{ section.settings.rating_score }}</span> ★ <span id="hero-reviews">{{ section.settings.reviews_count }}</span> تقييم موثّق
+            </span>
+          </div>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 dark:text-white leading-tight">
+            {{ section.settings.title_prefix }} <span class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">{{ section.settings.title_highlight }}</span>
+          </h1>
+        </div>
+
+        <!-- Flash Sale Card -->
+        <div class="relative overflow-hidden bg-gradient-to-br from-rose-500/10 via-amber-500/10 to-purple-500/10 dark:from-rose-950/40 dark:via-amber-950/40 dark:to-purple-950/40 p-5 rounded-3xl border-2 border-rose-500/40 dark:border-rose-500/50 shadow-xl shadow-rose-500/10 space-y-3.5">
+          <div class="flex items-center justify-between flex-wrap gap-2 pb-3 border-b border-rose-200/60 dark:border-rose-900/60">
+            <div class="flex items-center gap-2">
+              <span class="p-1.5 rounded-lg bg-rose-600 text-white animate-pulse">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-white" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              </span>
+              <span class="text-xs sm:text-sm font-black uppercase tracking-wider bg-gradient-to-r from-rose-600 via-amber-600 to-purple-600 bg-clip-text text-transparent">{{ section.settings.sale_banner_title }}</span>
+            </div>
+            <div class="flex items-center gap-1.5 bg-white/90 dark:bg-slate-900/90 px-3 py-1 rounded-full border border-rose-200 dark:border-rose-900 shadow-xs text-xs font-mono font-black text-rose-600 dark:text-rose-400">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-rose-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation:spin 8s linear infinite"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span id="countdown" data-seconds="{{ section.settings.countdown_seconds }}">03h : 42m : 18s</span>
+            </div>
+          </div>
+          <div class="flex items-baseline justify-between flex-wrap gap-3">
+            <div class="flex items-baseline gap-3">
+              <span class="text-4xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight">{{ section.settings.price }} <span class="text-2xl font-black text-rose-600 dark:text-rose-400">ر.س</span></span>
+              <span class="text-xl text-slate-400 dark:text-slate-500 line-through font-bold">{{ section.settings.compare_price }} ر.س</span>
+            </div>
+            <span class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white text-xs font-black px-3.5 py-1.5 rounded-full shadow-md animate-bounce">{{ section.settings.savings_badge }}</span>
+          </div>
+          <div class="space-y-1.5 pt-1">
+            <div class="flex items-center justify-between text-xs font-extrabold text-slate-700 dark:text-slate-300">
+              <span class="text-amber-600 dark:text-amber-400 font-black">نُفِّذ {{ section.settings.stock_percent }}%</span>
+            </div>
+            <div class="w-full h-3 rounded-full bg-slate-200/80 dark:bg-slate-700 overflow-hidden p-0.5 shadow-inner relative">
+              <div id="stock-bar" class="h-full rounded-full bg-gradient-to-r from-amber-500 via-rose-500 to-purple-600 transition-all duration-1000 ease-out relative overflow-hidden shadow-sm" style="width:0%">
+                <div class="absolute inset-0 bg-white/30 pulse-white"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Color Swatches -->
+        <div>
+          <div class="flex items-center justify-between mb-2.5">
+            <span class="text-xs font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400">اللون</span>
+            <span id="selected-color-label" class="text-sm font-extrabold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 px-2.5 py-0.5 rounded-full border border-blue-200/60 dark:border-blue-800/60">أبيض عاجي</span>
+          </div>
+          <div id="hero-colors" class="flex items-center gap-3 flex-wrap">
+            {% for block in section.blocks %}
+              {% if block.type == 'color_swatch' %}
+                <button type="button" 
+                        onclick="selectColor('{{ block.settings.color_name }}', {{ block.settings.image_index }})"
+                        data-color-name="{{ block.settings.color_name }}"
+                        title="{{ block.settings.color_name }}"
+                        style="background-color: {{ block.settings.color_hex }}"
+                        class="color-swatch-btn w-9 h-9 rounded-full border-2 transition-all cursor-pointer relative shadow-sm {% if forloop.first %}ring-4 ring-blue-500/40 border-white dark:border-slate-800 scale-110 shadow-md{% else %}border-slate-300 dark:border-slate-700 hover:scale-105{% endif %}">
+                </button>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- Sizes -->
+        <div>
+          <div class="flex items-center justify-between mb-2.5">
+            <span class="text-xs font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400">المقاس</span>
+            <button type="button" onclick="openSizeGuide()" class="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline cursor-pointer">دليل المقاسات والقياسات</button>
+          </div>
+          <div id="hero-sizes" class="grid grid-cols-4 gap-2">
+            {% assign sizes = "EU 36,EU 37,EU 38,EU 39/40,EU 41,EU 42/43,EU 44,EU 45" | split: "," %}
+            {% for sz in sizes %}
+              <button type="button" onclick="selectSize('{{ sz }}')" data-size-value="{{ sz }}" class="size-select-btn py-2.5 px-3 rounded-xl border text-sm font-black transition-all cursor-pointer border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:border-blue-400">
+                {{ sz }}
+              </button>
+            {% endfor %}
+          </div>
+          <p id="size-error" class="text-red-500 text-xs font-bold mt-2 animate-bounce hidden">الرجاء اختيار المقاس قبل الطلب.</p>
+        </div>
+
+        <!-- CTA -->
+        <div class="pt-2">
+          <button type="button" onclick="heroBuyNow()" class="w-full bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-400 hover:from-emerald-300 hover:to-teal-300 text-slate-950 font-black py-4 px-8 rounded-full text-lg tracking-wide shadow-xl shadow-emerald-500/25 hover:shadow-2xl transition-all active:scale-99 cursor-pointer flex items-center justify-center gap-2 border border-emerald-300/50">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-slate-950 text-slate-950" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            <span>{{ section.settings.buy_button_text }}</span>
+          </button>
+        </div>
+
+        <!-- Trust highlights -->
+        <div class="grid grid-cols-3 gap-2 pt-3 border-t border-slate-200/80 dark:border-slate-800 text-center">
+          <div class="flex flex-col items-center gap-1.5 p-2 rounded-xl bg-blue-50/50 dark:bg-blue-950/30 border border-blue-100/60 dark:border-blue-900/40">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-600 dark:text-blue-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+            <span class="text-xs font-bold text-slate-700 dark:text-slate-300">{{ section.settings.trust_1 }}</span>
+          </div>
+          <div class="flex flex-col items-center gap-1.5 p-2 rounded-xl bg-purple-50/50 dark:bg-purple-950/30 border border-purple-100/60 dark:border-purple-900/40">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-purple-600 dark:text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><polygon points="12 12 22 12 22 17 12 17 12 12"/><circle cx="17" cy="21" r="2"/><circle cx="7" cy="21" r="2"/></svg>
+            <span class="text-xs font-bold text-slate-700 dark:text-slate-300">{{ section.settings.trust_2 }}</span>
+          </div>
+          <div class="flex flex-col items-center gap-1.5 p-2 rounded-xl bg-emerald-50/50 dark:bg-emerald-950/30 border border-emerald-100/60 dark:border-emerald-900/40">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-emerald-600 dark:text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+            <span class="text-xs font-bold text-slate-700 dark:text-slate-300">{{ section.settings.trust_3 }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Product Showcase",
+  "settings": [
+    { "type": "text", "id": "title_prefix", "label": "Title Prefix", "default": "كروس كلاسيك" },
+    { "type": "text", "id": "title_highlight", "label": "Title Highlight", "default": "ستار كلوجز" },
+    { "type": "text", "id": "rating_score", "label": "Rating Score", "default": "4.8" },
+    { "type": "text", "id": "reviews_count", "label": "Reviews Count", "default": "4,892" },
+    { "type": "text", "id": "discount_tag", "label": "Discount Tag", "default": "خصم 37%-" },
+    { "type": "text", "id": "save_tag", "label": "Save Tag", "default": "وفّر 30 ر.س" },
+    { "type": "text", "id": "feature_badge_1", "label": "Feature Badge 1", "default": "EVA خفيف الوزن" },
+    { "type": "text", "id": "feature_badge_2", "label": "Feature Badge 2", "default": "100% مقاوم للماء" },
+    { "type": "text", "id": "sale_banner_title", "label": "Sale Banner Title", "default": "تخفيض مجنون — عرض محدود الوقت" },
+    { "type": "text", "id": "countdown_seconds", "label": "Countdown Duration (Seconds)", "default": "13338" },
+    { "type": "text", "id": "price", "label": "Price", "default": "189" },
+    { "type": "text", "id": "compare_price", "label": "Compare at Price", "default": "299" },
+    { "type": "text", "id": "savings_badge", "label": "Savings Badge Text", "default": "وفّر 110 ر.س (خصم 37%)" },
+    { "type": "text", "id": "stock_percent", "label": "Stock Sold Percent", "default": "67" },
+    { "type": "text", "id": "buy_button_text", "label": "Buy Button Text", "default": "اشترِ الآن — توصيل سريع" },
+    { "type": "text", "id": "trust_1", "label": "Trust Item 1", "default": "ضمان سنتين" },
+    { "type": "text", "id": "trust_2", "label": "Trust Item 2", "default": "توصيل سريع" },
+    { "type": "text", "id": "trust_3", "label": "Trust Item 3", "default": "استرجاع سهل" }
+  ],
+  "blocks": [
+    {
+      "type": "image_slide",
+      "name": "Gallery Image",
+      "settings": [
+        { "type": "text", "id": "image_url", "label": "Image URL", "default": "https://media.base44.com/images/public/user_69da7b6f0cdb618ca188b19b/b1ea75f66_O1CN01Q1qKXy1hiUaOYcOKo_2222575514311-0-cib.jpg" }
+      ]
+    },
+    {
+      "type": "color_swatch",
+      "name": "Color Swatch",
+      "settings": [
+        { "type": "text", "id": "color_name", "label": "Color Name", "default": "أبيض عاجي" },
+        { "type": "color", "id": "color_hex", "label": "Swatch Color", "default": "#F5F1E6" },
+        { "type": "number", "id": "image_index", "label": "Associated Image Index", "default": 0 }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Product Showcase",
+      "blocks": [
+        { "type": "image_slide", "settings": { "image_url": "https://media.base44.com/images/public/user_69da7b6f0cdb618ca188b19b/b1ea75f66_O1CN01Q1qKXy1hiUaOYcOKo_2222575514311-0-cib.jpg" } },
+        { "type": "image_slide", "settings": { "image_url": "https://media.base44.com/images/public/user_69da7b6f0cdb618ca188b19b/287d6c3b3_O1CN01gob97R1hiUaMmxo8f_2222575514311-0-cib.jpg" } },
+        { "type": "image_slide", "settings": { "image_url": "https://media.base44.com/images/public/user_69da7b6f0cdb618ca188b19b/59bfb8e9d_O1CN017aiW8p1hiUaLPdbIq_2222575514311-0-cib.jpg" } },
+        { "type": "image_slide", "settings": { "image_url": "https://media.base44.com/images/public/user_69da7b6f0cdb618ca188b19b/b421a6a2c_O1CN01HCvpOl1hiUaLIZID1_2222575514311-0-cib.jpg" } },
+        { "type": "image_slide", "settings": { "image_url": "https://media.base44.com/images/public/user_69da7b6f0cdb618ca188b19b/4e47017f8_O1CN01SB775K1hiUaLDUkEq_2222575514311-0-cib.jpg" } },
+        { "type": "image_slide", "settings": { "image_url": "https://media.base44.com/images/public/user_69da7b6f0cdb618ca188b19b/3bcedf80b_O1CN01zo2YXv1hiUaGi5sKi_2222575514311-0-cib.jpg" } },
+        { "type": "color_swatch", "settings": { "color_name": "أبيض عاجي", "color_hex": "#F5F1E6", "image_index": 0 } },
+        { "type": "color_swatch", "settings": { "color_name": "أبيض", "color_hex": "#F5F5F0", "image_index": 1 } },
+        { "type": "color_swatch", "settings": { "color_name": "أسود", "color_hex": "#3A3B3C", "image_index": 2 } },
+        { "type": "color_swatch", "settings": { "color_name": "أزرق داكن", "color_hex": "#2B3A55", "image_index": 5 } },
+        { "type": "color_swatch", "settings": { "color_name": "وردي", "color_hex": "#E8B5B5", "image_index": 4 } },
+        { "type": "color_swatch", "settings": { "color_name": "كاكي", "color_hex": "#A39171", "image_index": 3 } }
+      ]
+    }
+  ]
+}
+{% endschema %}

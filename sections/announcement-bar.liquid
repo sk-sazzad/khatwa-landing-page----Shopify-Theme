@@ -1,64 +1,45 @@
+{% comment %}
+  Announcement Bar Section with rotating slides & Theme Editor customization
+{% endcomment %}
+
 <div class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white h-10 flex items-center justify-center overflow-hidden relative shadow-sm text-xs sm:text-sm font-semibold tracking-wide">
-  {% if section.blocks.size > 0 %}
-    {% for block in section.blocks %}
-      <div
-        class="announcement-msg absolute flex items-center gap-2 transition-all duration-500 ease-in-out {% if forloop.first %}opacity-100 translate-y-0 scale-100 pointer-events-auto{% else %}opacity-0 -translate-y-3 scale-95 pointer-events-none{% endif %}"
-        data-index="{{ forloop.index0 }}"
-        {{ block.shopify_attributes }}
-      >
-        {% if block.settings.icon == 'truck' %}
-          <svg class="w-4 h-4 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1"/></svg>
-        {% elsif block.settings.icon == 'flame' %}
-          <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/></svg>
-        {% else %}
-          <svg class="w-4 h-4 text-yellow-400 fill-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        {% endif %}
-        <span>{{ block.settings.text }}</span>
-      </div>
-    {% endfor %}
-  {% else %}
-    <div class="announcement-msg flex items-center gap-2">
-      <span>توصيل سريع لجميع مدن المملكة — شحن إكسبريس</span>
+  {% for block in section.blocks %}
+    <div id="ann-{{ forloop.index0 }}" class="ann-item {% if forloop.first %}visible-ann{% else %}hidden-ann{% endif %}" {{ block.shopify_attributes }}>
+      {% if block.settings.icon == 'truck' %}
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-sky-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><polygon points="12 12 22 12 22 17 12 17 12 12"/><circle cx="17" cy="21" r="2"/><circle cx="7" cy="21" r="2"/></svg>
+      {% elsif block.settings.icon == 'fire' %}
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+      {% else %}
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-yellow-400" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      {% endif %}
+      <span>{{ block.settings.text }}</span>
     </div>
-  {% endif %}
+  {% endfor %}
 </div>
 
 {% schema %}
 {
-  "name": "شريط الإعلانات",
-  "settings": [
-    {
-      "type": "color",
-      "id": "bg_color",
-      "label": "لون الخلفية",
-      "default": "#2563eb"
-    },
-    {
-      "type": "color",
-      "id": "text_color",
-      "label": "لون النص",
-      "default": "#ffffff"
-    }
-  ],
+  "name": "Announcement Bar",
+  "settings": [],
   "blocks": [
     {
       "type": "announcement",
-      "name": "رسالة إعلانية",
+      "name": "Announcement",
       "settings": [
         {
           "type": "text",
           "id": "text",
-          "label": "نص الرسالة",
-          "default": "توصيل سريع لجميع مدن المملكة — شحن إكسبريس"
+          "label": "Announcement Text",
+          "default": "توصيل سريع في جميع أنحاء المملكة العربية السعودية — شحن سريع"
         },
         {
           "type": "select",
           "id": "icon",
-          "label": "الأيقونة",
+          "label": "Icon",
           "options": [
-            { "value": "truck", "label": "شاحنة توصيل" },
-            { "value": "flame", "label": "شعلة عرض" },
-            { "value": "star", "label": "نجمة تقييم" }
+            { "value": "truck", "label": "Truck / Delivery" },
+            { "value": "fire", "label": "Fire / Flame" },
+            { "value": "star", "label": "Star / Rating" }
           ],
           "default": "truck"
         }
@@ -67,26 +48,26 @@
   ],
   "presets": [
     {
-      "name": "شريط الإعلانات",
+      "name": "Announcement Bar",
       "blocks": [
         {
           "type": "announcement",
           "settings": {
-            "text": "توصيل سريع لجميع مدن المملكة — شحن إكسبريس",
+            "text": "توصيل سريع في جميع أنحاء المملكة العربية السعودية — شحن سريع",
             "icon": "truck"
           }
         },
         {
           "type": "announcement",
           "settings": {
-            "text": "عرض لفترة محدودة — وفر 37% اليوم فقط",
-            "icon": "flame"
+            "text": "عرض محدود — وفّر 37% اليوم فقط",
+            "icon": "fire"
           }
         },
         {
           "type": "announcement",
           "settings": {
-            "text": "راحة إيفا الفائقة · 4,892 تقييم موثق",
+            "text": "راحة EVA الفاخرة · 4,892 تقييم موثّق",
             "icon": "star"
           }
         }

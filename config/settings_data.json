@@ -1,7 +1,651 @@
 {
   "current": {
-    "color_primary": "#2563eb",
-    "color_secondary": "#4f46e5",
-    "color_background": "#f8fafc"
+    "store_name": "خطوة",
+    "currency_symbol": "ر.س",
+    "primary_color": "#2563eb",
+    "secondary_color": "#4f46e5",
+    "accent_color": "#e11d48",
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "settings": {},
+        "blocks": {
+          "ann-1": {
+            "type": "announcement",
+            "settings": {
+              "text": "توصيل سريع في جميع أنحاء المملكة العربية السعودية — شحن سريع",
+              "icon": "truck"
+            }
+          },
+          "ann-2": {
+            "type": "announcement",
+            "settings": {
+              "text": "عرض محدود — وفّر 37% اليوم فقط",
+              "icon": "fire"
+            }
+          },
+          "ann-3": {
+            "type": "announcement",
+            "settings": {
+              "text": "راحة EVA الفاخرة · 4,892 تقييم موثّق",
+              "icon": "star"
+            }
+          }
+        },
+        "block_order": [
+          "ann-1",
+          "ann-2",
+          "ann-3"
+        ]
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "logo_text": "خطوة",
+          "button_text": "تسوّق الآن"
+        }
+      },
+      "hero": {
+        "type": "hero-product",
+        "settings": {
+          "title_prefix": "كروس كلاسيك",
+          "title_highlight": "ستار كلوجز",
+          "rating_score": "4.8",
+          "reviews_count": "4,892",
+          "discount_tag": "خصم 37%-",
+          "save_tag": "وفّر 30 ر.س",
+          "feature_badge_1": "EVA خفيف الوزن",
+          "feature_badge_2": "100% مقاوم للماء",
+          "sale_banner_title": "تخفيض مجنون — عرض محدود الوقت",
+          "countdown_seconds": "13338",
+          "price": "189",
+          "compare_price": "299",
+          "savings_badge": "وفّر 110 ر.س (خصم 37%)",
+          "stock_percent": "67",
+          "buy_button_text": "اشترِ الآن — توصيل سريع",
+          "trust_1": "ضمان سنتين",
+          "trust_2": "توصيل سريع",
+          "trust_3": "استرجاع سهل"
+        },
+        "blocks": {
+          "img-1": {
+            "type": "image_slide",
+            "settings": {
+              "image_url": "https://media.base44.com/images/public/user_69da7b6f0cdb618ca188b19b/b1ea75f66_O1CN01Q1qKXy1hiUaOYcOKo_2222575514311-0-cib.jpg"
+            }
+          },
+          "img-2": {
+            "type": "image_slide",
+            "settings": {
+              "image_url": "https://media.base44.com/images/public/user_69da7b6f0cdb618ca188b19b/287d6c3b3_O1CN01gob97R1hiUaMmxo8f_2222575514311-0-cib.jpg"
+            }
+          },
+          "img-3": {
+            "type": "image_slide",
+            "settings": {
+              "image_url": "https://media.base44.com/images/public/user_69da7b6f0cdb618ca188b19b/59bfb8e9d_O1CN017aiW8p1hiUaLPdbIq_2222575514311-0-cib.jpg"
+            }
+          },
+          "img-4": {
+            "type": "image_slide",
+            "settings": {
+              "image_url": "https://media.base44.com/images/public/user_69da7b6f0cdb618ca188b19b/b421a6a2c_O1CN01HCvpOl1hiUaLIZID1_2222575514311-0-cib.jpg"
+            }
+          },
+          "img-5": {
+            "type": "image_slide",
+            "settings": {
+              "image_url": "https://media.base44.com/images/public/user_69da7b6f0cdb618ca188b19b/4e47017f8_O1CN01SB775K1hiUaLDUkEq_2222575514311-0-cib.jpg"
+            }
+          },
+          "img-6": {
+            "type": "image_slide",
+            "settings": {
+              "image_url": "https://media.base44.com/images/public/user_69da7b6f0cdb618ca188b19b/3bcedf80b_O1CN01zo2YXv1hiUaGi5sKi_2222575514311-0-cib.jpg"
+            }
+          },
+          "color-1": {
+            "type": "color_swatch",
+            "settings": {
+              "color_name": "أبيض عاجي",
+              "color_hex": "#F5F1E6",
+              "image_index": 0
+            }
+          },
+          "color-2": {
+            "type": "color_swatch",
+            "settings": {
+              "color_name": "أبيض",
+              "color_hex": "#F5F5F0",
+              "image_index": 1
+            }
+          },
+          "color-3": {
+            "type": "color_swatch",
+            "settings": {
+              "color_name": "أسود",
+              "color_hex": "#3A3B3C",
+              "image_index": 2
+            }
+          },
+          "color-4": {
+            "type": "color_swatch",
+            "settings": {
+              "color_name": "أزرق داكن",
+              "color_hex": "#2B3A55",
+              "image_index": 5
+            }
+          },
+          "color-5": {
+            "type": "color_swatch",
+            "settings": {
+              "color_name": "وردي",
+              "color_hex": "#E8B5B5",
+              "image_index": 4
+            }
+          },
+          "color-6": {
+            "type": "color_swatch",
+            "settings": {
+              "color_name": "كاكي",
+              "color_hex": "#A39171",
+              "image_index": 3
+            }
+          }
+        },
+        "block_order": [
+          "img-1",
+          "img-2",
+          "img-3",
+          "img-4",
+          "img-5",
+          "img-6",
+          "color-1",
+          "color-2",
+          "color-3",
+          "color-4",
+          "color-5",
+          "color-6"
+        ]
+      },
+      "features": {
+        "type": "feature-badges",
+        "settings": {},
+        "blocks": {
+          "feat-1": {
+            "type": "feature",
+            "settings": {
+              "title": "مقاوم للماء",
+              "icon": "water",
+              "card_bg_class": "bg-gradient-to-b from-blue-500/10 via-cyan-500/10 to-blue-500/5 dark:from-blue-950/40 dark:to-cyan-950/20",
+              "card_border_class": "border-blue-200 dark:border-blue-800/60",
+              "icon_bg_class": "bg-blue-100 dark:bg-blue-900/60"
+            }
+          },
+          "feat-2": {
+            "type": "feature",
+            "settings": {
+              "title": "خفيف الوزن",
+              "icon": "feather",
+              "card_bg_class": "bg-gradient-to-b from-indigo-500/10 via-purple-500/10 to-indigo-500/5 dark:from-indigo-950/40 dark:to-purple-950/20",
+              "card_border_class": "border-indigo-200 dark:border-indigo-800/60",
+              "icon_bg_class": "bg-indigo-100 dark:bg-indigo-900/60"
+            }
+          },
+          "feat-3": {
+            "type": "feature",
+            "settings": {
+              "title": "شبكي التهوية",
+              "icon": "wind",
+              "card_bg_class": "bg-gradient-to-b from-sky-500/10 via-teal-500/10 to-sky-500/5 dark:from-sky-950/40 dark:to-teal-950/20",
+              "card_border_class": "border-sky-200 dark:border-sky-800/60",
+              "icon_bg_class": "bg-sky-100 dark:bg-sky-900/60"
+            }
+          },
+          "feat-4": {
+            "type": "feature",
+            "settings": {
+              "title": "سريع الجفاف",
+              "icon": "sun",
+              "card_bg_class": "bg-gradient-to-b from-amber-500/10 via-orange-500/10 to-amber-500/5 dark:from-amber-950/40 dark:to-orange-950/20",
+              "card_border_class": "border-amber-200 dark:border-amber-800/60",
+              "icon_bg_class": "bg-amber-100 dark:bg-amber-900/60"
+            }
+          },
+          "feat-5": {
+            "type": "feature",
+            "settings": {
+              "title": "مانع للانزلاق",
+              "icon": "shield",
+              "card_bg_class": "bg-gradient-to-b from-emerald-500/10 via-green-500/10 to-emerald-500/5 dark:from-emerald-950/40 dark:to-green-950/20",
+              "card_border_class": "border-emerald-200 dark:border-emerald-800/60",
+              "icon_bg_class": "bg-emerald-100 dark:bg-emerald-900/60"
+            }
+          },
+          "feat-6": {
+            "type": "feature",
+            "settings": {
+              "title": "سهل التنظيف",
+              "icon": "sparkle",
+              "card_bg_class": "bg-gradient-to-b from-purple-500/10 via-pink-500/10 to-purple-500/5 dark:from-purple-950/40 dark:to-pink-950/20",
+              "card_border_class": "border-purple-200 dark:border-purple-800/60",
+              "icon_bg_class": "bg-purple-100 dark:bg-purple-900/60"
+            }
+          }
+        },
+        "block_order": [
+          "feat-1",
+          "feat-2",
+          "feat-3",
+          "feat-4",
+          "feat-5",
+          "feat-6"
+        ]
+      },
+      "story": {
+        "type": "product-story",
+        "settings": {
+          "badge_text": "مصمّم للراحة",
+          "title_prefix": "مصمّم لكل",
+          "title_highlight": "لحظة",
+          "subtitle": "من روتين الصباح إلى مغامرات الشاطئ — اكتشف لماذا كروس كلاسيك ستار كلوجز هو الحذاء الوحيد الذي ستحتاجه."
+        },
+        "blocks": {
+          "story-1": {
+            "type": "story_block",
+            "settings": {
+              "number": "01",
+              "title": "راحة قصوى",
+              "description": "مصمّم للارتداء طوال اليوم، يحتضن كروس كلاسيك ستار كلوجز قدمك برغوة EVA الناعمة والمرنة التي تتكيف مع كل خطوة. يوزّع نعل القدم المريح الضغط بشكل متساوٍ، حتى تبقى مرتاحاً من الصباح حتى المساء.",
+              "image_url": "https://media.base44.com/images/public/6a646958821430317adbf321/749895e7f_generated_7b449968.png",
+              "benefits": "نعل بيئي مريح,رغوة EVA ناعمة,تصميم يوزع الضغط",
+              "is_bleed": false
+            }
+          },
+          "story-2": {
+            "type": "story_block",
+            "settings": {
+              "number": "02",
+              "title": "ارتداء طوال اليوم",
+              "description": "سواء كنت في العمل أو تقضي مشاوير يومية أو تسترخي في المنزل، يمنحك هذا الحذاء راحة دائمة. بنيته الخفيفة تجعلك بالكاد تشعر به — ساعة بعد ساعة.",
+              "image_url": "https://media.base44.com/images/public/user_69da7b6f0cdb618ca188b19b/b1ea75f66_O1CN01Q1qKXy1hiUaOYcOKo_2222575514311-0-cib.jpg",
+              "benefits": "خفيف للغاية 500 جرام,وسادة هوائية طوال اليوم,لا يحتاج فترة تكيّف",
+              "is_bleed": false
+            }
+          },
+          "story-3": {
+            "type": "story_block",
+            "settings": {
+              "number": "03",
+              "title": "تصميم مقاوم للماء",
+              "description": "مصنوع من مادة EVA المقاومة للماء بشكل كامل. المطر أو الرشاشات أو جانب المسبح — قدماك تبقى جافة والحذاء يبقى نظيفاً.",
+              "image_url": "https://media.base44.com/images/public/6a646958821430317adbf321/749895e7f_generated_7b449968.png",
+              "benefits": "100% مقاوم للماء,سطح طارد للمياه,مثالي للمسبح والمطر",
+              "is_bleed": true
+            }
+          },
+          "story-4": {
+            "type": "story_block",
+            "settings": {
+              "number": "04",
+              "title": "بنية تهوية ممتازة",
+              "description": "فتحات التهوية المصممة بعناية تحافظ على تدفق الهواء، وتمنع تراكم الحرارة وتحافظ على قدميك باردتين وطازجتين حتى في أشد أيام الصيف حرارة.",
+              "image_url": "https://media.base44.com/images/public/6a646958821430317adbf321/4e9d15372_generated_765a4d6b.png",
+              "benefits": "فتحات تهوية,تدفق هواء مبرد,مقاوم للروائح",
+              "is_bleed": false
+            }
+          },
+          "story-5": {
+            "type": "story_block",
+            "settings": {
+              "number": "05",
+              "title": "وسادة ناعمة",
+              "description": "النعل الأوسط EVA بسماكة 2.5 سم يمتص الصدمات مع كل خطوة، ويقلل التعب ويحمي مفاصلك. ونعل خارجي مضاد للانزلاق يمسك بكل سطح — رطب أو جاف.",
+              "image_url": "https://media.base44.com/images/public/6a646958821430317adbf321/89195c20a_generated_a8c38b98.png",
+              "benefits": "امتصاص الصدمات,كعب مبطّن 2.5 سم,مانع للانزلاق",
+              "is_bleed": false
+            }
+          },
+          "story-6": {
+            "type": "story_block",
+            "settings": {
+              "number": "06",
+              "title": "مثالي للشاطئ",
+              "description": "الرمال والبحر والشمس — صُنع هذا الحذاء من أجل الشاطئ. رغوة EVA سريعة الجفاف تعني أنك تخرج من الماء وتمشي بكامل الراحة.",
+              "image_url": "https://media.base44.com/images/public/6a646958821430317adbf321/c39405eaf_generated_6bb8b354.png",
+              "benefits": "مقاوم للرمال,رغوة سريعة الجفاف,آمن لمياه البحر",
+              "is_bleed": true
+            }
+          },
+          "story-7": {
+            "type": "story_block",
+            "settings": {
+              "number": "07",
+              "title": "مثالي للحديقة",
+              "description": "حماية مغلقة من الأمام مع سهولة التنظيف. مثالي للبستنة والأعمال الخارجية أو التجوّل في الحديقة — الطين يُزال في ثوانٍ.",
+              "image_url": "https://media.base44.com/images/public/6a646958821430317adbf321/a7f2069dc_generated_c3db5b48.png",
+              "benefits": "حماية مغلقة,سطح مقاوم للطين,تنظيف بالشطف فقط",
+              "is_bleed": false
+            }
+          },
+          "story-8": {
+            "type": "story_block",
+            "settings": {
+              "number": "08",
+              "title": "تنظيف سهل",
+              "description": "بقع أو طين أو غبار؟ فقط اشطفه بالماء الجاري. مادة EVA المقولبة في قطعة واحدة بلا درزات لا تحبس الأوساخ — ينظف في ثوانٍ ويجف في دقائق.",
+              "image_url": "https://media.base44.com/images/public/user_69da7b6f0cdb618ca188b19b/287d6c3b3_O1CN01gob97R1hiUaMmxo8f_2222575514311-0-cib.jpg",
+              "benefits": "سطح يُشطف بسهولة,بلا درزات ولا أوساخ مختبئة,يجف في دقائق",
+              "is_bleed": false
+            }
+          }
+        },
+        "block_order": [
+          "story-1",
+          "story-2",
+          "story-3",
+          "story-4",
+          "story-5",
+          "story-6",
+          "story-7",
+          "story-8"
+        ]
+      },
+      "social_proof": {
+        "type": "social-proof",
+        "settings": {
+          "badge_text": "موثوق به عالميًا"
+        },
+        "blocks": {
+          "stat-1": {
+            "type": "stat",
+            "settings": {
+              "target_number": 48920,
+              "number_suffix": "+",
+              "label": "عميل سعيد"
+            }
+          },
+          "stat-2": {
+            "type": "stat",
+            "settings": {
+              "target_number": 127500,
+              "number_suffix": "+",
+              "label": "طلب تم توصيله"
+            }
+          },
+          "stat-3": {
+            "type": "stat",
+            "settings": {
+              "target_number": 4892,
+              "number_suffix": "",
+              "label": "تقييم إيجابي"
+            }
+          },
+          "stat-4": {
+            "type": "stat",
+            "settings": {
+              "target_number": 15,
+              "number_suffix": "",
+              "label": "دولة نخدمها"
+            }
+          }
+        },
+        "block_order": [
+          "stat-1",
+          "stat-2",
+          "stat-3",
+          "stat-4"
+        ]
+      },
+      "reviews": {
+        "type": "reviews",
+        "settings": {
+          "badge_text": "آراء العملاء",
+          "title_prefix": "يحبّه",
+          "title_highlight": "الآلاف",
+          "average_rating": "4.8",
+          "total_reviews_count": "4,892",
+          "star_5_percent": 87,
+          "star_4_percent": 12,
+          "star_3_percent": 1
+        },
+        "blocks": {
+          "rev-1": {
+            "type": "review",
+            "settings": {
+              "author": "أحمد القحطاني",
+              "location": "الرياض",
+              "date": "منذ أسبوعين",
+              "rating": 5,
+              "is_verified": true,
+              "title": "أفضل حذاء اشتريته في حياتي",
+              "body": "بصراحة، أكثر الأحذية راحةً اشتريتها منذ سنوات. أرتديه في المنزل وفي المسجد وحتى للتسوق. اللون الأبيض العاجي يبدو فاخراً جداً والحذاء خفيف جداً حتى تنسى أنك ترتديه.",
+              "color": "أبيض عاجي",
+              "size": "EU 42/43"
+            }
+          },
+          "rev-2": {
+            "type": "review",
+            "settings": {
+              "author": "فاطمة العتيبي",
+              "location": "جدة",
+              "date": "منذ 3 أسابيع",
+              "rating": 5,
+              "is_verified": true,
+              "title": "مثالي للاستخدام اليومي",
+              "body": "اشتريته للبستنة وانتهى بي الأمر أرتديه في كل مكان. سهل التنظيف جداً — فقط اشطفه ويعود كالجديد. اللون الكاكي جميل جداً في الواقع.",
+              "color": "كاكي",
+              "size": "EU 38"
+            }
+          },
+          "rev-3": {
+            "type": "review",
+            "settings": {
+              "author": "خالد الحربي",
+              "location": "الدمام",
+              "date": "منذ شهر",
+              "rating": 5,
+              "is_verified": true,
+              "title": "مريح وخفيف الوزن",
+              "body": "كنت متشككاً في البداية لكن هذا بالفعل أكثر الأحذية الخفيفة التي أملكها. النعل المانع للانزلاق رائع على البلاط المبلل. طلبت زوجة ثانية لأخي.",
+              "color": "أسود",
+              "size": "EU 44"
+            }
+          },
+          "rev-4": {
+            "type": "review",
+            "settings": {
+              "author": "نورة السبيعي",
+              "location": "الرياض",
+              "date": "منذ شهر",
+              "rating": 4,
+              "is_verified": true,
+              "title": "رائع للحديقة",
+              "body": "أحب اللون الوردي وسهولة تنظيفه بعد البستنة. أخذت نجمة واحدة لأنني احتجت أخذ مقاساً أكبر — تأكد من مراجعة دليل المقاسات.",
+              "color": "وردي",
+              "size": "EU 37"
+            }
+          },
+          "rev-5": {
+            "type": "review",
+            "settings": {
+              "author": "سالم الغامدي",
+              "location": "مكة المكرمة",
+              "date": "منذ شهر",
+              "rating": 5,
+              "is_verified": true,
+              "title": "يستحق كل ريال",
+              "body": "كان التوصيل سريعاً — وصل خلال يومين. الجودة ممتازة مقارنة بالسعر. جربت ماركات غالية من قبل وهذا لا يقل عنها في الراحة. أنصح به بشدة.",
+              "color": "أبيض",
+              "size": "EU 41"
+            }
+          },
+          "rev-6": {
+            "type": "review",
+            "settings": {
+              "author": "ليلى الدوسري",
+              "location": "الخبر",
+              "date": "منذ شهرين",
+              "rating": 5,
+              "is_verified": true,
+              "title": "هذه زوجتي الثانية!",
+              "body": "أحببت زوجتي الأولى كثيراً حتى طلبت أخرى بلون مختلف. تدوم طويلاً ولا تفقد شكلها أبداً. مثالية للشاطئ والمسبح.",
+              "color": "أبيض عاجي",
+              "size": "EU 39/40"
+            }
+          },
+          "rev-7": {
+            "type": "review",
+            "settings": {
+              "author": "يوسف الزهراني",
+              "location": "المدينة المنورة",
+              "date": "منذ شهرين",
+              "rating": 5,
+              "is_verified": true,
+              "title": "أحذية الشاطئ المثالية",
+              "body": "أخذتها في إجازة على الساحل وكانت مثالية. الرمال لا تعلق بها، تجف فوراً، والمسك على الأسطح المبللة مذهل.",
+              "color": "كاكي",
+              "size": "EU 42/43"
+            }
+          },
+          "rev-8": {
+            "type": "review",
+            "settings": {
+              "author": "منى الشهري",
+              "location": "أبها",
+              "date": "منذ 3 أشهر",
+              "rating": 4,
+              "is_verified": true,
+              "title": "مريح طوال اليوم",
+              "body": "أقف على قدميّ طوال اليوم في العمل وهذا الحذاء أنقذني. الوسادة رائعة. أتمنى المزيد من خيارات الألوان لكن الأسود يناسب كل شيء.",
+              "color": "أسود",
+              "size": "EU 36"
+            }
+          }
+        },
+        "block_order": [
+          "rev-1",
+          "rev-2",
+          "rev-3",
+          "rev-4",
+          "rev-5",
+          "rev-6",
+          "rev-7",
+          "rev-8"
+        ]
+      },
+      "trust_faq": {
+        "type": "trust-faq",
+        "settings": {
+          "trust_1_title": "دفع آمن",
+          "trust_1_desc": "بياناتك مشفّرة ومحمية بالكامل",
+          "trust_2_title": "شحن سريع",
+          "trust_2_desc": "توصيل سريع في جميع أنحاء المملكة",
+          "trust_3_title": "جودة فاخرة",
+          "trust_3_desc": "مصنوع من رغوة EVA عالية الجودة",
+          "trust_4_title": "استرجاع سهل",
+          "trust_4_desc": "سياسة استرجاع مريحة لمدة 14 يوم",
+          "faq_badge": "الأسئلة الشائعة",
+          "faq_title_prefix": "كل ما تحتاج",
+          "faq_title_highlight": "معرفته",
+          "faq_subtitle": "لديك أسئلة حول المقاسات أو التوصيل أو الاسترجاع؟ نحن هنا للمساعدة. تواصل معنا عبر واتساب في أي وقت."
+        },
+        "blocks": {
+          "faq-1": {
+            "type": "faq",
+            "settings": {
+              "question": "كم يستغرق وقت الشحن؟",
+              "answer": "نقدّم شحناً سريعاً في جميع أنحاء المملكة العربية السعودية. تُعالج الطلبات خلال 24 ساعة وتُوصَّل مباشرة إلى باب منزلك خلال 2-4 أيام عمل."
+            }
+          },
+          "faq-2": {
+            "type": "faq",
+            "settings": {
+              "question": "ما هي سياسة الاسترجاع؟",
+              "answer": "نقدّم سياسة استرجاع سهلة لمدة 14 يوماً. إذا لم يناسبك الحذاء أو لم تكن راضياً تماماً، تواصل معنا عبر واتساب لاسترجاع أو استبدال سهل."
+            }
+          },
+          "faq-3": {
+            "type": "faq",
+            "settings": {
+              "question": "كيف أختار المقاس الصحيح؟",
+              "answer": "أحذيتنا تتبع المقاسات الأوروبية القياسية. إذا كنت بين مقاسين أو تفضّل مقاساً أوسع، ننصح بأخذ مقاس أكبر. راجع دليل المقاسات للقياسات الدقيقة."
+            }
+          },
+          "faq-4": {
+            "type": "faq",
+            "settings": {
+              "question": "كيف أنظّف الحذاء؟",
+              "answer": "فقط اشطفه بالماء والصابون الخفيف. مادة EVA مقاومة للماء وسريعة الجفاف، لذلك سيكون حذاؤك جاهزاً للارتداء مجدداً في دقائق."
+            }
+          },
+          "faq-5": {
+            "type": "faq",
+            "settings": {
+              "question": "ما هي المواد المستخدمة؟",
+              "answer": "مصنوع من رغوة EVA مقولبة في قطعة واحدة — خفيف الوزن ومتين وخالٍ من المواد الكيميائية الضارة. يتميّز النعل الخارجي بملمس مضاد للانزلاق لضمان السلامة على جميع الأسطح."
+            }
+          },
+          "faq-6": {
+            "type": "faq",
+            "settings": {
+              "question": "هل يوجد ضمان؟",
+              "answer": "كل زوج تأتي مع ضمان سنتين ضد عيوب التصنيع. إذا واجهت أي مشكلة، تواصل مع فريق الدعم للحصول على بديل."
+            }
+          }
+        },
+        "block_order": [
+          "faq-1",
+          "faq-2",
+          "faq-3",
+          "faq-4",
+          "faq-5",
+          "faq-6"
+        ]
+      },
+      "quick_order": {
+        "type": "quick-order-form",
+        "settings": {
+          "badge_text": "الدفع السريع",
+          "title_prefix": "أكمل",
+          "title_highlight": "طلبك",
+          "subtitle": "دفع سريع — استلم حذاءك خلال 2-4 أيام عمل",
+          "product_title": "كروس كلاسيك ستار كلوجز",
+          "unit_price": "189"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "brand_name": "خطوة",
+          "brand_description": "أحذية EVA الفاخرة مصممة للراحة اليومية. مقاومة للماء وخفيفة الوزن وتدوم طويلاً.",
+          "copyright_text": "Cross Classic المملكة العربية السعودية. جميع الحقوق محفوظة."
+        }
+      }
+    },
+    "order": [
+      "announcement-bar",
+      "header",
+      "hero",
+      "features",
+      "story",
+      "social_proof",
+      "reviews",
+      "trust_faq",
+      "quick_order",
+      "footer"
+    ],
+    "content_for_index": [
+      "announcement-bar",
+      "header",
+      "hero",
+      "features",
+      "story",
+      "social_proof",
+      "reviews",
+      "trust_faq",
+      "quick_order",
+      "footer"
+    ]
   }
 }

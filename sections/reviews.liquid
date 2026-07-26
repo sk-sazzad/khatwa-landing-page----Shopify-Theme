@@ -1,0 +1,143 @@
+{% comment %}
+  Customer Reviews & Ratings Breakdown Section
+{% endcomment %}
+
+<section id="reviews" class="py-16 lg:py-24 bg-slate-100/70 dark:bg-slate-900/40">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-xl mx-auto mb-10">
+      <span class="inline-block text-xs font-black uppercase tracking-widest bg-gradient-to-r from-amber-500 to-orange-500 text-white px-4 py-1.5 rounded-full shadow-sm mb-3">
+        {{ section.settings.badge_text }}
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+        {{ section.settings.title_prefix }} <span class="bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">{{ section.settings.title_highlight }}</span>
+      </h2>
+    </div>
+
+    <!-- Rating Summary -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 bg-gradient-to-br from-amber-50/80 via-orange-50/40 to-amber-50/60 dark:from-slate-800 dark:via-amber-950/20 dark:to-slate-800 rounded-3xl p-6 sm:p-8 border border-amber-200/80 dark:border-amber-900/50 shadow-md mb-10 items-center">
+      <div class="flex flex-col items-center justify-center text-center p-4 lg:border-l border-amber-200 dark:border-slate-700">
+        <span class="text-5xl font-black bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent" id="review-avg">
+          {{ section.settings.average_rating }}
+        </span>
+        <div class="flex text-amber-400 my-2">
+          {% for i in (1..5) %}
+            <svg class="w-5 h-5 fill-amber-400 animate-pulse" style="animation-delay:{{ forloop.index0 | times: 150 }}ms" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          {% endfor %}
+        </div>
+        <span class="text-sm text-slate-600 dark:text-slate-300 font-bold">بناءً على {{ section.settings.total_reviews_count }} تقييم موثّق</span>
+      </div>
+
+      <div class="lg:col-span-2 flex flex-col justify-center space-y-3">
+        <div class="flex items-center gap-3 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+          <span class="w-16 font-bold">5 نجوم</span>
+          <div class="flex-1 bg-slate-200/80 dark:bg-slate-700 h-3.5 rounded-full overflow-hidden p-0.5 shadow-inner relative">
+            <div class="review-bar bg-gradient-to-r from-amber-400 via-amber-500 to-orange-400 h-full rounded-full transition-all duration-1000 ease-out relative overflow-hidden shadow-sm" data-width="{{ section.settings.star_5_percent }}" style="width:0%">
+              <div class="absolute inset-0 bg-white/30 pulse-white"></div>
+            </div>
+          </div>
+          <span class="w-12 text-right font-black text-amber-600 dark:text-amber-400">{{ section.settings.star_5_percent }}%</span>
+        </div>
+        <div class="flex items-center gap-3 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+          <span class="w-16 font-bold">4 نجوم</span>
+          <div class="flex-1 bg-slate-200/80 dark:bg-slate-700 h-3.5 rounded-full overflow-hidden p-0.5 shadow-inner relative">
+            <div class="review-bar bg-gradient-to-r from-amber-400 via-amber-500 to-orange-400 h-full rounded-full transition-all duration-1000 ease-out relative overflow-hidden shadow-sm" data-width="{{ section.settings.star_4_percent }}" style="width:0%">
+              <div class="absolute inset-0 bg-white/30 pulse-white"></div>
+            </div>
+          </div>
+          <span class="w-12 text-right font-black text-amber-600 dark:text-amber-400">{{ section.settings.star_4_percent }}%</span>
+        </div>
+        <div class="flex items-center gap-3 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+          <span class="w-16 font-bold">3 نجوم</span>
+          <div class="flex-1 bg-slate-200/80 dark:bg-slate-700 h-3.5 rounded-full overflow-hidden p-0.5 shadow-inner relative">
+            <div class="review-bar bg-gradient-to-r from-amber-400 via-amber-500 to-orange-400 h-full rounded-full transition-all duration-1000 ease-out relative overflow-hidden shadow-sm" data-width="{{ section.settings.star_3_percent }}" style="width:0%">
+              <div class="absolute inset-0 bg-white/30 pulse-white"></div>
+            </div>
+          </div>
+          <span class="w-12 text-right font-black text-amber-600 dark:text-amber-400">{{ section.settings.star_3_percent }}%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reviews Grid -->
+    <div id="reviews-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {% for block in section.blocks %}
+        <div class="review-card bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-700/80 shadow-xs flex flex-col gap-3" {{ block.shopify_attributes }}>
+          <div class="flex items-start justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-black text-sm shrink-0">
+                {{ block.settings.author | slice: 0 }}
+              </div>
+              <div>
+                <p class="font-extrabold text-slate-900 dark:text-white text-sm">{{ block.settings.author }}</p>
+                <p class="text-xs text-slate-500 dark:text-slate-400">{{ block.settings.location }} · {{ block.settings.date }}</p>
+              </div>
+            </div>
+            {% if block.settings.is_verified %}
+              <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-200/60 dark:border-emerald-800/60 shrink-0">✓ موثّق</span>
+            {% endif %}
+          </div>
+          <div class="flex gap-0.5">
+            {% for i in (1..block.settings.rating) %}
+              <svg class="w-4 h-4 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            {% endfor %}
+          </div>
+          <h4 class="font-extrabold text-slate-900 dark:text-white text-sm">{{ block.settings.title }}</h4>
+          <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">{{ block.settings.body }}</p>
+          <div class="flex items-center gap-2 pt-2 border-t border-slate-100 dark:border-slate-700/60 text-xs text-slate-500 dark:text-slate-400 font-medium">
+            <span>اللون: {{ block.settings.color }}</span>
+            <span>·</span>
+            <span>المقاس: {{ block.settings.size }}</span>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Customer Reviews",
+  "settings": [
+    { "type": "text", "id": "badge_text", "label": "Badge Text", "default": "آراء العملاء" },
+    { "type": "text", "id": "title_prefix", "label": "Title Prefix", "default": "يحبّه" },
+    { "type": "text", "id": "title_highlight", "label": "Title Highlight", "default": "الآلاف" },
+    { "type": "text", "id": "average_rating", "label": "Average Rating", "default": "4.8" },
+    { "type": "text", "id": "total_reviews_count", "label": "Total Verified Reviews", "default": "4,892" },
+    { "type": "number", "id": "star_5_percent", "label": "5 Star Percent", "default": 87 },
+    { "type": "number", "id": "star_4_percent", "label": "4 Star Percent", "default": 12 },
+    { "type": "number", "id": "star_3_percent", "label": "3 Star Percent", "default": 1 }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review Card",
+      "settings": [
+        { "type": "text", "id": "author", "label": "Author Name", "default": "أحمد القحطاني" },
+        { "type": "text", "id": "location", "label": "City / Location", "default": "الرياض" },
+        { "type": "text", "id": "date", "label": "Date String", "default": "منذ أسبوعين" },
+        { "type": "number", "id": "rating", "label": "Rating (1 to 5)", "default": 5 },
+        { "type": "checkbox", "id": "is_verified", "label": "Verified Buyer", "default": true },
+        { "type": "text", "id": "title", "label": "Review Title", "default": "أفضل حذاء اشتريته في حياتي" },
+        { "type": "textarea", "id": "body", "label": "Review Body", "default": "بصراحة، أكثر الأحذية راحةً اشتريتها منذ سنوات. أرتديه في المنزل وفي المسجد وحتى للتسوق. اللون الأبيض العاجي يبدو فاخراً جداً والحذاء خفيف جداً حتى تنسى أنك ترتديه." },
+        { "type": "text", "id": "color", "label": "Color Purchased", "default": "أبيض عاجي" },
+        { "type": "text", "id": "size", "label": "Size Purchased", "default": "EU 42/43" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Customer Reviews",
+      "blocks": [
+        { "type": "review", "settings": { "author": "أحمد القحطاني", "location": "الرياض", "date": "منذ أسبوعين", "rating": 5, "is_verified": true, "title": "أفضل حذاء اشتريته في حياتي", "body": "بصراحة، أكثر الأحذية راحةً اشتريتها منذ سنوات. أرتديه في المنزل وفي المسجد وحتى للتسوق. اللون الأبيض العاجي يبدو فاخراً جداً والحذاء خفيف جداً حتى تنسى أنك ترتديه.", "color": "أبيض عاجي", "size": "EU 42/43" } },
+        { "type": "review", "settings": { "author": "فاطمة العتيبي", "location": "جدة", "date": "منذ 3 أسابيع", "rating": 5, "is_verified": true, "title": "مثالي للاستخدام اليومي", "body": "اشتريته للبستنة وانتهى بي الأمر أرتديه في كل مكان. سهل التنظيف جداً — فقط اشطفه ويعود كالجديد. اللون الكاكي جميل جداً في الواقع.", "color": "كاكي", "size": "EU 38" } },
+        { "type": "review", "settings": { "author": "خالد الحربي", "location": "الدمام", "date": "منذ شهر", "rating": 5, "is_verified": true, "title": "مريح وخفيف الوزن", "body": "كنت متشككاً في البداية لكن هذا بالفعل أكثر الأحذية الخفيفة التي أملكها. النعل المانع للانزلاق رائع على البلاط المبلل. طلبت زوجة ثانية لأخي.", "color": "أسود", "size": "EU 44" } },
+        { "type": "review", "settings": { "author": "نورة السبيعي", "location": "الرياض", "date": "منذ شهر", "rating": 4, "is_verified": true, "title": "رائع للحديقة", "body": "أحب اللون الوردي وسهولة تنظيفه بعد البستنة. أخذت نجمة واحدة لأنني احتجت أخذ مقاساً أكبر — تأكد من مراجعة دليل المقاسات.", "color": "وردي", "size": "EU 37" } },
+        { "type": "review", "settings": { "author": "سالم الغامدي", "location": "مكة المكرمة", "date": "منذ شهر", "rating": 5, "is_verified": true, "title": "يستحق كل ريال", "body": "كان التوصيل سريعاً — وصل خلال يومين. الجودة ممتازة مقارنة بالسعر. جربت ماركات غالية من قبل وهذا لا يقل عنها في الراحة. أنصح به بشدة.", "color": "أبيض", "size": "EU 41" } },
+        { "type": "review", "settings": { "author": "ليلى الدوسري", "location": "الخبر", "date": "منذ شهرين", "rating": 5, "is_verified": true, "title": "هذه زوجتي الثانية!", "body": "أحببت زوجتي الأولى كثيراً حتى طلبت أخرى بلون مختلف. تدوم طويلاً ولا تفقد شكلها أبداً. مثالية للشاطئ والمسبح.", "color": "أبيض عاجي", "size": "EU 39/40" } },
+        { "type": "review", "settings": { "author": "يوسف الزهراني", "location": "المدينة المنورة", "date": "منذ شهرين", "rating": 5, "is_verified": true, "title": "أحذية الشاطئ المثالية", "body": "أخذتها في إجازة على الساحل وكانت مثالية. الرمال لا تعلق بها، تجف فوراً، والمسك على الأسطح المبللة مذهل.", "color": "كاكي", "size": "EU 42/43" } },
+        { "type": "review", "settings": { "author": "منى الشهري", "location": "أبها", "date": "منذ 3 أشهر", "rating": 4, "is_verified": true, "title": "مريح طوال اليوم", "body": "أقف على قدميّ طوال اليوم في العمل وهذا الحذاء أنقذني. الوسادة رائعة. أتمنى المزيد من خيارات الألوان لكن الأسود يناسب كل شيء.", "color": "أسود", "size": "EU 36" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
