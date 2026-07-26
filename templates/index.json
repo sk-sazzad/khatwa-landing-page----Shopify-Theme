@@ -227,7 +227,8 @@
             "number": "01",
             "title": "راحة قصوى",
             "description": "مصمّم للارتداء طوال اليوم، يحتضن كروس كلاسيك ستار كلوجز قدمك برغوة EVA الناعمة والمرنة التي تتكيف مع كل خطوة.",
-            "image_url": "https://media.base44.com/images/public/6a646958821430317adbf321/749895e7f_generated_7b449968.png",
+            "image": "shopify://shop_images/image_2026-07-26_171800954.png",
+            "image_url": "",
             "benefits": "نعل بيئي مريح,رغوة EVA ناعمة,تصميم يوزع الضغط",
             "is_bleed": false
           }
