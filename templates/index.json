@@ -223,55 +223,77 @@
         "story_block_zWRaDR": {
           "type": "story_block",
           "settings": {
-            "number": "01",
-            "title": "راحة قصوى",
-            "description": "مصمّم للارتداء طوال اليوم، يحتضن كروس كلاسيك ستار كلوجز قدمك برغوة EVA الناعمة والمرنة التي تتكيف مع كل خطوة.",
+            "number": "02",
+            "title": "ارتداء طوال اليوم",
+            "description": "سواء كنت في العمل أو تقضي مشاوير يومية أو تسترخي في المنزل، يمنحك هذا الحذاء راحة دائمة. بنيته الخفيفة تجعلك بالكاد تشعر به — ساعة بعد ساعة.",
             "image_url": "https://media.base44.com/images/public/6a646958821430317adbf321/749895e7f_generated_7b449968.png",
-            "benefits": "نعل بيئي مريح,رغوة EVA ناعمة,تصميم يوزع الضغط",
+            "benefits": "خفيف للغاية 500 جرام,وسادة هوائية طوال اليوم,لا يحتاج فترة تكيّف",
             "is_bleed": false
           }
         },
         "story_block_rr8yHp": {
           "type": "story_block",
           "settings": {
-            "number": "01",
-            "title": "راحة قصوى",
-            "description": "مصمّم للارتداء طوال اليوم، يحتضن كروس كلاسيك ستار كلوجز قدمك برغوة EVA الناعمة والمرنة التي تتكيف مع كل خطوة.",
+            "number": "03",
+            "title": "تصميم مقاوم للماء",
+            "description": "مصنوع من مادة EVA المقاومة للماء بشكل كامل. المطر أو الرشاشات أو جانب المسبح — قدماك تبقى جافة والحذاء يبقى نظيفاً.",
             "image_url": "https://media.base44.com/images/public/6a646958821430317adbf321/749895e7f_generated_7b449968.png",
-            "benefits": "نعل بيئي مريح,رغوة EVA ناعمة,تصميم يوزع الضغط",
-            "is_bleed": false
+            "benefits": "100% مقاوم للماء,سطح طارد للمياه,مثالي للمسبح والمطر",
+            "is_bleed": true
           }
         },
         "story_block_cgQqPx": {
           "type": "story_block",
           "settings": {
-            "number": "01",
-            "title": "راحة قصوى",
-            "description": "مصمّم للارتداء طوال اليوم، يحتضن كروس كلاسيك ستار كلوجز قدمك برغوة EVA الناعمة والمرنة التي تتكيف مع كل خطوة.",
+            "number": "04",
+            "title": "بنية تهوية ممتازة",
+            "description": "فتحات التهوية المصممة بعناية تحافظ على تدفق الهواء، وتمنع تراكم الحرارة وتحافظ على قدميك باردتين وطازجتين حتى في أشد أيام الصيف حرارة.",
             "image_url": "https://media.base44.com/images/public/6a646958821430317adbf321/749895e7f_generated_7b449968.png",
-            "benefits": "نعل بيئي مريح,رغوة EVA ناعمة,تصميم يوزع الضغط",
+            "benefits": "فتحات تهوية,تدفق هواء مبرد,مقاوم للروائح",
             "is_bleed": false
           }
         },
         "story_block_VQdDEq": {
           "type": "story_block",
           "settings": {
-            "number": "01",
-            "title": "راحة قصوى",
-            "description": "مصمّم للارتداء طوال اليوم، يحتضن كروس كلاسيك ستار كلوجز قدمك برغوة EVA الناعمة والمرنة التي تتكيف مع كل خطوة.",
+            "number": "05",
+            "title": "وسادة ناعمة",
+            "description": "النعل الأوسط EVA بسماكة 2.5 سم يمتص الصدمات مع كل خطوة، ويقلل التعب ويحمي مفاصلك. ونعل خارجي مضاد للانزلاق يمسك بكل سطح — رطب أو جاف.",
             "image_url": "https://media.base44.com/images/public/6a646958821430317adbf321/749895e7f_generated_7b449968.png",
-            "benefits": "نعل بيئي مريح,رغوة EVA ناعمة,تصميم يوزع الضغط",
+            "benefits": "امتصاص الصدمات,كعب مبطّن 2.5 سم,مانع للانزلاق",
             "is_bleed": false
           }
         },
         "story_block_ExKxw3": {
           "type": "story_block",
           "settings": {
-            "number": "01",
-            "title": "راحة قصوى",
-            "description": "مصمّم للارتداء طوال اليوم، يحتضن كروس كلاسيك ستار كلوجز قدمك برغوة EVA الناعمة والمرنة التي تتكيف مع كل خطوة.",
+            "number": "06",
+            "title": "مثالي للشاطئ",
+            "description": "الرمال والبحر والشمس — صُنع هذا الحذاء من أجل الشاطئ. رغوة EVA سريعة الجفاف تعني أنك تخرج من الماء وتمشي بكامل الراحة.",
             "image_url": "https://media.base44.com/images/public/6a646958821430317adbf321/749895e7f_generated_7b449968.png",
-            "benefits": "نعل بيئي مريح,رغوة EVA ناعمة,تصميم يوزع الضغط",
+            "benefits": "مقاوم للرمال,رغوة سريعة الجفاف,آمن لمياه البحر",
+            "is_bleed": false
+          }
+        },
+        "story_block_LMyyDw": {
+          "type": "story_block",
+          "settings": {
+            "number": "07",
+            "title": "مثالي للحديقة",
+            "description": "حماية مغلقة من الأمام مع سهولة التنظيف. مثالي للبستنة والأعمال الخارجية أو التجوّل في الحديقة — الطين يُزال في ثوانٍ.",
+            "image_url": "https://media.base44.com/images/public/6a646958821430317adbf321/749895e7f_generated_7b449968.png",
+            "benefits": "حماية مغلقة,سطح مقاوم للطين,تنظيف بالشطف فقط",
+            "is_bleed": false
+          }
+        },
+        "story_block_Hw6DHw": {
+          "type": "story_block",
+          "settings": {
+            "number": "08",
+            "title": "تنظيف سهل",
+            "description": "بقع أو طين أو غبار؟ فقط اشطفه بالماء الجاري. مادة EVA المقولبة في قطعة واحدة بلا درزات لا تحبس الأوساخ — ينظف في ثوانٍ ويجف في دقائق.",
+            "image_url": "https://media.base44.com/images/public/6a646958821430317adbf321/749895e7f_generated_7b449968.png",
+            "benefits": "سطح يُشطف بسهولة,بلا درزات ولا أوساخ مختبئة,يجف في دقائق",
             "is_bleed": false
           }
         }
@@ -282,7 +304,9 @@
         "story_block_rr8yHp",
         "story_block_cgQqPx",
         "story_block_VQdDEq",
-        "story_block_ExKxw3"
+        "story_block_ExKxw3",
+        "story_block_LMyyDw",
+        "story_block_Hw6DHw"
       ],
       "settings": {
         "badge_text": "مصمّم للراحة",
