@@ -17,6 +17,14 @@
       </p>
     </div>
 
+    {% assign selected_variant_id = section.settings.variant_id %}
+    {% if selected_variant_id == blank and section.settings.product != blank %}
+      {% assign selected_variant_id = section.settings.product.selected_or_first_available_variant.id %}
+    {% endif %}
+
+    <!-- Hidden variant ID element for Shopify Cart API -->
+    <span id="order-variant-id" data-variant-id="{{ selected_variant_id }}" class="hidden"></span>
+
     <!-- Success Confirmation State -->
     <div id="order-success" class="hidden max-w-lg mx-auto bg-white dark:bg-slate-800 rounded-3xl p-8 text-center border border-slate-200 dark:border-slate-700 shadow-xl flex flex-col items-center gap-4 animate-fade-zoom">
       <div class="w-16 h-16 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
@@ -201,7 +209,9 @@
     { "type": "text", "id": "subtitle", "label": "Subtitle Description", "default": "دفع سريع — استلم حذاءك خلال 2-4 أيام عمل" },
     { "type": "text", "id": "product_title", "label": "Summary Product Title", "default": "كروس كلاسيك ستار كلوجز" },
     { "type": "image_picker", "id": "product_image", "label": "Upload Summary Product Image" },
-    { "type": "text", "id": "unit_price", "label": "Unit Price SAR", "default": "189" }
+    { "type": "text", "id": "unit_price", "label": "Unit Price SAR", "default": "189" },
+    { "type": "product", "id": "product", "label": "Select Shopify Product" },
+    { "type": "text", "id": "variant_id", "label": "Or Manual Variant ID (optional)", "info": "If left blank, the variant ID of the selected product above will be used automatically." }
   ],
   "presets": [
     {

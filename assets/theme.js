@@ -443,29 +443,104 @@ window.KhatwaTheme = window.KhatwaTheme || {};
     }
     if (btnText) btnText.textContent = 'جاري تقديم الطلب...';
 
-    // Simulate order submission & optional Shopify Ajax Cart Add
-    setTimeout(() => {
-      const formWrapper = $('order-form-wrapper');
-      if (formWrapper) formWrapper.classList.add('hidden');
+    // Get Variant ID from section hidden element
+    const variantEl = $('order-variant-id');
+    const variantId = variantEl ? parseInt(variantEl.dataset.variantId || '0', 10) : 0;
 
-      const success = $('order-success');
-      if (success) success.classList.remove('hidden');
+    // Order notes & line item properties
+    const orderNote = [
+      'اسم العميل: ' + name,
+      'رقم الهاتف: ' + phone,
+      'المدينة: ' + city,
+      'عنوان التوصيل: ' + address,
+      'اللون: ' + (state.selectedColor || 'أبيض عاجي'),
+      'المقاس: ' + state.selectedSize,
+      'الكمية: ' + state.quantity
+    ].join('\n');
 
-      const msg = $('success-msg');
-      if (msg) {
-        msg.innerHTML = 'شكراً لك، <strong class="text-slate-900 dark:text-white">' + name + '</strong>! لقد استلمنا طلبك لـ <span class="font-bold">' + state.quantity + '× ' + (state.selectedColor || 'المنتج') + ' (' + state.selectedSize + ')</span>. سيتصل بك فريق التوصيل قريباً على <span class="font-bold">' + phone + '</span>.';
-      }
+    // If variantId is present, use Shopify Cart API to redirect to checkout
+    if (variantId && variantId > 0) {
+      fetch('/cart/clear.js', { method: 'POST' })
+        .then(function () {
+          return fetch('/cart/add.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              items: [{
+                id: variantId,
+                quantity: state.quantity,
+                properties: {
+                  'اللون': state.selectedColor || 'أبيض عاجي',
+                  'المقاس': state.selectedSize,
+                  'اسم العميل': name,
+                  'رقم الهاتف': phone,
+                  'المدينة': city,
+                  'عنوان التوصيل': address
+                }
+              }]
+            })
+          });
+        })
+        .then(function (res) {
+          if (!res.ok) {
+            return res.json().then(function (err) { throw err; });
+          }
+          return res.json();
+        })
+        .then(function () {
+          return fetch('/cart/update.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              note: orderNote,
+              attributes: {
+                'customer_name': name,
+                'customer_phone': phone,
+                'delivery_city': city,
+                'delivery_address': address
+              }
+            })
+          });
+        })
+        .then(function () {
+          // Redirect directly to Shopify Checkout — Order will register in Admin Orders!
+          window.location.href = '/checkout';
+        })
+        .catch(function (err) {
+          console.error('Shopify Cart Submission Error:', err);
+          if (btn) {
+            btn.disabled = false;
+            btn.classList.remove('opacity-50');
+          }
+          if (btnText) btnText.textContent = 'تأكيد الطلب';
+          const errMsg = (err && err.description) ? err.description : 'تعذر تقديم الطلب تلقائياً. يرجى التأكد من اختيار المنتج في إعدادات الثيم.';
+          alert(errMsg);
+        });
+    } else {
+      // Fallback: Display success screen if variant ID is not configured in Customizer yet
+      setTimeout(() => {
+        const formWrapper = $('order-form-wrapper');
+        if (formWrapper) formWrapper.classList.add('hidden');
 
-      const details = $('success-details');
-      if (details) {
-        details.innerHTML = '<div><strong>مدينة التوصيل:</strong> ' + city + '</div><div><strong>العنوان:</strong> ' + address + '</div><div><strong>المبلغ الإجمالي:</strong> ' + (state.basePrice * state.quantity) + ' ر.س (الدفع عند الاستلام)</div>';
-      }
+        const success = $('order-success');
+        if (success) success.classList.remove('hidden');
 
-      if (btn) {
-        btn.disabled = false;
-        btn.classList.remove('opacity-50');
-      }
-    }, 1200);
+        const msg = $('success-msg');
+        if (msg) {
+          msg.innerHTML = 'شكراً لك، <strong class="text-slate-900 dark:text-white">' + name + '</strong>! لقد استلمنا طلبك لـ <span class="font-bold">' + state.quantity + '× ' + (state.selectedColor || 'المنتج') + ' (' + state.selectedSize + ')</span>. سيتصل بك فريق التوصيل قريباً على <span class="font-bold">' + phone + '</span>.';
+        }
+
+        const details = $('success-details');
+        if (details) {
+          details.innerHTML = '<div><strong>مدينة التوصيل:</strong> ' + city + '</div><div><strong>العنوان:</strong> ' + address + '</div><div><strong>المبلغ الإجمالي:</strong> ' + (state.basePrice * state.quantity) + ' ر.س (الدفع عند الاستلام)</div>';
+        }
+
+        if (btn) {
+          btn.disabled = false;
+          btn.classList.remove('opacity-50');
+        }
+      }, 800);
+    }
   };
 
   window.resetOrder = function () {
