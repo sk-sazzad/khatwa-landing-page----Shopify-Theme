@@ -531,7 +531,7 @@ window.KhatwaTheme = window.KhatwaTheme || {};
       var whatsappLink = document.getElementById('success-whatsapp-link');
       if (whatsappLink) {
         var waMessage = encodeURIComponent('مرحباً، أريد الاستفسار عن الطلب رقم #' + generatedOrderId);
-        whatsappLink.href = 'https://wa.me/966500000000?text=' + waMessage;
+        whatsappLink.href = 'https://wa.me/8801742820767?text=' + waMessage;
         whatsappLink.onclick = function () {
           trackFB('Contact', {
             content_name: 'WhatsApp Support',
