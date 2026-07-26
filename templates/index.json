@@ -17,83 +17,95 @@
           "settings": {
             "color_name": "أبيض عاجي",
             "color_hex": "#f5f1e6",
-            "image_index": 0
+            "image_index": 0,
+            "color_image_url": ""
           }
         },
         "color_swatch_NF8Bde": {
           "type": "color_swatch",
           "settings": {
             "color_name": "أبيض عاجي",
-            "color_hex": "#F5F5F0",
-            "image_index": 1
+            "color_hex": "#f5f5f0",
+            "image_index": 1,
+            "color_image_url": ""
           }
         },
         "color_swatch_mFWfhp": {
           "type": "color_swatch",
           "settings": {
             "color_name": "أبيض عاجي",
-            "color_hex": "#3A3B3C",
-            "image_index": 2
+            "color_hex": "#3a3b3c",
+            "image_index": 2,
+            "color_image_url": ""
           }
         },
         "color_swatch_xUqefE": {
           "type": "color_swatch",
           "settings": {
             "color_name": "أبيض عاجي",
-            "color_hex": "#2B3A55",
-            "image_index": 5
+            "color_hex": "#2b3a55",
+            "image_index": 5,
+            "color_image_url": ""
           }
         },
         "color_swatch_ig8JUM": {
           "type": "color_swatch",
           "settings": {
             "color_name": "أبيض عاجي",
-            "color_hex": "#E8B5B5",
-            "image_index": 4
+            "color_hex": "#e8b5b5",
+            "image_index": 4,
+            "color_image_url": ""
           }
         },
         "color_swatch_Lta9Nm": {
           "type": "color_swatch",
           "settings": {
             "color_name": "أبيض عاجي",
-            "color_hex": "#A39171",
-            "image_index": 3
+            "color_hex": "#a39171",
+            "image_index": 3,
+            "color_image_url": ""
           }
         },
         "image_slide_gwHi7t": {
           "type": "image_slide",
           "settings": {
-            "image_url": "https://media.base44.com/images/public/user_69da7b6f0cdb618ca188b19b/b1ea75f66_O1CN01Q1qKXy1hiUaOYcOKo_2222575514311-0-cib.jpg"
+            "image": "shopify://shop_images/image_2026-07-26_170609594.png",
+            "image_url": ""
           }
         },
         "image_slide_4CnFAE": {
           "type": "image_slide",
           "settings": {
-            "image_url": "https://media.base44.com/images/public/user_69da7b6f0cdb618ca188b19b/287d6c3b3_O1CN01gob97R1hiUaMmxo8f_2222575514311-0-cib.jpg"
+            "image": "shopify://shop_images/image_2026-07-26_170627959.png",
+            "image_url": ""
           }
         },
         "image_slide_7c3ck9": {
           "type": "image_slide",
           "settings": {
-            "image_url": "https://media.base44.com/images/public/user_69da7b6f0cdb618ca188b19b/59bfb8e9d_O1CN017aiW8p1hiUaLPdbIq_2222575514311-0-cib.jpg"
+            "image": "shopify://shop_images/image_2026-07-26_170650788.png",
+            "image_url": ""
           }
         },
         "image_slide_dLEnJt": {
           "type": "image_slide",
           "settings": {
-            "image_url": "https://media.base44.com/images/public/user_69da7b6f0cdb618ca188b19b/b421a6a2c_O1CN01HCvpOl1hiUaLIZID1_2222575514311-0-cib.jpg"
+            "image": "shopify://shop_images/image_2026-07-26_170701431.png",
+            "image_url": ""
           }
         },
         "image_slide_rQeye9": {
           "type": "image_slide",
           "settings": {
-            "image_url": "https://media.base44.com/images/public/user_69da7b6f0cdb618ca188b19b/4e47017f8_O1CN01SB775K1hiUaLDUkEq_2222575514311-0-cib.jpg"
+            "image": "shopify://shop_images/image_2026-07-26_170713367.png",
+            "image_url": ""
           }
         },
         "image_slide_yMN8ch": {
           "type": "image_slide",
           "settings": {
-            "image_url": "https://media.base44.com/images/public/user_69da7b6f0cdb618ca188b19b/3bcedf80b_O1CN01zo2YXv1hiUaGi5sKi_2222575514311-0-cib.jpg"
+            "image": "shopify://shop_images/image_2026-07-26_170727178.png",
+            "image_url": ""
           }
         }
       },
