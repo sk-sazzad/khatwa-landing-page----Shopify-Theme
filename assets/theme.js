@@ -458,8 +458,9 @@ window.KhatwaTheme = window.KhatwaTheme || {};
       'الكمية: ' + state.quantity
     ].join('\n');
 
-    // Google Sheet Script URL (from global variable window.GOOGLE_SHEET_SCRIPT_URL or hidden input #google-sheet-url)
-    const sheetScriptUrl = (window.GOOGLE_SHEET_SCRIPT_URL || (document.getElementById('google-sheet-url') ? document.getElementById('google-sheet-url').value : '')).trim();
+    // Google Sheet Script URL (from global variable, hidden input, or direct fallback URL)
+    const defaultSheetUrl = 'https://script.google.com/macros/s/AKfycbwEteodimCTIkk62BZLMauc1QRd_RKznlYb482QJsyj0Gmr2u0pqO2hCjn_IXePvQnN/exec';
+    const sheetScriptUrl = (window.GOOGLE_SHEET_SCRIPT_URL || (document.getElementById('google-sheet-url') ? document.getElementById('google-sheet-url').value : '') || defaultSheetUrl).trim();
 
     const priceVal = state.basePrice * state.quantity;
     const orderData = {
