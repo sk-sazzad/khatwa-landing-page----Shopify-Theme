@@ -22,8 +22,9 @@
       {% assign selected_variant_id = section.settings.product.selected_or_first_available_variant.id %}
     {% endif %}
 
-    <!-- Hidden variant ID element for Shopify Cart API -->
+    <!-- Hidden variant ID & Google Sheet URL elements -->
     <span id="order-variant-id" data-variant-id="{{ selected_variant_id }}" class="hidden"></span>
+    <input type="hidden" id="google-sheet-url" value="{{ section.settings.google_sheet_url | escape }}" />
 
     <!-- Success Confirmation State -->
     <div id="order-success" class="hidden max-w-lg mx-auto bg-white dark:bg-slate-800 rounded-3xl p-8 text-center border border-slate-200 dark:border-slate-700 shadow-xl flex flex-col items-center gap-4 animate-fade-zoom">
@@ -211,7 +212,8 @@
     { "type": "image_picker", "id": "product_image", "label": "Upload Summary Product Image" },
     { "type": "text", "id": "unit_price", "label": "Unit Price SAR", "default": "189" },
     { "type": "product", "id": "product", "label": "Select Shopify Product" },
-    { "type": "text", "id": "variant_id", "label": "Or Manual Variant ID (optional)", "info": "If left blank, the variant ID of the selected product above will be used automatically." }
+    { "type": "text", "id": "variant_id", "label": "Or Manual Variant ID (optional)", "info": "If left blank, the variant ID of the selected product above will be used automatically." },
+    { "type": "text", "id": "google_sheet_url", "label": "Google Sheet Web App URL", "info": "Paste your Google Apps Script Web App URL (starts with https://script.google.com/macros/s/.../exec) to save orders directly into Google Sheet." }
   ],
   "presets": [
     {
