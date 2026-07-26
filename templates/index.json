@@ -218,6 +218,52 @@
       ],
       "settings": {}
     },
+    "social_proof": {
+      "type": "social-proof",
+      "blocks": {
+        "stat_LBHwRU": {
+          "type": "stat",
+          "settings": {
+            "target_number": 3,
+            "number_suffix": "+",
+            "label": "عميل سعيد"
+          }
+        },
+        "stat_HdGtAd": {
+          "type": "stat",
+          "settings": {
+            "target_number": 4892,
+            "number_suffix": "+",
+            "label": "عميل سعيد"
+          }
+        },
+        "stat_hbhxiM": {
+          "type": "stat",
+          "settings": {
+            "target_number": 127500,
+            "number_suffix": "+",
+            "label": "عميل سعيد"
+          }
+        },
+        "stat_e6JN9p": {
+          "type": "stat",
+          "settings": {
+            "target_number": 48920,
+            "number_suffix": "+",
+            "label": "عميل سعيد"
+          }
+        }
+      },
+      "block_order": [
+        "stat_LBHwRU",
+        "stat_HdGtAd",
+        "stat_hbhxiM",
+        "stat_e6JN9p"
+      ],
+      "settings": {
+        "badge_text": "موثوق به عالميًا"
+      }
+    },
     "story": {
       "type": "product-story",
       "blocks": {
@@ -333,52 +379,6 @@
         "title_prefix": "مصمّم لكل",
         "title_highlight": "لحظة",
         "subtitle": "من روتين الصباح إلى مغامرات الشاطئ — اكتشف لماذا كروس كلاسيك ستار كلوجز هو الحذاء الوحيد الذي ستحتاجه."
-      }
-    },
-    "social_proof": {
-      "type": "social-proof",
-      "blocks": {
-        "stat_LBHwRU": {
-          "type": "stat",
-          "settings": {
-            "target_number": 3,
-            "number_suffix": "+",
-            "label": "عميل سعيد"
-          }
-        },
-        "stat_HdGtAd": {
-          "type": "stat",
-          "settings": {
-            "target_number": 4892,
-            "number_suffix": "+",
-            "label": "عميل سعيد"
-          }
-        },
-        "stat_hbhxiM": {
-          "type": "stat",
-          "settings": {
-            "target_number": 127500,
-            "number_suffix": "+",
-            "label": "عميل سعيد"
-          }
-        },
-        "stat_e6JN9p": {
-          "type": "stat",
-          "settings": {
-            "target_number": 48920,
-            "number_suffix": "+",
-            "label": "عميل سعيد"
-          }
-        }
-      },
-      "block_order": [
-        "stat_LBHwRU",
-        "stat_HdGtAd",
-        "stat_hbhxiM",
-        "stat_e6JN9p"
-      ],
-      "settings": {
-        "badge_text": "موثوق به عالميًا"
       }
     },
     "reviews": {
@@ -518,6 +518,17 @@
         "star_3_percent": 1
       }
     },
+    "quick_order": {
+      "type": "quick-order-form",
+      "settings": {
+        "badge_text": "الدفع السريع",
+        "title_prefix": "أكمل",
+        "title_highlight": "طلبك",
+        "subtitle": "دفع سريع — استلم حذاءك خلال 2-4 أيام عمل",
+        "product_title": "كروس كلاسيك ستار كلوجز",
+        "unit_price": "189"
+      }
+    },
     "trust_faq": {
       "type": "trust-faq",
       "blocks": {
@@ -610,24 +621,13 @@
         "faq_title_highlight": "معرفته",
         "faq_subtitle": "لديك أسئلة حول المقاسات أو التوصيل أو الاسترجاع؟ نحن هنا للمساعدة. تواصل معنا عبر واتساب في أي وقت."
       }
-    },
-    "quick_order": {
-      "type": "quick-order-form",
-      "settings": {
-        "badge_text": "الدفع السريع",
-        "title_prefix": "أكمل",
-        "title_highlight": "طلبك",
-        "subtitle": "دفع سريع — استلم حذاءك خلال 2-4 أيام عمل",
-        "product_title": "كروس كلاسيك ستار كلوجز",
-        "unit_price": "189"
-      }
     }
   },
   "order": [
     "hero",
     "features",
-    "story",
     "social_proof",
+    "story",
     "reviews",
     "quick_order",
     "trust_faq"
