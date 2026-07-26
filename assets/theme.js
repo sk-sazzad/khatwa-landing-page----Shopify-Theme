@@ -62,61 +62,97 @@ window.KhatwaTheme = window.KhatwaTheme || {};
 
   // ─── 3. GALLERY SYSTEM ───────────────────────────────────────────────────────
   window.setImage = function (idx) {
-    state.selectedImgIndex = idx;
     const mainImg = $('main-img');
     const skeleton = $('img-skeleton');
 
-    if (mainImg) {
-      mainImg.classList.add('loading');
-      if (skeleton) skeleton.style.display = 'block';
+    if (!mainImg) return;
+    const total = parseInt(mainImg.getAttribute('data-total-images') || '1', 10);
+    const validIdx = (parseInt(idx, 10) + total) % total;
+    state.selectedImgIndex = validIdx;
 
-      const thumbnails = document.querySelectorAll('.hero-thumb-btn');
-      thumbnails.forEach((btn, i) => {
-        if (i === idx) {
-          btn.className = 'relative w-16 h-16 sm:w-20 sm:h-20 aspect-square rounded-xl overflow-hidden border bg-white shrink-0 cursor-pointer transition-all duration-300 hero-thumb-btn border-blue-600 ring-4 ring-blue-500/30 opacity-100 scale-105 shadow-md';
-        } else {
-          btn.className = 'relative w-16 h-16 sm:w-20 sm:h-20 aspect-square rounded-xl overflow-hidden border bg-white shrink-0 cursor-pointer transition-all duration-300 hero-thumb-btn border-slate-200 opacity-70 hover:opacity-100';
-        }
-      });
+    const thumbnails = document.querySelectorAll('.hero-thumb-btn');
+    thumbnails.forEach((btn, i) => {
+      if (i === validIdx) {
+        btn.className = 'relative w-16 h-16 sm:w-20 sm:h-20 aspect-square rounded-xl overflow-hidden border bg-white shrink-0 cursor-pointer transition-all duration-300 hero-thumb-btn border-blue-600 ring-4 ring-blue-500/30 opacity-100 scale-105 shadow-md';
+      } else {
+        btn.className = 'relative w-16 h-16 sm:w-20 sm:h-20 aspect-square rounded-xl overflow-hidden border bg-white shrink-0 cursor-pointer transition-all duration-300 hero-thumb-btn border-slate-200 opacity-70 hover:opacity-100';
+      }
+    });
 
-      const newSrc = mainImg.getAttribute('data-img-' + idx) || mainImg.src;
+    const newSrc = mainImg.getAttribute('data-img-' + validIdx) || mainImg.src;
+    if (newSrc) {
       if (mainImg.src !== newSrc) {
+        if (skeleton) skeleton.style.display = 'block';
+        mainImg.classList.add('loading');
+
+        mainImg.onload = function () {
+          mainImg.classList.remove('loading');
+          if (skeleton) skeleton.style.display = 'none';
+        };
+        mainImg.onerror = function () {
+          mainImg.classList.remove('loading');
+          if (skeleton) skeleton.style.display = 'none';
+        };
         mainImg.src = newSrc;
       } else {
         mainImg.classList.remove('loading');
         if (skeleton) skeleton.style.display = 'none';
       }
-
-      mainImg.onload = function () {
-        mainImg.classList.remove('loading');
-        if (skeleton) skeleton.style.display = 'none';
-      };
     }
 
     const orderPreview = $('order-preview-img');
-    if (orderPreview && mainImg) {
-      orderPreview.src = mainImg.src;
+    if (orderPreview && newSrc) {
+      orderPreview.src = newSrc;
+    }
+  };
+
+  window.setImageUrl = function (url) {
+    if (!url) return;
+    const mainImg = $('main-img');
+    const skeleton = $('img-skeleton');
+    if (mainImg) {
+      if (mainImg.src !== url) {
+        if (skeleton) skeleton.style.display = 'block';
+        mainImg.classList.add('loading');
+
+        mainImg.onload = function () {
+          mainImg.classList.remove('loading');
+          if (skeleton) skeleton.style.display = 'none';
+        };
+        mainImg.onerror = function () {
+          mainImg.classList.remove('loading');
+          if (skeleton) skeleton.style.display = 'none';
+        };
+        mainImg.src = url;
+      } else {
+        mainImg.classList.remove('loading');
+        if (skeleton) skeleton.style.display = 'none';
+      }
+    }
+    const orderPreview = $('order-preview-img');
+    if (orderPreview) {
+      orderPreview.src = url;
     }
   };
 
   window.prevImg = function () {
     const mainImg = $('main-img');
     if (!mainImg) return;
-    const total = parseInt(mainImg.dataset.totalImages || '1', 10);
-    const nextIdx = state.selectedImgIndex === 0 ? total - 1 : state.selectedImgIndex - 1;
+    const total = parseInt(mainImg.getAttribute('data-total-images') || '1', 10);
+    const nextIdx = (state.selectedImgIndex - 1 + total) % total;
     window.setImage(nextIdx);
   };
 
   window.nextImg = function () {
     const mainImg = $('main-img');
     if (!mainImg) return;
-    const total = parseInt(mainImg.dataset.totalImages || '1', 10);
-    const nextIdx = state.selectedImgIndex === total - 1 ? 0 : state.selectedImgIndex + 1;
+    const total = parseInt(mainImg.getAttribute('data-total-images') || '1', 10);
+    const nextIdx = (state.selectedImgIndex + 1) % total;
     window.setImage(nextIdx);
   };
 
   // ─── 4. COLOR & SIZE SELECTION SYNC ──────────────────────────────────────────
-  window.selectColor = function (name, imgIndex) {
+  window.selectColor = function (name, imgIndex, customImgUrl) {
     state.selectedColor = name;
 
     const heroColorLabel = $('selected-color-label');
@@ -135,7 +171,9 @@ window.KhatwaTheme = window.KhatwaTheme || {};
       }
     });
 
-    if (imgIndex !== undefined && imgIndex >= 0) {
+    if (customImgUrl && customImgUrl.trim() !== '') {
+      window.setImageUrl(customImgUrl);
+    } else if (imgIndex !== undefined && imgIndex !== null && imgIndex !== '') {
       window.setImage(parseInt(imgIndex, 10));
     }
 

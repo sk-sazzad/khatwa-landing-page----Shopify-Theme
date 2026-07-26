@@ -9,19 +9,28 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
 
+      {% assign image_blocks = section.blocks | where: "type", "image_slide" %}
+      {% assign first_image_block = image_blocks | first %}
+      {% assign first_img_src = first_image_block.settings.image_url %}
+      {% if first_image_block.settings.image != blank %}
+        {% assign first_img_src = first_image_block.settings.image | image_url: width: 1200 %}
+      {% endif %}
+
       <!-- Gallery -->
       <div class="flex flex-col-reverse sm:flex-row gap-4">
         <!-- Thumbnails -->
         <div id="thumbnails" class="flex sm:flex-col gap-2.5 overflow-x-auto pb-2 sm:pb-0 scrollbar-none">
-          {% for block in section.blocks %}
-            {% if block.type == 'image_slide' %}
-              <button type="button" onclick="setImage({{ forloop.index0 }})" class="relative w-16 h-16 sm:w-20 sm:h-20 aspect-square rounded-xl overflow-hidden border bg-white shrink-0 cursor-pointer transition-all duration-300 hero-thumb-btn {% if forloop.first %}border-blue-600 ring-4 ring-blue-500/30 opacity-100 scale-105 shadow-md{% else %}border-slate-200 opacity-70 hover:opacity-100{% endif %}">
-                <img src="{{ block.settings.image_url }}" alt="صورة مصغرة {{ forloop.index }}" class="w-full h-full object-contain object-center p-2" />
-                {% if forloop.first %}
-                  <div class="absolute bottom-1 left-1 w-2.5 h-2.5 rounded-full bg-blue-600 border-2 border-white"></div>
-                {% endif %}
-              </button>
+          {% for block in image_blocks %}
+            {% assign thumb_src = block.settings.image_url %}
+            {% if block.settings.image != blank %}
+              {% assign thumb_src = block.settings.image | image_url: width: 300 %}
             {% endif %}
+            <button type="button" onclick="setImage({{ forloop.index0 }})" class="relative w-16 h-16 sm:w-20 sm:h-20 aspect-square rounded-xl overflow-hidden border bg-white shrink-0 cursor-pointer transition-all duration-300 hero-thumb-btn {% if forloop.first %}border-blue-600 ring-4 ring-blue-500/30 opacity-100 scale-105 shadow-md{% else %}border-slate-200 opacity-70 hover:opacity-100{% endif %}">
+              <img src="{{ thumb_src }}" alt="صورة مصغرة {{ forloop.index }}" class="w-full h-full object-contain object-center p-2" />
+              {% if forloop.first %}
+                <div class="absolute bottom-1 left-1 w-2.5 h-2.5 rounded-full bg-blue-600 border-2 border-white"></div>
+              {% endif %}
+            </button>
           {% endfor %}
         </div>
 
@@ -31,13 +40,17 @@
             <div class="absolute inset-8 bg-gradient-to-tr from-blue-400/10 via-indigo-400/15 to-purple-400/10 rounded-full blur-2xl pointer-events-none"></div>
             <div id="img-skeleton" class="absolute inset-0 bg-slate-50 skeleton z-20 rounded-3xl hidden"></div>
             
-            {% assign first_block = section.blocks | where: "type", "image_slide" | first %}
-            {% assign total_images = section.blocks | where: "type", "image_slide" | size %}
             <img id="main-img" 
-                 src="{{ first_block.settings.image_url }}" 
-                 data-total-images="{{ total_images }}"
-                 {% for block in section.blocks %}{% if block.type == 'image_slide' %}data-img-{{ forloop.index0 }}="{{ block.settings.image_url }}"{% endif %}{% endfor %}
-                 alt="{{ section.settings.title }}" 
+                 src="{{ first_img_src }}" 
+                 data-total-images="{{ image_blocks.size }}"
+                 {% for block in image_blocks %}
+                   {% assign slide_src = block.settings.image_url %}
+                   {% if block.settings.image != blank %}
+                     {% assign slide_src = block.settings.image | image_url: width: 1200 %}
+                   {% endif %}
+                   data-img-{{ forloop.index0 }}="{{ slide_src }}"
+                 {% endfor %}
+                 alt="{{ section.settings.title_prefix | escape }} {{ section.settings.title_highlight | escape }}" 
                  class="img-main w-full h-full object-contain object-center z-10 select-none drop-shadow-xl" style="border-radius:1.85rem" />
 
             <!-- Badges -->
@@ -124,15 +137,22 @@
         <div>
           <div class="flex items-center justify-between mb-2.5">
             <span class="text-xs font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400">اللون</span>
-            <span id="selected-color-label" class="text-sm font-extrabold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 px-2.5 py-0.5 rounded-full border border-blue-200/60 dark:border-blue-800/60">أبيض عاجي</span>
+            {% assign first_color = section.blocks | where: "type", "color_swatch" | first %}
+            <span id="selected-color-label" class="text-sm font-extrabold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 px-2.5 py-0.5 rounded-full border border-blue-200/60 dark:border-blue-800/60">{{ first_color.settings.color_name | default: 'أبيض عاجي' }}</span>
           </div>
           <div id="hero-colors" class="flex items-center gap-3 flex-wrap">
             {% for block in section.blocks %}
               {% if block.type == 'color_swatch' %}
+                {% assign swatch_img = "" %}
+                {% if block.settings.color_image != blank %}
+                  {% assign swatch_img = block.settings.color_image | image_url: width: 1200 %}
+                {% elsif block.settings.color_image_url != blank %}
+                  {% assign swatch_img = block.settings.color_image_url %}
+                {% endif %}
                 <button type="button" 
-                        onclick="selectColor('{{ block.settings.color_name }}', {{ block.settings.image_index }})"
-                        data-color-name="{{ block.settings.color_name }}"
-                        title="{{ block.settings.color_name }}"
+                        onclick="selectColor('{{ block.settings.color_name | escape }}', {{ block.settings.image_index | default: 0 }}, '{{ swatch_img }}')"
+                        data-color-name="{{ block.settings.color_name | escape }}"
+                        title="{{ block.settings.color_name | escape }}"
                         style="background-color: {{ block.settings.color_hex }}"
                         class="color-swatch-btn w-9 h-9 rounded-full border-2 transition-all cursor-pointer relative shadow-sm {% if forloop.first %}ring-4 ring-blue-500/40 border-white dark:border-slate-800 scale-110 shadow-md{% else %}border-slate-300 dark:border-slate-700 hover:scale-105{% endif %}">
                 </button>
@@ -214,7 +234,8 @@
       "type": "image_slide",
       "name": "Gallery Image",
       "settings": [
-        { "type": "text", "id": "image_url", "label": "Image URL", "default": "https://media.base44.com/images/public/user_69da7b6f0cdb618ca188b19b/b1ea75f66_O1CN01Q1qKXy1hiUaOYcOKo_2222575514311-0-cib.jpg" }
+        { "type": "image_picker", "id": "image", "label": "Upload Image" },
+        { "type": "text", "id": "image_url", "label": "Or Image URL", "default": "https://media.base44.com/images/public/user_69da7b6f0cdb618ca188b19b/b1ea75f66_O1CN01Q1qKXy1hiUaOYcOKo_2222575514311-0-cib.jpg" }
       ]
     },
     {
@@ -223,7 +244,9 @@
       "settings": [
         { "type": "text", "id": "color_name", "label": "Color Name", "default": "أبيض عاجي" },
         { "type": "color", "id": "color_hex", "label": "Swatch Color", "default": "#F5F1E6" },
-        { "type": "number", "id": "image_index", "label": "Associated Image Index", "default": 0 }
+        { "type": "number", "id": "image_index", "label": "Associated Image Index (0, 1, 2...)", "default": 0 },
+        { "type": "image_picker", "id": "color_image", "label": "Or Upload Image for this Color" },
+        { "type": "text", "id": "color_image_url", "label": "Or Direct Image URL for this Color" }
       ]
     }
   ],
