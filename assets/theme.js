@@ -36,11 +36,27 @@ window.KhatwaTheme = window.KhatwaTheme || {};
       .replace(/'/g, '&#039;');
   }
 
+  // Meta Pixel Event Tracker Helper
+  function trackFB(eventName, data) {
+    if (typeof window.fbq === 'function') {
+      try {
+        window.fbq('track', eventName, data || {});
+      } catch (err) {
+        console.warn('Meta Pixel Tracking Error:', err);
+      }
+    }
+  }
+
   function scrollToOrder() {
     const el = $('order') || $('order-form-wrapper');
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
     }
+    trackFB('AddToCart', {
+      content_name: 'كروس كلاسيك ستار كلوجز',
+      currency: 'SAR',
+      value: state.basePrice * state.quantity
+    });
   }
 
   // ─── 1. ANNOUNCEMENT BAR ROTATOR ───────────────────────────────────────────
@@ -188,6 +204,11 @@ window.KhatwaTheme = window.KhatwaTheme || {};
     }
 
     updateOrderSummary();
+    trackFB('CustomizeProduct', {
+      content_name: 'كروس كلاسيك ستار كلوجز',
+      color: name,
+      size: state.selectedSize || ''
+    });
   };
 
   window.selectSize = function (size) {
@@ -210,6 +231,11 @@ window.KhatwaTheme = window.KhatwaTheme || {};
     });
 
     updateOrderSummary();
+    trackFB('CustomizeProduct', {
+      content_name: 'كروس كلاسيك ستار كلوجز',
+      color: state.selectedColor || '',
+      size: size
+    });
   };
 
   window.heroBuyNow = function () {
@@ -506,12 +532,27 @@ window.KhatwaTheme = window.KhatwaTheme || {};
       if (whatsappLink) {
         var waMessage = encodeURIComponent('مرحباً، أريد الاستفسار عن الطلب رقم #' + generatedOrderId);
         whatsappLink.href = 'https://wa.me/966500000000?text=' + waMessage;
+        whatsappLink.onclick = function () {
+          trackFB('Contact', {
+            content_name: 'WhatsApp Support',
+            order_id: generatedOrderId
+          });
+        };
       }
 
       var msg = document.getElementById('success-msg');
       if (msg) {
         msg.innerHTML = 'شكراً لك، <strong class="text-slate-900 dark:text-white font-extrabold">' + escapeHTML(name) + '</strong>! تم تسجيل طلبك بنجاح وسيتصل بك فريق التوصيل لتأكيد الشحن على الرقم <span class="font-extrabold text-blue-600 dark:text-blue-400" dir="ltr">' + escapeHTML(phone) + '</span>.';
       }
+
+      // Track Meta Pixel Purchase Event
+      trackFB('Purchase', {
+        content_name: 'كروس كلاسيك ستار كلوجز',
+        currency: 'SAR',
+        value: priceVal,
+        num_items: state.quantity,
+        order_id: generatedOrderId
+      });
 
       // Smoothly redirect view to the Thank You Page section
       window.location.hash = 'thank-you';
@@ -714,6 +755,26 @@ window.KhatwaTheme = window.KhatwaTheme || {};
     }, { passive: true });
   }
 
+  // ─── 12. META PIXEL FORM TRACKING (InitiateCheckout) ─────────────────────────
+  let initiateCheckoutTracked = false;
+  function initFormTracking() {
+    ['inp-name', 'inp-phone', 'inp-city', 'inp-address'].forEach(id => {
+      const el = $(id);
+      if (el) {
+        el.addEventListener('focus', () => {
+          if (!initiateCheckoutTracked) {
+            initiateCheckoutTracked = true;
+            trackFB('InitiateCheckout', {
+              content_name: 'كروس كلاسيك ستار كلوجز',
+              currency: 'SAR',
+              value: state.basePrice * state.quantity
+            });
+          }
+        }, { once: true });
+      }
+    });
+  }
+
   // ─── INITIALIZATION ──────────────────────────────────────────────────────────
   document.addEventListener('DOMContentLoaded', () => {
     initAnnouncementBar();
@@ -721,6 +782,7 @@ window.KhatwaTheme = window.KhatwaTheme || {};
     initCountdownTimer();
     initObservers();
     initStickyCta();
+    initFormTracking();
 
     // Default selection
     const firstColor = document.querySelector('.color-swatch-btn');
