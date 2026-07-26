@@ -1,32 +1,558 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "hero-product",
-      "settings": {}
+      "blocks": {
+        "color_swatch_JRXw8n": {
+          "type": "color_swatch",
+          "settings": {
+            "color_name": "أبيض عاجي",
+            "color_hex": "#f5f1e6",
+            "image_index": 0
+          }
+        },
+        "color_swatch_NF8Bde": {
+          "type": "color_swatch",
+          "settings": {
+            "color_name": "أبيض عاجي",
+            "color_hex": "#f5f1e6",
+            "image_index": 0
+          }
+        },
+        "color_swatch_mFWfhp": {
+          "type": "color_swatch",
+          "settings": {
+            "color_name": "أبيض عاجي",
+            "color_hex": "#f5f1e6",
+            "image_index": 0
+          }
+        },
+        "color_swatch_xUqefE": {
+          "type": "color_swatch",
+          "settings": {
+            "color_name": "أبيض عاجي",
+            "color_hex": "#f5f1e6",
+            "image_index": 0
+          }
+        },
+        "color_swatch_ig8JUM": {
+          "type": "color_swatch",
+          "settings": {
+            "color_name": "أبيض عاجي",
+            "color_hex": "#f5f1e6",
+            "image_index": 0
+          }
+        },
+        "color_swatch_Lta9Nm": {
+          "type": "color_swatch",
+          "settings": {
+            "color_name": "أبيض عاجي",
+            "color_hex": "#f5f1e6",
+            "image_index": 0
+          }
+        },
+        "image_slide_gwHi7t": {
+          "type": "image_slide",
+          "settings": {
+            "image_url": "https://media.base44.com/images/public/user_69da7b6f0cdb618ca188b19b/b1ea75f66_O1CN01Q1qKXy1hiUaOYcOKo_2222575514311-0-cib.jpg"
+          }
+        },
+        "image_slide_4CnFAE": {
+          "type": "image_slide",
+          "settings": {
+            "image_url": "https://media.base44.com/images/public/user_69da7b6f0cdb618ca188b19b/b1ea75f66_O1CN01Q1qKXy1hiUaOYcOKo_2222575514311-0-cib.jpg"
+          }
+        },
+        "image_slide_7c3ck9": {
+          "type": "image_slide",
+          "settings": {
+            "image_url": "https://media.base44.com/images/public/user_69da7b6f0cdb618ca188b19b/b1ea75f66_O1CN01Q1qKXy1hiUaOYcOKo_2222575514311-0-cib.jpg"
+          }
+        },
+        "image_slide_dLEnJt": {
+          "type": "image_slide",
+          "settings": {
+            "image_url": "https://media.base44.com/images/public/user_69da7b6f0cdb618ca188b19b/b1ea75f66_O1CN01Q1qKXy1hiUaOYcOKo_2222575514311-0-cib.jpg"
+          }
+        },
+        "image_slide_rQeye9": {
+          "type": "image_slide",
+          "settings": {
+            "image_url": "https://media.base44.com/images/public/user_69da7b6f0cdb618ca188b19b/b1ea75f66_O1CN01Q1qKXy1hiUaOYcOKo_2222575514311-0-cib.jpg"
+          }
+        },
+        "image_slide_yMN8ch": {
+          "type": "image_slide",
+          "settings": {
+            "image_url": "https://media.base44.com/images/public/user_69da7b6f0cdb618ca188b19b/b1ea75f66_O1CN01Q1qKXy1hiUaOYcOKo_2222575514311-0-cib.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "color_swatch_JRXw8n",
+        "color_swatch_NF8Bde",
+        "color_swatch_mFWfhp",
+        "color_swatch_xUqefE",
+        "color_swatch_ig8JUM",
+        "color_swatch_Lta9Nm",
+        "image_slide_gwHi7t",
+        "image_slide_4CnFAE",
+        "image_slide_7c3ck9",
+        "image_slide_dLEnJt",
+        "image_slide_rQeye9",
+        "image_slide_yMN8ch"
+      ],
+      "settings": {
+        "title_prefix": "كروس كلاسيك",
+        "title_highlight": "ستار كلوجز",
+        "rating_score": "4.8",
+        "reviews_count": "4,892",
+        "discount_tag": "خصم 37%-",
+        "save_tag": "وفّر 30 ر.س",
+        "feature_badge_1": "EVA خفيف الوزن",
+        "feature_badge_2": "100% مقاوم للماء",
+        "sale_banner_title": "تخفيض مجنون — عرض محدود الوقت",
+        "countdown_seconds": "13338",
+        "price": "189",
+        "compare_price": "299",
+        "savings_badge": "وفّر 110 ر.س (خصم 37%)",
+        "stock_percent": "67",
+        "buy_button_text": "اشترِ الآن — توصيل سريع",
+        "trust_1": "ضمان سنتين",
+        "trust_2": "توصيل سريع",
+        "trust_3": "استرجاع سهل"
+      }
     },
     "features": {
       "type": "feature-badges",
+      "blocks": {
+        "feature_3CkhBY": {
+          "type": "feature",
+          "settings": {
+            "title": "مقاوم للماء",
+            "icon": "water",
+            "card_bg_class": "bg-gradient-to-b from-blue-500/10 via-cyan-500/10 to-blue-500/5 dark:from-blue-950/40 dark:to-cyan-950/20",
+            "card_border_class": "border-blue-200 dark:border-blue-800/60",
+            "icon_bg_class": "bg-blue-100 dark:bg-blue-900/60"
+          }
+        },
+        "feature_FPGXPN": {
+          "type": "feature",
+          "settings": {
+            "title": "مقاوم للماء",
+            "icon": "water",
+            "card_bg_class": "bg-gradient-to-b from-blue-500/10 via-cyan-500/10 to-blue-500/5 dark:from-blue-950/40 dark:to-cyan-950/20",
+            "card_border_class": "border-blue-200 dark:border-blue-800/60",
+            "icon_bg_class": "bg-blue-100 dark:bg-blue-900/60"
+          }
+        },
+        "feature_aBRDJE": {
+          "type": "feature",
+          "settings": {
+            "title": "مقاوم للماء",
+            "icon": "water",
+            "card_bg_class": "bg-gradient-to-b from-blue-500/10 via-cyan-500/10 to-blue-500/5 dark:from-blue-950/40 dark:to-cyan-950/20",
+            "card_border_class": "border-blue-200 dark:border-blue-800/60",
+            "icon_bg_class": "bg-blue-100 dark:bg-blue-900/60"
+          }
+        },
+        "feature_pchK8V": {
+          "type": "feature",
+          "settings": {
+            "title": "مقاوم للماء",
+            "icon": "water",
+            "card_bg_class": "bg-gradient-to-b from-blue-500/10 via-cyan-500/10 to-blue-500/5 dark:from-blue-950/40 dark:to-cyan-950/20",
+            "card_border_class": "border-blue-200 dark:border-blue-800/60",
+            "icon_bg_class": "bg-blue-100 dark:bg-blue-900/60"
+          }
+        },
+        "feature_ghLd3D": {
+          "type": "feature",
+          "settings": {
+            "title": "مقاوم للماء",
+            "icon": "water",
+            "card_bg_class": "bg-gradient-to-b from-blue-500/10 via-cyan-500/10 to-blue-500/5 dark:from-blue-950/40 dark:to-cyan-950/20",
+            "card_border_class": "border-blue-200 dark:border-blue-800/60",
+            "icon_bg_class": "bg-blue-100 dark:bg-blue-900/60"
+          }
+        },
+        "feature_mBVLmG": {
+          "type": "feature",
+          "settings": {
+            "title": "مقاوم للماء",
+            "icon": "water",
+            "card_bg_class": "bg-gradient-to-b from-blue-500/10 via-cyan-500/10 to-blue-500/5 dark:from-blue-950/40 dark:to-cyan-950/20",
+            "card_border_class": "border-blue-200 dark:border-blue-800/60",
+            "icon_bg_class": "bg-blue-100 dark:bg-blue-900/60"
+          }
+        }
+      },
+      "block_order": [
+        "feature_3CkhBY",
+        "feature_FPGXPN",
+        "feature_aBRDJE",
+        "feature_pchK8V",
+        "feature_ghLd3D",
+        "feature_mBVLmG"
+      ],
       "settings": {}
     },
     "story": {
       "type": "product-story",
-      "settings": {}
+      "blocks": {
+        "story_block_kbK6eR": {
+          "type": "story_block",
+          "settings": {
+            "number": "01",
+            "title": "راحة قصوى",
+            "description": "مصمّم للارتداء طوال اليوم، يحتضن كروس كلاسيك ستار كلوجز قدمك برغوة EVA الناعمة والمرنة التي تتكيف مع كل خطوة.",
+            "image_url": "https://media.base44.com/images/public/6a646958821430317adbf321/749895e7f_generated_7b449968.png",
+            "benefits": "نعل بيئي مريح,رغوة EVA ناعمة,تصميم يوزع الضغط",
+            "is_bleed": false
+          }
+        },
+        "story_block_zWRaDR": {
+          "type": "story_block",
+          "settings": {
+            "number": "01",
+            "title": "راحة قصوى",
+            "description": "مصمّم للارتداء طوال اليوم، يحتضن كروس كلاسيك ستار كلوجز قدمك برغوة EVA الناعمة والمرنة التي تتكيف مع كل خطوة.",
+            "image_url": "https://media.base44.com/images/public/6a646958821430317adbf321/749895e7f_generated_7b449968.png",
+            "benefits": "نعل بيئي مريح,رغوة EVA ناعمة,تصميم يوزع الضغط",
+            "is_bleed": false
+          }
+        },
+        "story_block_rr8yHp": {
+          "type": "story_block",
+          "settings": {
+            "number": "01",
+            "title": "راحة قصوى",
+            "description": "مصمّم للارتداء طوال اليوم، يحتضن كروس كلاسيك ستار كلوجز قدمك برغوة EVA الناعمة والمرنة التي تتكيف مع كل خطوة.",
+            "image_url": "https://media.base44.com/images/public/6a646958821430317adbf321/749895e7f_generated_7b449968.png",
+            "benefits": "نعل بيئي مريح,رغوة EVA ناعمة,تصميم يوزع الضغط",
+            "is_bleed": false
+          }
+        },
+        "story_block_cgQqPx": {
+          "type": "story_block",
+          "settings": {
+            "number": "01",
+            "title": "راحة قصوى",
+            "description": "مصمّم للارتداء طوال اليوم، يحتضن كروس كلاسيك ستار كلوجز قدمك برغوة EVA الناعمة والمرنة التي تتكيف مع كل خطوة.",
+            "image_url": "https://media.base44.com/images/public/6a646958821430317adbf321/749895e7f_generated_7b449968.png",
+            "benefits": "نعل بيئي مريح,رغوة EVA ناعمة,تصميم يوزع الضغط",
+            "is_bleed": false
+          }
+        },
+        "story_block_VQdDEq": {
+          "type": "story_block",
+          "settings": {
+            "number": "01",
+            "title": "راحة قصوى",
+            "description": "مصمّم للارتداء طوال اليوم، يحتضن كروس كلاسيك ستار كلوجز قدمك برغوة EVA الناعمة والمرنة التي تتكيف مع كل خطوة.",
+            "image_url": "https://media.base44.com/images/public/6a646958821430317adbf321/749895e7f_generated_7b449968.png",
+            "benefits": "نعل بيئي مريح,رغوة EVA ناعمة,تصميم يوزع الضغط",
+            "is_bleed": false
+          }
+        },
+        "story_block_ExKxw3": {
+          "type": "story_block",
+          "settings": {
+            "number": "01",
+            "title": "راحة قصوى",
+            "description": "مصمّم للارتداء طوال اليوم، يحتضن كروس كلاسيك ستار كلوجز قدمك برغوة EVA الناعمة والمرنة التي تتكيف مع كل خطوة.",
+            "image_url": "https://media.base44.com/images/public/6a646958821430317adbf321/749895e7f_generated_7b449968.png",
+            "benefits": "نعل بيئي مريح,رغوة EVA ناعمة,تصميم يوزع الضغط",
+            "is_bleed": false
+          }
+        }
+      },
+      "block_order": [
+        "story_block_kbK6eR",
+        "story_block_zWRaDR",
+        "story_block_rr8yHp",
+        "story_block_cgQqPx",
+        "story_block_VQdDEq",
+        "story_block_ExKxw3"
+      ],
+      "settings": {
+        "badge_text": "مصمّم للراحة",
+        "title_prefix": "مصمّم لكل",
+        "title_highlight": "لحظة",
+        "subtitle": "من روتين الصباح إلى مغامرات الشاطئ — اكتشف لماذا كروس كلاسيك ستار كلوجز هو الحذاء الوحيد الذي ستحتاجه."
+      }
     },
     "social_proof": {
       "type": "social-proof",
-      "settings": {}
+      "blocks": {
+        "stat_LBHwRU": {
+          "type": "stat",
+          "settings": {
+            "target_number": 48920,
+            "number_suffix": "+",
+            "label": "عميل سعيد"
+          }
+        },
+        "stat_HdGtAd": {
+          "type": "stat",
+          "settings": {
+            "target_number": 48920,
+            "number_suffix": "+",
+            "label": "عميل سعيد"
+          }
+        },
+        "stat_hbhxiM": {
+          "type": "stat",
+          "settings": {
+            "target_number": 48920,
+            "number_suffix": "+",
+            "label": "عميل سعيد"
+          }
+        },
+        "stat_e6JN9p": {
+          "type": "stat",
+          "settings": {
+            "target_number": 48920,
+            "number_suffix": "+",
+            "label": "عميل سعيد"
+          }
+        }
+      },
+      "block_order": [
+        "stat_LBHwRU",
+        "stat_HdGtAd",
+        "stat_hbhxiM",
+        "stat_e6JN9p"
+      ],
+      "settings": {
+        "badge_text": "موثوق به عالميًا"
+      }
     },
     "reviews": {
       "type": "reviews",
-      "settings": {}
+      "blocks": {
+        "review_hqziRt": {
+          "type": "review",
+          "settings": {
+            "author": "أحمد القحطاني",
+            "location": "الرياض",
+            "date": "منذ أسبوعين",
+            "rating": 5,
+            "is_verified": true,
+            "title": "أفضل حذاء اشتريته في حياتي",
+            "body": "بصراحة، أكثر الأحذية راحةً اشتريتها منذ سنوات. أرتديه في المنزل وفي المسجد وحتى للتسوق. اللون الأبيض العاجي يبدو فاخراً جداً والحذاء خفيف جداً حتى تنسى أنك ترتديه.",
+            "color": "أبيض عاجي",
+            "size": "EU 42/43"
+          }
+        },
+        "review_WMh8mE": {
+          "type": "review",
+          "settings": {
+            "author": "أحمد القحطاني",
+            "location": "الرياض",
+            "date": "منذ أسبوعين",
+            "rating": 5,
+            "is_verified": true,
+            "title": "أفضل حذاء اشتريته في حياتي",
+            "body": "بصراحة، أكثر الأحذية راحةً اشتريتها منذ سنوات. أرتديه في المنزل وفي المسجد وحتى للتسوق. اللون الأبيض العاجي يبدو فاخراً جداً والحذاء خفيف جداً حتى تنسى أنك ترتديه.",
+            "color": "أبيض عاجي",
+            "size": "EU 42/43"
+          }
+        },
+        "review_mmVGE4": {
+          "type": "review",
+          "settings": {
+            "author": "أحمد القحطاني",
+            "location": "الرياض",
+            "date": "منذ أسبوعين",
+            "rating": 5,
+            "is_verified": true,
+            "title": "أفضل حذاء اشتريته في حياتي",
+            "body": "بصراحة، أكثر الأحذية راحةً اشتريتها منذ سنوات. أرتديه في المنزل وفي المسجد وحتى للتسوق. اللون الأبيض العاجي يبدو فاخراً جداً والحذاء خفيف جداً حتى تنسى أنك ترتديه.",
+            "color": "أبيض عاجي",
+            "size": "EU 42/43"
+          }
+        },
+        "review_za4Wzr": {
+          "type": "review",
+          "settings": {
+            "author": "أحمد القحطاني",
+            "location": "الرياض",
+            "date": "منذ أسبوعين",
+            "rating": 5,
+            "is_verified": true,
+            "title": "أفضل حذاء اشتريته في حياتي",
+            "body": "بصراحة، أكثر الأحذية راحةً اشتريتها منذ سنوات. أرتديه في المنزل وفي المسجد وحتى للتسوق. اللون الأبيض العاجي يبدو فاخراً جداً والحذاء خفيف جداً حتى تنسى أنك ترتديه.",
+            "color": "أبيض عاجي",
+            "size": "EU 42/43"
+          }
+        },
+        "review_rtHTRw": {
+          "type": "review",
+          "settings": {
+            "author": "أحمد القحطاني",
+            "location": "الرياض",
+            "date": "منذ أسبوعين",
+            "rating": 5,
+            "is_verified": true,
+            "title": "أفضل حذاء اشتريته في حياتي",
+            "body": "بصراحة، أكثر الأحذية راحةً اشتريتها منذ سنوات. أرتديه في المنزل وفي المسجد وحتى للتسوق. اللون الأبيض العاجي يبدو فاخراً جداً والحذاء خفيف جداً حتى تنسى أنك ترتديه.",
+            "color": "أبيض عاجي",
+            "size": "EU 42/43"
+          }
+        },
+        "review_PpPbA7": {
+          "type": "review",
+          "settings": {
+            "author": "أحمد القحطاني",
+            "location": "الرياض",
+            "date": "منذ أسبوعين",
+            "rating": 5,
+            "is_verified": true,
+            "title": "أفضل حذاء اشتريته في حياتي",
+            "body": "بصراحة، أكثر الأحذية راحةً اشتريتها منذ سنوات. أرتديه في المنزل وفي المسجد وحتى للتسوق. اللون الأبيض العاجي يبدو فاخراً جداً والحذاء خفيف جداً حتى تنسى أنك ترتديه.",
+            "color": "أبيض عاجي",
+            "size": "EU 42/43"
+          }
+        },
+        "review_6N6FFX": {
+          "type": "review",
+          "settings": {
+            "author": "أحمد القحطاني",
+            "location": "الرياض",
+            "date": "منذ أسبوعين",
+            "rating": 5,
+            "is_verified": true,
+            "title": "أفضل حذاء اشتريته في حياتي",
+            "body": "بصراحة، أكثر الأحذية راحةً اشتريتها منذ سنوات. أرتديه في المنزل وفي المسجد وحتى للتسوق. اللون الأبيض العاجي يبدو فاخراً جداً والحذاء خفيف جداً حتى تنسى أنك ترتديه.",
+            "color": "أبيض عاجي",
+            "size": "EU 42/43"
+          }
+        },
+        "review_aARjpL": {
+          "type": "review",
+          "settings": {
+            "author": "أحمد القحطاني",
+            "location": "الرياض",
+            "date": "منذ أسبوعين",
+            "rating": 5,
+            "is_verified": true,
+            "title": "أفضل حذاء اشتريته في حياتي",
+            "body": "بصراحة، أكثر الأحذية راحةً اشتريتها منذ سنوات. أرتديه في المنزل وفي المسجد وحتى للتسوق. اللون الأبيض العاجي يبدو فاخراً جداً والحذاء خفيف جداً حتى تنسى أنك ترتديه.",
+            "color": "أبيض عاجي",
+            "size": "EU 42/43"
+          }
+        }
+      },
+      "block_order": [
+        "review_hqziRt",
+        "review_WMh8mE",
+        "review_mmVGE4",
+        "review_za4Wzr",
+        "review_rtHTRw",
+        "review_PpPbA7",
+        "review_6N6FFX",
+        "review_aARjpL"
+      ],
+      "settings": {
+        "badge_text": "آراء العملاء",
+        "title_prefix": "يحبّه",
+        "title_highlight": "الآلاف",
+        "average_rating": "4.8",
+        "total_reviews_count": "4,892",
+        "star_5_percent": 87,
+        "star_4_percent": 12,
+        "star_3_percent": 1
+      }
     },
     "trust_faq": {
       "type": "trust-faq",
-      "settings": {}
+      "blocks": {
+        "faq_KkQzaE": {
+          "type": "faq",
+          "settings": {
+            "question": "كم يستغرق وقت الشحن؟",
+            "answer": "نقدّم شحناً سريعاً في جميع أنحاء المملكة العربية السعودية. تُعالج الطلبات خلال 24 ساعة وتُوصَّل مباشرة إلى باب منزلك خلال 2-4 أيام عمل."
+          }
+        },
+        "faq_9JkQqV": {
+          "type": "faq",
+          "settings": {
+            "question": "كم يستغرق وقت الشحن؟",
+            "answer": "نقدّم شحناً سريعاً في جميع أنحاء المملكة العربية السعودية. تُعالج الطلبات خلال 24 ساعة وتُوصَّل مباشرة إلى باب منزلك خلال 2-4 أيام عمل."
+          }
+        },
+        "faq_yQPeiL": {
+          "type": "faq",
+          "settings": {
+            "question": "كم يستغرق وقت الشحن؟",
+            "answer": "نقدّم شحناً سريعاً في جميع أنحاء المملكة العربية السعودية. تُعالج الطلبات خلال 24 ساعة وتُوصَّل مباشرة إلى باب منزلك خلال 2-4 أيام عمل."
+          }
+        },
+        "faq_NKPfxB": {
+          "type": "faq",
+          "settings": {
+            "question": "كم يستغرق وقت الشحن؟",
+            "answer": "نقدّم شحناً سريعاً في جميع أنحاء المملكة العربية السعودية. تُعالج الطلبات خلال 24 ساعة وتُوصَّل مباشرة إلى باب منزلك خلال 2-4 أيام عمل."
+          }
+        },
+        "faq_XfB6wV": {
+          "type": "faq",
+          "settings": {
+            "question": "كم يستغرق وقت الشحن؟",
+            "answer": "نقدّم شحناً سريعاً في جميع أنحاء المملكة العربية السعودية. تُعالج الطلبات خلال 24 ساعة وتُوصَّل مباشرة إلى باب منزلك خلال 2-4 أيام عمل."
+          }
+        },
+        "faq_3aJRRP": {
+          "type": "faq",
+          "settings": {
+            "question": "كم يستغرق وقت الشحن؟",
+            "answer": "نقدّم شحناً سريعاً في جميع أنحاء المملكة العربية السعودية. تُعالج الطلبات خلال 24 ساعة وتُوصَّل مباشرة إلى باب منزلك خلال 2-4 أيام عمل."
+          }
+        }
+      },
+      "block_order": [
+        "faq_KkQzaE",
+        "faq_9JkQqV",
+        "faq_yQPeiL",
+        "faq_NKPfxB",
+        "faq_XfB6wV",
+        "faq_3aJRRP"
+      ],
+      "settings": {
+        "trust_1_title": "دفع آمن",
+        "trust_1_desc": "بياناتك مشفّرة ومحمية بالكامل",
+        "trust_2_title": "شحن سريع",
+        "trust_2_desc": "توصيل سريع في جميع أنحاء المملكة",
+        "trust_3_title": "جودة فاخرة",
+        "trust_3_desc": "مصنوع من رغوة EVA عالية الجودة",
+        "trust_4_title": "استرجاع سهل",
+        "trust_4_desc": "سياسة استرجاع مريحة لمدة 14 يوم",
+        "faq_badge": "الأسئلة الشائعة",
+        "faq_title_prefix": "كل ما تحتاج",
+        "faq_title_highlight": "معرفته",
+        "faq_subtitle": "لديك أسئلة حول المقاسات أو التوصيل أو الاسترجاع؟ نحن هنا للمساعدة. تواصل معنا عبر واتساب في أي وقت."
+      }
     },
     "quick_order": {
       "type": "quick-order-form",
-      "settings": {}
+      "settings": {
+        "badge_text": "الدفع السريع",
+        "title_prefix": "أكمل",
+        "title_highlight": "طلبك",
+        "subtitle": "دفع سريع — استلم حذاءك خلال 2-4 أيام عمل",
+        "product_title": "كروس كلاسيك ستار كلوجز",
+        "unit_price": "189"
+      }
     }
   },
   "order": [
