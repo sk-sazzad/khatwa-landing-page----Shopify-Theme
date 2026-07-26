@@ -503,8 +503,26 @@ window.KhatwaTheme = window.KhatwaTheme || {};
           });
         })
         .then(function () {
-          // Redirect directly to Shopify Checkout — Order will register in Admin Orders!
-          window.location.href = '/checkout';
+          var formWrapper = document.getElementById('order-form-wrapper');
+          if (formWrapper) formWrapper.classList.add('hidden');
+
+          var success = document.getElementById('order-success');
+          if (success) success.classList.remove('hidden');
+
+          var msg = document.getElementById('success-msg');
+          if (msg) {
+            msg.innerHTML = 'شكراً لك، <strong>' + name + '</strong>! سيتصل بك فريق التوصيل قريباً على <strong>' + phone + '</strong>.';
+          }
+
+          var details = document.getElementById('success-details');
+          if (details) {
+            details.innerHTML = '<div><strong>المدينة:</strong> ' + city + '</div><div><strong>العنوان:</strong> ' + address + '</div>';
+          }
+
+          if (btn) {
+            btn.disabled = false;
+            btn.classList.remove('opacity-50');
+          }
         })
         .catch(function (err) {
           console.error('Shopify Cart Submission Error:', err);
