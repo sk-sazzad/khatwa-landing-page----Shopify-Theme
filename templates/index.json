@@ -526,7 +526,9 @@
         "title_highlight": "طلبك",
         "subtitle": "دفع سريع — استلم حذاءك خلال 2-4 أيام عمل",
         "product_title": "كروس كلاسيك ستار كلوجز",
-        "unit_price": "189"
+        "unit_price": "189",
+        "product": "cross-classic-star-clogs",
+        "variant_id": ""
       }
     },
     "trust_faq": {
