@@ -321,7 +321,7 @@
         "stat_LBHwRU": {
           "type": "stat",
           "settings": {
-            "target_number": 48920,
+            "target_number": 3,
             "number_suffix": "+",
             "label": "عميل سعيد"
           }
@@ -329,7 +329,7 @@
         "stat_HdGtAd": {
           "type": "stat",
           "settings": {
-            "target_number": 48920,
+            "target_number": 4892,
             "number_suffix": "+",
             "label": "عميل سعيد"
           }
@@ -337,7 +337,7 @@
         "stat_hbhxiM": {
           "type": "stat",
           "settings": {
-            "target_number": 48920,
+            "target_number": 127500,
             "number_suffix": "+",
             "label": "عميل سعيد"
           }
